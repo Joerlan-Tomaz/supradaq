@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>DNIT | Supra</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="font-awesome/font-awesome.min.css" />
+    <link rel="stylesheet" media="all" href="animate.css">
+    <link rel="stylesheet" media="all" href="login.css">
+
+    <script type="text/javascript" src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="conteudo">
+        <div class="conteudo-container">
+            <div class="row logos">
+                <div class="col-sm-6">
+                    <div class="logo logo-supra">
+                        <img src="imgs/supra-semfundo.png" class="img-responsive" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="logo lista">
+                        <ul>
+                            <li>Informações em tempo real</li>
+                            <li>Painéis gerenciais</li>
+                            <li>Integração entre as Diretorias do DNIT</li>
+                            <li>Maior transparência</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-center"><button id="btn-login" class="btn btn-primary btn-lg btn-flat btn-block btn-login shadow"><i class="fa fa-sign-in pull-left" aria-hidden="true"></i> Acessar</button></div>
+                <div class="col-sm-6 text-center"><button id="btn-video" class="btn btn-default btn-lg btn-flat btn-block btn-video shadow"><i class="fa fa-play pull-left" aria-hidden="true"></i> Vídeo</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-cidadao">
+        <a href="https://servicos.dnit.gov.br/portalcidadao" target="_blank" class="btn btn-link">Portal Cidadão</a>
+    </div>
+
+    <div class="trio-logos">
+        <img src="imgs/logos_dnit_branco_semfundo.png" class="img-responsive" />
+    </div>
+
+
+    <div id="login-box" class="hidden animated">
+        <button id="btn-login-close" class="btn-close shadow"><i class="fa fa-close"></i></button>
+        <div class="conteudo-container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <H2>Acesso Supra</H2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="login-email" name="login-email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-senha">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="login-senha" name="login-senha" placeholder="Senha">
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <a href="">Lembrar senha</a>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-warning btn-block shadow">Entrar</button>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-6 text-center">
+                    <a class="btn btn-link btn-cancel">Cancelar</a>
+                </div> -->
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-link btn-acesso">Solicitar Acesso</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="video-box" class="hidden animated">
+        <button id="btn-video-close" class="btn-close shadow"><i class="fa fa-close"></i></button>
+        <video id="video" controls preload="auto" poster="video/tec-15.jpg">
+            <source src="video/supra.mp4" type="video/mp4" />
+        </video>
+    </div>
+
+    <div id="acesso-box" class="hidden animated">
+        <button id="btn-acesso-close" class="btn-close shadow"><i class="fa fa-close"></i></button>
+        <div class="conteudo-container">
+
+            <div class="mensagem-acesso-inicio">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <H2>Solicitação de Acesso - Supra</H2>
+                        <p>
+                            Para novo acesso, preencha e envie o formulário abaixo.
+                            <br /> Para saber mais sobre a plataforma acesse: <a href="/downloads/supra.zip"> Apresentações e Manual </a>, para outros esclarecimentos envie um e-mail para: <a href="mailto:suporte.supra@dnit.gov.b"> suporte.supra@dnit.gov.br</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form form-acesso">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="acesso-nome">Nome</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="acesso-nome" name="acesso-nome" placeholder="Nome Completo" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acesso-email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="acesso-email" name="acesso-email" placeholder="Email Institucional" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acesso-empresa">Empresa</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-building" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="acesso-empresa" name="acesso-empresa" placeholder="Nome da empresa" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="acesso-empresa">Captcha</label>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    captcha .....
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="acesso-captcha" name="acesso-captcha" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="btn-enviar" class="btn btn-warning btn-block shadow">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //form -->
+
+            <div class="mensagem-acesso-envio hidden">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <H2>Solicitação de Acesso - Supra</H2>
+
+                        <div class="msg-erro">
+                            <h4 id="messagem">Mensagem</h4>
+                            <button class="btn btn-link btn-tentar">Tentar novamente</button>
+                        </div>
+
+                        <div class="msg-sucesso">
+                            <h4 id="messagem">Dados enviados com sucesso!</h4>
+                            <p>Em breve você receberá no e-mail:{email} a confirmaçao de seu acesso. Obrigado.</p>
+                            <p>Equipe Supra.</p>
+                        </div>
+                        <p>
+                            Para saber mais sobre a plataforma acesse: <a href="/downloads/supra.zip"> Apresentações e Manual </a>, para esclareciemntos envie um e-mail para: <a href="mailto:suporte.supra@dnit.gov.b"> suporte.supra@dnit.gov.br </a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- //mensagem-acesso -->
+
+        </div>
+        <!-- //container -->
+    </div>
+
+
+    <script src="particles.min.js"></script>
+    <script src="login.js"></script>
+
+</body>
+
+</html>

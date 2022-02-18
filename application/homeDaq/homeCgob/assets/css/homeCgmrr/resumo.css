@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 1, 2018, 10:45:35 AM
+    Author     : herisson.c.silva
+*/
+
+#tableChecklist p{
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+
+#tbAvancoFisico{
+   font-size: 0.8em; 
+}

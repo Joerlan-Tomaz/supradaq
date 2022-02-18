@@ -1,0 +1,270 @@
+html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
+}
+
+
+.road-page {
+    height: 100%;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background: url('/assets/img/road/bg-page.png') center bottom no-repeat;
+    background-size: cover;
+    background-position: fixed;
+}
+
+
+.road-page .road-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 10px 0;
+   /* background: url('/assets/img/road/bg-map.png') center 125% no-repeat;*/
+    background-size: 105vw 55vh;
+}
+
+.road-page .container-fluid {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+    /*overflow-x: hidden;
+    overflow-y: auto;*/
+    z-index: 5;
+}
+
+/* .road-page .container-fluid {
+    background: url('/supradif/assets/img/road/bg-map.png') bottom center no-repeat;
+    background-size: cover;
+} */
+
+.road-info {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.road-info h1 {
+    margin: 10px auto;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 5px solid #4d4d4d;
+}
+
+.road-info p {
+    font-size: 16px;
+    text-align: center;
+}
+
+.road-menu ul {
+    margin: 0;
+    padding: 0;
+    min-height: 745px;
+}
+
+.road-menu ul li {
+    position: relative;
+    margin: 5px 0;
+    padding: 5px 0;
+    height: 85px;
+    max-width: 375px;
+}
+
+.road-menu ul li .road-ico {
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 78px;
+    margin-top: -5px;
+    overflow: hidden;
+    text-align: center;
+    background: url('/assets/img/road/pl-gray.png') center center no-repeat;
+}
+
+
+.road-menu ul li .road-ico img {
+    margin: 0 auto;
+    margin-top: 20px;
+    vertical-align: middle;
+}
+
+.road-menu ul li a {
+    display: block;
+    font-size: 16px;
+    margin-left: 40px;
+    height: 70px;
+    color: #333;
+    /* background-color: #fff;
+    border: 1px solid #ddd; */
+    
+    cursor: pointer;
+}
+
+.road-menu ul li a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.road-menu ul li a span {
+    display: table-cell;
+    vertical-align: middle;
+    width: 220px;
+    padding-left: 5px;
+    height: 70px;
+    line-height: 1;
+}
+
+.road-status {
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    right: 15px;
+    height: 40px;
+    width: 40px;
+    margin-top: -20px;
+}
+
+.road-menu ul li .road-status::before {
+    position: absolute;
+    display: none;
+    top: 10px;
+    left: 40px;
+    content: '';
+    width: auto;
+    padding: 3px 10px;
+    white-space: nowrap;
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    background-color: #fff;
+    box-shadow: 2px 2px 0 #ccc;
+}
+
+.road-way {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    width: 100%;
+    background: url('/assets/img/road/roads.png') no-repeat;
+    background-position: -400px 50px;
+    background-size: 130vw 50vh;
+    z-index: 2;
+}
+
+
+.road-menu ul li.envio .road-ico {
+    background: url('/assets/img/road/pl-blue.png') center center no-repeat;
+}
+.road-menu ul li.status-ok .road-ico {
+    background: url('/assets/img/road/pl-green.png') center center no-repeat;
+}
+.road-menu ul li.pendencia .road-ico {
+    background: url('/assets/img/road/pl-orange.png') center center no-repeat;
+}
+.road-menu ul li.reprovado .road-ico {
+    background: url('/assets/img/road/pl-red.png') center center no-repeat;
+}
+
+
+
+.road-menu ul li.envio .road-status {
+    background: url('/assets/img/road/check-e.png') center center no-repeat;
+}
+.road-menu ul li.status-ok .road-status {
+    background: url('/assets/img/road/check-ok.png') center center no-repeat;
+}
+.road-menu ul li.pendencia .road-status {
+    background: url('/assets/img/road/check-warn.png') center center no-repeat;
+}
+.road-menu ul li.reprovado .road-status {
+    background: url('/assets/img/road/check-no.png') center center no-repeat;
+}
+
+
+
+.road-menu ul li.envio .road-status:hover::before {
+    display: block;
+    content: 'Em análise';
+}
+.road-menu ul li.status-ok .road-status:hover::before {
+    display: block;
+    content: 'Aprovado';
+}
+.road-menu ul li.pendencia .road-status:hover::before {
+    display: block;
+    content: 'Pendência';
+}
+.road-menu ul li.reprovado .road-status:hover::before {
+    display: block;
+    content: 'Reprovado';
+}
+
+
+/* .road-base {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    width: 100%;
+    background: url('/supradif/assets/img/road/bg-map.png') top center no-repeat;
+    background-size: cover;
+} */
+
+
+.box-info {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 #ccc;
+}
+
+.box-info h3 {
+    margin: 0;
+    margin-bottom: 20px;
+    width: 130px;
+    font-size: 16px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #d3d9dd;
+}
+
+.box-info p {
+    text-align: left;
+    padding: 10px;
+}
+
+@media ( min-width: 1200px) {
+    
+    .road-page .container-fluid {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+}
+
+@media ( min-width: 1400px) {
+    
+    .road-page .container-fluid {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+}
+
+@media ( max-width: 768px) {
+    
+    .road-menu ul li a {
+        font-size: 12px;
+    }
+
+}

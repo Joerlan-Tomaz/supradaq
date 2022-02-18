@@ -1,0 +1,442 @@
+<?php
+// Mostrar os erros
+ini_set         ( 'display_errors', 1                  );
+ini_set         ( 'display_startup_erros', 1           );
+error_reporting ( E_ALL                                );
+//----------------------------------------------------------------------------------------------------------------------------------------------
+include_once ('../../../../app/dto/sigacont/rpfo/revisao.class');
+
+class TrevisaoDAO extends Trevisao{
+	
+
+	// ###################################################
+	//
+	// Metodos de Persistencia
+	//
+	// ###################################################
+	
+	// ## MONTA INCLUSAO
+	function MontaInclusao() {
+		$Comando = "INSERT INTO " . $this->GetNomeTabela () . " (";
+
+		if ($this->GetID_CONTRATO_OBRA()) {
+			$Comando .= "ID_CONTRATO_OBRA,";
+		}	
+		if ($this->GetNUMERO_CONTRATO()) {
+			$Comando .= "NUMERO_CONTRATO,";
+		}		
+		if ($this->GetEMPRESA()) {
+			$Comando .= "EMPRESA,";
+		}	
+		if ($this->GetNUM_PROCESSO_BASE()) {
+			$Comando .= "NUM_PROCESSO_BASE,";
+		}		
+		if ($this->GetOBJETO_CONTRATO()) {
+			$Comando .= "OBJETO_CONTRATO,";
+		}
+
+		if ($this->GetDATA_ASSINATURA()) {
+			$Comando .= "DATA_ASSINATURA,";
+		}
+		if ($this->GetDATA_PUBLICACAO_DOU()) {
+			$Comando .= "DATA_PUBLICACAO_DOU,";
+		}		
+		if ($this->GetPRAZO_INICIAL_EXECUCAO()) {
+			$Comando .= "PRAZO_INICIAL_EXECUCAO,";
+		}		
+		if ($this->GetORDEM_INICIO_SERVICOS()) {
+			$Comando .= "ORDEM_INICIO_SERVICOS,";
+		}				
+		if ($this->GetDATA_INICIAL_TERMINO()) {
+			$Comando .= "DATA_INICIAL_TERMINO,";
+		}
+		if ($this->GetDATA_TERMINO_ATUALIZADA()) {
+			$Comando .= "DATA_TERMINO_ATUALIZADA,";
+		}
+		if ($this->GetDATA_LICITACAO()) {
+			$Comando .= "DATA_LICITACAO,";
+		}	
+		if ($this->GetDATA_PUBLICACAO_RESULTADO_LICITACAO_DOU()) {
+			$Comando .= "DATA_PUBLICACAO_RESULTADO_LICITACAO_DOU,";
+		}	
+
+		if ($this->GetTOTAL_DIAS_ADITADOS()) {
+			$Comando .= "TOTAL_DIAS_ADITADOS,";
+		}		
+		if ($this->GetTOTAL_DIAS_PARALISADOS()) {
+			$Comando .= "TOTAL_DIAS_PARALISADOS,";
+		}				
+		if ($this->GetVALOR_PI_CONTRATO()) {
+			$Comando .= "VALOR_PI_CONTRATO,";
+		}
+		if ($this->GetVALOR_TOTAL_ADITIVADO_CONTRATO()) {
+			$Comando .= "VALOR_TOTAL_ADITIVADO_CONTRATO,";
+		}
+		if ($this->GetVALOR_REAJUSTE_CONTRATO()) {
+			$Comando .= "VALOR_REAJUSTE_CONTRATO,";
+		}	
+
+		if ($this->GetROTEIRO()) {
+			$Comando .= "ROTEIRO,";
+		}
+		if ($this->GetPERIODO_REFERENCIA()) {
+			$Comando .= "PERIODO_REFERENCIA,";
+		}
+		if ($this->GetPUBLICAR()) {
+			$Comando .= "PUBLICAR,";
+		}	
+		if ($this->GetFLAG_ALTERACAO()) {
+			$Comando .= "FLAG_ALTERACAO,";
+		}	
+		if ($this->GetID_USUARIO()) {
+			$Comando .= "ID_USUARIO,";
+		}
+		if ($this->GetDATA_CADASTRO()) {
+			$Comando .= "DATA_CADASTRO)";
+		}
+	
+	$Comando .= " VALUES (";
+
+		if ($this->GetID_CONTRATO_OBRA ()) {
+			$Comando .= " " . $this->GetID_CONTRATO_OBRA() 	. ",";
+		}
+		if ($this->GetNUMERO_CONTRATO()) {
+			$Comando .= "'" . $this->GetNUMERO_CONTRATO()     . "',";
+		}
+		if ($this->GetEMPRESA ()) {
+			$Comando .= "'" . $this->GetEMPRESA()     . "',";
+		}		
+		if ($this->GetNUM_PROCESSO_BASE ()) {
+			$Comando .= "'" . $this->GetNUM_PROCESSO_BASE() 	  . "',";
+		}
+		if ($this->GetOBJETO_CONTRATO ()) {
+			$Comando .= "'" . $this->GetOBJETO_CONTRATO() 	  . "',";
+		}
+
+		if ($this->GetDATA_ASSINATURA ()) {
+			$Comando .= "'" . $this->GetDATA_ASSINATURA()              . "',";
+		}
+		if ($this->GetDATA_PUBLICACAO_DOU ()) {
+			$Comando .= "'" . $this->GetDATA_PUBLICACAO_DOU() 	 . "',";
+		}			
+		if ($this->GetPRAZO_INICIAL_EXECUCAO ()) {
+			$Comando .= "'" . $this->GetPRAZO_INICIAL_EXECUCAO() 	  . "',";
+		}
+		if ($this->GetORDEM_INICIO_SERVICOS ()) {
+			$Comando .= "'" . $this->GetORDEM_INICIO_SERVICOS() 	  . "',";
+		}
+		if ($this->GetDATA_INICIAL_TERMINO ()) {
+			$Comando .= "'" . $this->GetDATA_INICIAL_TERMINO() 	  . "',";
+		}
+		if ($this->GetDATA_TERMINO_ATUALIZADA ()) {
+			$Comando .= "'" . $this->GetDATA_TERMINO_ATUALIZADA() 	  . "',";
+		}
+		if ($this->GetDATA_LICITACAO ()) {
+			$Comando .= "'" . $this->GetDATA_LICITACAO() 	  . "',";
+		}	
+		if ($this->GetDATA_PUBLICACAO_RESULTADO_LICITACAO_DOU ()) {
+			$Comando .= "'" . $this->GetDATA_PUBLICACAO_RESULTADO_LICITACAO_DOU() 	  . "',";
+		}
+
+
+		if ($this->GetTOTAL_DIAS_ADITADOS ()) {
+			$Comando .= " " . $this->GetTOTAL_DIAS_ADITADOS() 	  . ",";
+		}
+		if ($this->GetTOTAL_DIAS_PARALISADOS ()) {
+			$Comando .= " " . $this->GetTOTAL_DIAS_PARALISADOS() 	  . ",";
+		}
+		if ($this->GetVALOR_PI_CONTRATO ()) {
+			$Comando .= "'" . $this->GetVALOR_PI_CONTRATO() 	  . "',";
+		}
+		if ($this->GetVALOR_TOTAL_ADITIVADO_CONTRATO ()) {
+			$Comando .= "'" . $this->GetVALOR_TOTAL_ADITIVADO_CONTRATO() 	  . "',";
+		}
+		if ($this->GetVALOR_REAJUSTE_CONTRATO ()) {
+			$Comando .= "'" . $this->GetVALOR_REAJUSTE_CONTRATO() 	  . "',";
+		}
+
+		if ($this->GetROTEIRO ()) {
+			$Comando .= "'" . $this->GetROTEIRO() 	  . "',";
+		}
+		if ($this->GetPERIODO_REFERENCIA ()) {
+			$Comando .= "'" . $this->GetPERIODO_REFERENCIA() 	  . "',";
+		}
+		if ($this->GetPUBLICAR ()) {
+			$Comando .= "'" . $this->GetPUBLICAR() 	  . "',";
+		}
+		if ($this->GetFLAG_ALTERACAO ()) {
+			$Comando .= "'" . $this->GetFLAG_ALTERACAO() 	  . "',";
+		}
+		if ($this->GetID_USUARIO ()) {
+			$Comando .= " " . $this->GetID_USUARIO() 	  . ",";
+		}
+		if ($this->GetDATA_CADASTRO ()) {
+			$Comando .= "'" . $this->GetDATA_CADASTRO() . "')";
+		}
+
+		//echo('Comando:'.$Comando);
+		//die();
+		return $Comando;
+	}
+	
+	// ## MONTA ALTERAÇÃO
+	function MontaAlteracao($inIdApresentacao) {
+		$Comando = "UPDATE " . $this->GetNomeTabela () 						    . " SET ";
+	
+		if ($this->GetCONTRATO ()) {
+			$Comando .= " ID_CONTRATO_OBRA = " . $this->GetID_CONTRATO_OBRA () . ",";
+		}
+		if ($this->GetNUMERO_CONTRATO ()) {
+			$Comando .= " NUMERO_CONTRATO = '" . $this->GetNUMERO_CONTRATO ()  	. "',";
+		}
+		if ($this->GetEMPRESA ()) {
+			$Comando .= " EMPRESA = '" . $this->GetEMPRESA ()  	. "',";
+		}		
+		if ($this->GetNUM_PROCESSO_BASE ()) {
+			$Comando .= " NUM_PROCESSO_BASE = '" . $this->GetNUM_PROCESSO_BASE () 		   . "',";
+		}
+		if ($this->GetOBJETO_CONTRATO ()) {
+			$Comando .= " OBJETO_CONTRATO = '" . $this->GetOBJETO_CONTRATO () 		   . "',";
+		}
+
+
+		if ($this->GetDATA_ASSINATURA ()) {
+			$Comando .= " DATA_ASSINATURA = '" . $this->GetDATA_ASSINATURA () 					   . "',";
+		}
+		if ($this->GetDATA_PUBLICACAO_DOU ()) {
+			$Comando .= " DATA_PUBLICACAO_DOU = '" . $this->GetDATA_PUBLICACAO_DOU () . "',";
+		}				
+		if ($this->GetPRAZO_INICIAL_EXECUCAO ()) {
+			$Comando .= " PRAZO_INICIAL_EXECUCAO = '" . $this->GetPRAZO_INICIAL_EXECUCAO () 		   . "',";
+		}
+		if ($this->GetORDEM_INICIO_SERVICOS ()) {
+			$Comando .= " ORDEM_INICIO_SERVICOS = '" . $this->GetORDEM_INICIO_SERVICOS () 		   . "',";
+		}
+		if ($this->GetDATA_INICIAL_TERMINO ()) {
+			$Comando .= " DATA_INICIAL_TERMINO = '" . $this->GetDATA_INICIAL_TERMINO () 		   . "',";
+		}
+		if ($this->GetDATA_TERMINO_ATUALIZADA ()) {
+			$Comando .= " DATA_TERMINO_ATUALIZADA = '" . $this->GetDATA_TERMINO_ATUALIZADA () 		   . "',";
+		}
+		if ($this->GetDATA_LICITACAO ()) {
+			$Comando .= " DATA_LICITACAO = '" . $this->GetDATA_LICITACAO () 		   . "',";
+		}
+		if ($this->GetDATA_PUBLICACAO_RESULTADO_LICITACAO_DOU ()) {
+			$Comando .= " DATA_PUBLICACAO_RESULTADO_LICITACAO_DOU = '" . $this->GetDATA_PUBLICACAO_RESULTADO_LICITACAO_DOU () 		   . "',";
+		}
+
+
+		if ($this->GetTOTAL_DIAS_ADITADOS ()) {
+			$Comando .= " TOTAL_DIAS_ADITADOS = " . $this->GetTOTAL_DIAS_ADITADOS () 		   . ",";
+		}
+		if ($this->GetTOTAL_DIAS_PARALISADOS ()) {
+			$Comando .= " TOTAL_DIAS_PARALISADOS = " . $this->GetTOTAL_DIAS_PARALISADOS () 		   . ",";
+		}	
+		if ($this->GetVALOR_PI_CONTRATO ()) {
+			$Comando .= " VALOR_PI_CONTRATO = '" . $this->GetVALOR_PI_CONTRATO () 		   . "',";
+		}
+		if ($this->GetVALOR_TOTAL_ADITIVADO_CONTRATO ()) {
+			$Comando .= " VALOR_TOTAL_ADITIVADO_CONTRATO = '" . $this->GetVALOR_TOTAL_ADITIVADO_CONTRATO () 		   . "',";
+		}
+		if ($this->GetVALOR_REAJUSTE_CONTRATO ()) {
+			$Comando .= " VALOR_REAJUSTE_CONTRATO = '" . $this->GetVALOR_REAJUSTE_CONTRATO () 		   . "',";
+		}
+
+		if ($this->GetROTEIRO ()) {
+			$Comando .= " ROTEIRO = '" . $this->GetROTEIRO () 		   . "',";
+		}
+		if ($this->GetPERIODO_REFERENCIA ()) {
+			$Comando .= " PERIODO_REFERENCIA = '" . $this->GetPERIODO_REFERENCIA () 		   . "',";
+		}
+		if ($this->GetPUBLICAR ()) {
+			$Comando .= " PUBLICAR = '" . $this->GetPUBLICAR () 		   . "',";
+		}
+		if ($this->GetPUBLICAR ()) {
+			$Comando .= " FLAG_ALTERACAO = '" . $this->GetFLAG_ALTERACAO () 		   . "',";
+		}
+		if ($this->GetID_USUARIO ()) {
+			$Comando .= " ID_USUARIO = " . $this->GetID_USUARIO () 		   . ",";
+		}
+		if ($this->GetDATA_CADASTRO ()) {
+			$Comando .= " DATA_CADASTRO = '" . $this->GetDATA_CADASTRO () . "',";
+		}
+		
+		$Comando = left ( $Comando, strlen ( $Comando ) - 1 );
+		$Comando .= " WHERE " . $this->GetNomeColunaID () . " = " . $inIdApresentacao . "";
+		
+		return $Comando;
+	}
+
+
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	function RecuperaRpfo(&$Lista, $Filtro = '',$Ordem = '', $Transacao = '') {
+		$Erro = new TErro ();
+		$db = new TDb ();
+		$stComando = $this->MontaRecuperaRpfo($Filtro);
+		//echo('<pre>');
+	    //echo($stComando);
+		$Erro = $db->ExecutaQuery ( $stComando, $Res, $Transacao );
+		if ($Erro->IsOK ()) {
+			$Recordset = new TRecordset( $Res );
+			$Lista = $Recordset;
+		}
+		return $Erro;
+	}
+
+	function MontaRecuperaRpfo($Filtro = '') {
+    
+	$stComando = "
+	SELECT
+	  (
+		SELECT supervisora
+		FROM TB_CONTRATO_OBRA
+		WHERE id_contrato_obra = ".$Filtro."
+		) supervisora
+	,
+
+      (
+		SELECT TOP 1 desc_nome
+		FROM TB_USUARIO
+		WHERE id_usuario = (
+				SELECT TOP 1 id_usuario
+				FROM TB_CONTRATO_SUPERVISORA
+				WHERE id_usuario IN (
+						SELECT id_usuario
+						FROM TB_USUARIO
+						WHERE ID_PERFIL = 5
+						)
+					AND id_contrato_obra = ".$Filtro."
+				)
+		) fiscal
+	,
+	(
+		SELECT TOP 1 EMAIL
+		FROM TB_USUARIO
+		WHERE id_usuario = (
+				SELECT TOP 1 id_usuario
+				FROM TB_CONTRATO_SUPERVISORA
+				WHERE id_usuario IN (
+						SELECT id_usuario
+						FROM TB_USUARIO
+						WHERE ID_PERFIL = 5
+						)
+					AND id_contrato_obra = ".$Filtro."
+				)
+		) email
+	,
+	(
+		SELECT TOP 1 telefone
+		FROM TB_USUARIO
+		WHERE id_usuario = (
+				SELECT TOP 1 id_usuario
+				FROM TB_CONTRATO_SUPERVISORA
+				WHERE id_usuario IN (
+						SELECT id_usuario
+						FROM TB_USUARIO
+						WHERE ID_PERFIL = 5
+						)
+					AND id_contrato_obra = ".$Filtro."
+				)
+		) telefone
+	,
+
+	    c.unidade_local,
+	    DATEDIFF(day, GETDATE(), C.dt_termino_atualizada) as dias_vencer,
+	    concat(s.extensao_segmento,' Km') extensao_segmento,
+		CONCAT('Km ',s.km_inicial,' a Km ',s.km_final ) segmento,
+		dbo.Remove_Acentuacao(s.trecho)  AS trecho, 
+		(select CONCAT(br,'/',uf) from TB_CONTRATO_OBRA where id_contrato_obra=".$Filtro." ) bruf,
+		dbo.Remove_Acentuacao(c.tipo_intervencao) AS tipo_intervencao,
+		CONVERT(VARCHAR(2),MONTH(c.dt_base)) + '/' + CONVERT(VARCHAR(4),YEAR(c.dt_base)) dt_base,
+        dbo.Remove_Acentuacao(c.tipo_licitacao) AS tipo_licitacao,
+		c.num_edital,
+		C.contrato AS contrato,
+		dbo.Remove_Acentuacao(C.empresa)  AS EMPRESA, 
+		C.num_processo  AS NUM_PROCESSO,
+		dbo.Remove_Acentuacao(OBJETO_CONTRATACAO) AS OBJETO_CONTRATACAO,
+
+		CONVERT(VARCHAR(10), C.dt_assinatura, 103) AS assinatura,
+		CONVERT(VARCHAR(10), C.dt_publicacao, 103) AS publicacao_DOU,
+		CONVERT(VARCHAR(10), C.dt_inicio, 103) AS inicio_execucao,
+		CONVERT(VARCHAR(10), C.dt_inicio, 103) AS ordem_inicio,
+		CONVERT(VARCHAR(10), C.dt_termino_prevista, 103) AS termino_inicial,
+		CONVERT(VARCHAR(10), C.dt_termino_atualizada, 103) AS termino_atualizado,
+		CONVERT(VARCHAR(10), C.dt_proposta, 103) AS licitacao,
+		CONVERT(VARCHAR(10), C.dt_publicacao, 103) AS publicacao_licitacao_DOU,
+
+		(SELECT IIF(SUM(qtd_dias_prorrogacao) IS NULL, 0,SUM(qtd_dias_prorrogacao))  FROM TB_SIAC_TERMO_ADITIVO A WHERE A.contrato = C.contrato)  AS dias_aditados,
+		 qtd_dias_paralisados  AS dias_paralisados,
+		REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((vr_inicial) AS MONEY), 1), ',', '_'), '.', ','), '_', '.')  AS valor_pi,
+		REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((vr_total_aditivo) AS MONEY), 1), ',', '_'), '.', ','), '_', '.')  AS valor_aditado,
+		REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((vr_reajuste_medicao) AS MONEY), 1), ',', '_'), '.', ','), '_', '.')as valor_reajuste,
+        (SELECT CONCAT('R$ ',REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((f.valor_inicial_aditivo_reajuste) AS MONEY), 1), ',', '_'), '.', ','), '_', '.'))  
+        FROM TB_SIAC_FINANCEIRO f
+        WHERE f.contrato=c.CONTRATO) AS valor_total	,
+		(SELECT CONCAT('R$ ',REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((f1.valor_empenhado) AS MONEY), 1), ',', '_'), '.', ','), '_', '.')) 
+        FROM TB_SIAC_FINANCEIRO f1
+        WHERE f1.contrato=c.CONTRATO) AS total_empenhado,
+       (
+		SELECT CONCAT('R$ ',REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((
+									f2.valor_empenhado - (
+										SELECT SUM(m.valor_pi_medicao + m.valor_reajuste_medicao)
+										FROM TB_SIAC_MEDICAO_MAIOR m
+										WHERE m.contrato = c.CONTRATO
+										)
+									) AS MONEY), 1), ',', '_'), '.', ','), '_', '.')) AS saldo_empenho
+		FROM TB_SIAC_FINANCEIRO f2
+		WHERE f2.contrato = c.CONTRATO
+		) AS saldo_empenho,
+		(
+		SELECT CONCAT('R$ ',REPLACE(REPLACE(REPLACE(CONVERT(VARCHAR, CAST((SUM(m.valor_pi_medicao + m.valor_reajuste_medicao)) AS MONEY), 1), ',', '_'), '.', ','), '_', '.'))
+		FROM TB_SIAC_MEDICAO_MAIOR m
+		WHERE m.contrato = c.CONTRATO
+		) AS MEDIDO
+
+		
+	FROM 
+	 TB_SIAC_CONTRATO C,
+	  tb_siac_segmento s
+	WHERE 
+	C.contrato=s.contrato 
+	and 1 = 1 AND c.CONTRATO = (SELECT distinct contrato
+								FROM TB_contrato_obra
+								WHERE 1 = 1 and id_contrato_obra = ".$Filtro." )";
+					
+		return $stComando;
+	}	
+	//----------------------------------------------------------------------------------------------------------------------------------------------
+	function RecuperaContrato(&$Lista, $Filtro = '',$Ordem = '', $Transacao = '') {
+		$Erro = new TErro ();
+		$db = new TDb ();
+		$stComando = $this->MontaRecuperaContrato($Filtro);
+		//echo('<pre>');
+	    //echo($stComando);
+		$Erro = $db->ExecutaQuery ( $stComando, $Res, $Transacao );
+		if ($Erro->IsOK ()) {
+			$Recordset = new TRecordset( $Res );
+			$Lista = $Recordset;
+		}
+		return $Erro;
+	}
+
+	function MontaRecuperaContrato($Filtro = '') {
+    $stComando = "
+	  SELECT co.contrato,co.id_contrato_obra
+	,dbo.Remove_Acentuacao(co.supervisora) supervisora
+	,dbo.Remove_Acentuacao(co.construtora) construtora
+	,dbo.Remove_Acentuacao(sc.situacao_contrato) situacao_contrato
+	,CONCAT (
+		co.br
+		,'-'
+		,co.uf
+		) bruf
+FROM tb_contrato_obra co
+FULL OUTER JOIN TB_SIAC_CONTRATO sc ON co.contrato = sc.contrato
+WHERE co.contrato like
+ '%".$Filtro."%'";
+					
+		return $stComando;
+	}																											
+}	
+// FIM DA CLASSE
+?>

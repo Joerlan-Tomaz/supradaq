@@ -1,0 +1,134 @@
+
+
+.qrcode-div-box {
+    text-align: center;
+}
+
+.qrcode-div {
+    text-align: center;
+    margin: 20px auto;
+    width:70%;
+}
+
+.qrcode-div img {
+    width: 100%;
+    height: auto;
+}
+
+.qrcode-div-placa {
+    float: right;
+    width: 60px;
+    height: 30px;
+    margin: 0 20px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.qrcode-div-placa img {
+    width: 100%;
+    height: auto;
+}
+
+.placa {
+    font-family: Verdana, Geneva, sans-serif;
+    max-width: 70%;
+    margin: 45px auto;
+    border: 1px solid #555;
+    background-color: #fff;
+}
+
+.placa-header {
+    padding: 5px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.placa-header img {
+    display: block;
+    margin: 0 auto;
+    max-width: auto;
+    height: 70px;
+}
+
+.placa-body {
+    height: 180px;
+    padding: 15px;
+    text-align: center;
+    background-color: #1E562E;
+}
+
+.placa-body h3 {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
+
+.fontYellow {
+    color: yellow;
+    font-weight: bold;
+    font-size: 10px;
+    margin: 0px 15px;
+}
+
+.fontWhite {
+    color: white;
+    font-weight: 200;
+    font-size: 10px;
+}
+
+.placa-s-body {
+    height: 120px;
+    background-color: #5B7936;
+}
+
+.placa-footer {
+    text-align: center;
+    background-color: #fff;
+}
+
+@media print {
+ 
+    @page { 
+        margin: 0 
+    }
+
+    @page land {
+        size: landscape;
+    } 
+
+    * {
+        background:transparent !important;
+        color:#000 !important;
+        text-shadow:none !important;
+        filter:none !important;
+        -ms-filter:none !important;
+    }
+
+    /* body {
+        margin: 0;
+        padding: 15mm;
+        font: 12pt Arial, Georgia, "Times New Roman", Times, serif;
+        line-height: 1.3;
+        background: #fff !important;
+        color: #000;
+        width: 210mm; 
+        height: 296mm;
+    } */
+
+    .no-print { 
+        display:none; 
+    }
+
+    /* .qrcode-div {
+        text-align: center;
+        margin: 50px auto;
+        width: 90%;
+        height: auto;
+    } */
+
+    .qrcode-div {
+        width:280%;
+    }
+
+
+}

@@ -1,0 +1,188 @@
+#tabelaPNCV td{
+    font-size: 10pt;
+}
+#tabelaPNCV th{
+    /* background-color: #81BEF7;  */
+   text-align:  center;
+}
+#tabelaPNCV td{  
+   text-align:  center;
+}
+#tabelaPNCV tr:hover{
+   background-color: #81BEF7;
+}
+
+#tabelaMovel td{
+    font-size: 10pt;
+}
+#tabelaMovel th{
+    /* background-color: #81BEF7;  */
+   text-align:  center;
+}
+#tabelaMovel td{  
+   text-align:  center;
+}
+#tabelaMovel tr:hover{
+   background-color: #81BEF7;
+}
+
+#tabelaSupervisao td{
+    font-size: 10pt;
+}
+#tabelaSupervisao th{
+    /* background-color: #81BEF7;  */
+   text-align:  center;
+}
+#tabelaSupervisao td{  
+   text-align:  center;
+}
+#tabelaSupervisao tr:hover{
+   background-color: #81BEF7;
+}
+
+#tabelaPIAF td{
+    font-size: 10pt;
+}
+#tabelaPIAF th{
+    /* background-color: #81BEF7;  */
+   text-align:  center;
+   
+}
+#tabelaPIAF td{  
+   text-align:  center;
+}
+#tabelaPIAF tr:hover{
+   background-color: #A9D0F5;
+}
+
+.titulo{
+    color: #aba5a5;
+    font-size: 60pt; 
+}
+.subtitulo{
+    margin-top: -20px;
+    color: #3c8dbc;
+    margin-left: 5px;
+}
+#uf{
+    width: 90%;
+    margin-left: 5px;
+    border-radius: 10px;
+   
+}
+#lote{
+    width: 90%;
+    margin-left: 5px;
+    border-radius: 10px;   
+}
+#table td{
+    width: 100px;
+    height: 300px;
+    background-color: red;
+    border: 1px solid appworkspace;
+}
+#sidebar{
+    background-color: #FAFAFA;
+    border: 1px solid #81BEF7;   
+}
+#btnConsultar{
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 90%;
+}
+#menu{
+    margin-top: 80px;
+}
+
+#tblModal td{
+   width: 50%;
+   text-align: center;
+}
+#tblModal tr:hover{  
+   background-color: #A9D0F5;
+}
+.modal-header{
+   text-align: center; 
+   background-color: #2E9AFE;
+   color: white;
+}
+#tblPiafDadosCadastro td{
+     width: 50px;
+     text-align: center;
+     border: none;
+     background-color: transparent;
+}
+#tblPiafDadosCadastro th{
+     width: 50px;
+     text-align: center;
+     background-color: #81BEF7;
+}
+input[type="file"] { 
+   display: none;
+   
+}
+
+.label-bordered {
+   border: 1px solid #cecece;
+   padding: 10px;
+   border-radius: 5px;
+   background-color: #81BEF7;
+}
+.label-bordered:hover {
+   border: 1px solid #cecece;
+   padding: 10px;
+   border-radius: 5px;
+   background-color: #2E9AFE;
+}
+#lfupload{
+    font-size: 10pt;
+ 
+    color: white;
+}
+spam{
+    font-weight: bold;
+}
+
+.verde {
+    border-radius: 50%;
+    display: -webkit-box;
+    height: 15px;
+    width: 15px;
+    background-color: #238E23;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+    -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+    -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+    box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+    position: relative;
+    cursor: pointer;
+}
+.cinza {
+    border-radius: 50%;
+    display: -webkit-box;
+    height: 15px;
+    width: 15px;
+    background-color:#999999;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+    -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+    -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+    box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+    position: relative;
+    cursor: pointer;
+}
+
+.amarelo {
+    border-radius: 50%;
+    display: -webkit-box;
+    height: 15px;
+    width: 15px;
+    background-color:#FFCC33;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+    -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+    -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+    box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+    position: relative;
+    cursor: pointer;
+}

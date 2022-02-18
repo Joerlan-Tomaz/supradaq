@@ -1,0 +1,147 @@
+
+/**
+ * Print CSS - Supra - DNIT
+ * @version         1.0
+ * @lastmodified    22.09.2018
+ * @Autor           Gustavo Costa
+**/
+
+@media print {
+
+    section {
+        page-break-after: always;
+        page-break-inside: avoid;
+        page-break-before: always;
+        margin-top: 15mm;
+        margin-bottom: 15mm;
+        margin-left: 10mm;
+        margin-right: 10mm;
+        font-size: 20px !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: justify;
+    }
+
+    section.fullpage {
+        margin-left: 0mm !important;
+        margin-right: 0mm !important;
+        text-align: left;
+    }
+
+    .logo-dnit{
+        width: 30%;
+        float: right; 
+        position: relative;
+        top: 20px;
+    }
+
+    .alinhamento{
+        letter-spacing: 0px; 
+        font-size: 20px;
+    }
+
+    h3,h4{
+        font-size: 20px;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-contrato{
+        border-radius: 20px;
+        padding: 15px 0;
+        font-size: 16px;
+        background-color: #f3f2f2 !important; 
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    .table-recibo{
+        font-size: 16px;
+        border: 1px solid #e0e0e0;
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    .table-recibo > thead > tr > td{
+        padding: 10px 3px;
+        font-size: 18px;
+        background: #e0e0e0;
+        border-top: 1px solid #a7a7a7;
+        font-weight: 700;
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    .table-recibo > tbody > tr > td{
+        padding: 5px 3px;
+        border-right: 1px solid #e0e0e0;
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    .size-row-table{
+        min-height: 650px;
+    }
+
+    .logo-rodape{
+        position: relative;
+        background: #f3f2f2 !important;
+        -webkit-print-color-adjust: exact !important;
+        width: 115%;
+        right: 50px;
+        padding-top: 5px;
+        border-radius: 20px;
+    }
+
+    /*.logo-rodape{
+        margin: 0px !important;
+        padding: 10px !important; 
+        border-top-right-radius: 30px !important; 
+        border-top-left-radius: 30px !important; 
+        bottom: -100px !important; 
+        position: absolute !important; 
+        background: #bbbbbb !important; 
+        -webkit-print-color-adjust: exact !important; 
+        z-index: 9999 !important;
+    }*/
+
+    /*.logo-rodape img{
+        width: 40%;
+    }*/
+
+}
+
+
+
+
+
+
+/*
+
+Para referência:
+
+
+
+    Pixels => Points
+    6px => 5pt
+    7px => 5pt
+    8px => 6pt
+    9px => 7pt
+    10px => 8pt
+    11px => 8pt
+    12px => 9pt
+    13px => 10pt
+    14px => 11pt
+    15px => 11pt
+    16px => 12pt
+    17px => 13pt
+    18px => 14pt
+    19px => 14pt
+    20px => 15pt
+    21px => 16pt
+    22px => 17pt
+    23px => 17pt
+    24px => 18pt
+
+
+
+
+*/

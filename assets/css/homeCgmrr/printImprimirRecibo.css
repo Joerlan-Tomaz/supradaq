@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 31, 2019, 2:33:47 PM
+    Author     : herisson.c.silva
+*/
+
+
+/**
+ * Print CSS - Supra - DNIT
+ * @version         1.0
+ * @lastmodified    22.09.2018
+ * @Autor           Gustavo Costa
+**/
+
+@media print {
+
+    section {
+        page-break-after: always;
+        page-break-inside: avoid;
+        page-break-before: always;
+        margin-top: 15mm;
+        margin-bottom: 15mm;
+        margin-left: 10mm;
+        margin-right: 10mm;
+        font-size: 20px !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: justify;
+    }
+
+    table.tabela{
+        font-size: 21px !important;
+    }
+
+    .headerTabelaVertical {
+        font-size: 20px !important;
+    }
+
+    .smallFont {
+        font-size: 30px !important;
+    }
+
+    .table-responsive {
+        min-height: 0 !important;
+        overflow-x: visible !important;
+    }
+
+    section.fullpage {
+        margin-left: 0mm !important;
+        margin-right: 0mm !important;
+        text-align: left;
+    }
+
+}
+
+
+/** preview **/
+@media screen {
+
+  body { background: #e0e0e0 }
+
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm auto;
+  }
+
+}
+
+
+
+
+
+
+/*
+
+Para referência:
+
+
+
+    Pixels => Points
+    6px => 5pt
+    7px => 5pt
+    8px => 6pt
+    9px => 7pt
+    10px => 8pt
+    11px => 8pt
+    12px => 9pt
+    13px => 10pt
+    14px => 11pt
+    15px => 11pt
+    16px => 12pt
+    17px => 13pt
+    18px => 14pt
+    19px => 14pt
+    20px => 15pt
+    21px => 16pt
+    22px => 17pt
+    23px => 17pt
+    24px => 18pt
+
+
+
+
+*/

@@ -1,0 +1,49 @@
+#tabela_PPV td{
+    font-size: 10pt;
+}
+#tabela_PPV th{
+   background-color: #81BEF7;
+   text-align:  center;
+}
+#tabela_PPV td{  
+   text-align:  center;
+}
+
+#tabela_PPV tr:hover{  
+   background-color: transparent;
+}
+
+#tabela_PPV td{
+    font-size: 10pt;
+}
+.textarea{
+    border: none;
+    background-color: #FAFAFA;
+}
+.textarea:hover{
+    color: black;  
+    font-weight: bolder;
+    background-color: #E6E6E6;
+}
+#labelPull{
+  color: black;
+  margin-left: 10px;
+}
+.product-title{
+    color: cornflowerblue;
+}
+.logoPnp{
+ margin-top: 20px;
+
+ width: 180px;
+ height: 110px;
+}
+#logoNome{
+    margin-left: 50px;
+}
+#table td{
+    width: 100px;
+    height: 300px;
+    background-color: red;
+    border: 1px solid appworkspace;
+}

@@ -1,0 +1,63 @@
+
+#svg-map path {
+    fill: #9DC6DD;
+  
+    
+}
+
+#svg-map text {
+    fill: #333;
+    font: 10px Arial, sans-serif;
+    cursor: pointer
+}
+
+#svg-map a {
+    text-decoration: none
+}
+
+#svg-map a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff !important;
+}
+
+#svg-map a:hover path {
+    /*fill: #FFDF7F !important;*/
+    fill: #66ccff !important;
+}
+
+#svg-map .circle {
+    /*fill: #66ccff;*/
+    fill: #fff;
+}
+
+#svg-map a:hover .circle {
+    /*fill: #003399 !important;*/
+    /*fill: #3C8DBC !important;*/
+    fill: #66ccff !important;
+    cursor: pointer;
+}
+
+#svg-map a:focus path,
+#svg-map a:active path,
+#svg-map a.active path {
+    fill: #3C8DBC !important;
+    cursor: pointer;
+}
+
+.legenda-map {
+    margin-top: -50px;
+    width: 400px;
+    display: none;
+}
+
+.legenda-map h3 {
+    margin-bottom: 2px;
+}
+
+.estadoMapa img{
+    margin-left: 5%;
+    width: 100px;
+    height: 100px;
+  
+}

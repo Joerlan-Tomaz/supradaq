@@ -1,0 +1,81 @@
+
+/*==================================*/
+
+
+@media screen {                
+
+    body { background: #e0e0e0 !important;}
+
+    section {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 30px;
+        text-align: justify;
+        padding: 5% 5% 5% 5%;
+    }
+
+    .sheet {
+        background: white;
+        box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    }
+
+    .titulo{
+        letter-spacing: 3px;
+        font-size: 25px !important;
+    }
+
+    .titulo-relatorio{
+        font-size: 30px !important;
+        font-weight: bold !important;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .somentePrint {
+        display: none;
+    }
+
+    .somenteScreen {
+
+    }
+
+    .right{
+        text-align: right;
+    }
+
+}
+
+.bordaCompleta>tr, .bordaCompleta>tbody>tr, .bordaCompleta>thead>tr,
+.bordaCompleta>tr>td, .bordaCompleta>tbody>tr>td, .bordaCompleta>thead>tr>td
+{
+    border: 1px solid #333;
+}
+
+.bordaCelulas, .bordaCelulas>tr, .bordaCelulas>tbody>tr, .bordaCelulas>thead>tr,
+.bordaCelulas>tr>td, .bordaCelulas>tbody>tr>td, .bordaCelulas>thead>tr>td
+{
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    padding: 5px;
+}
+
+
+.tabela, .tabela>tr, .tabela>thead>tr, .tabela>tbody>tr, .tabela>tr>td,
+.tabela>thead>tr>td, .tabela>tbody>tr>td {
+    padding: 8px;
+}
+
+.tabela>thead>tr>td, .tabela>thead>tr>td {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.fundoCinzaCabecalho {
+    background-color: #c9c9c9;
+    font-weight: bold;
+}

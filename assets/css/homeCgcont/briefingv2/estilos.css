@@ -1,0 +1,829 @@
+/*
+    DNIT
+    resumo informativo 2019
+    Gustavo Costa
+    gutocostta@gmail.com
+*/
+.imagem-contrato{
+	border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #ccc;
+    background: rgba(255, 255, 255, .5);
+	margin: 10px;
+	width: 30%;
+    height: auto;
+}
+
+.qrcode-div-portal {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+
+.qrcode-div-portal img {
+    width: 100%;
+    height: auto;
+}
+
+.qrcode-div-portal canvas {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+body.cadastro {
+	background-color: #17568D;
+}
+
+body.cadastro .container {
+	background-color: #fff;
+}
+
+section.borda_briefing {
+	position: relative;
+	padding-left: 60px;
+	padding-right: 10px;
+	
+}
+
+section.sheet {
+	background-color: #17568D !important;
+}
+
+.content {
+	padding-left: 20px;
+	padding-right: 20px;
+	/* background-image: url('../image/bg-road.jpg');
+	background-position: -30px 0;
+	background-repeat: repeat-y; */
+	background-color: #fff;
+	min-height: 800px;
+}
+
+
+.page-header {
+    margin: 40px -10px 20px;
+    border-bottom: 0;
+}
+
+.img-canto {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.text-vertical-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	width: 50px;
+	z-index: 5;
+}
+
+.text-vertical-box-relatorio {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 1100px;
+	width: 50px;
+	z-index: 5;
+}
+
+/*Classe que controla o tamanho vertical da box de texto vertical*/
+.text-vertical {
+	width: 700px;
+	color: #fff;
+	font-size: 24px;
+	transform: rotate(270deg);
+}
+
+.title {
+	text-align: left;
+	border-bottom: 3px solid #17568D;
+}
+
+.title img {
+	max-width: 200px;
+	height: auto;
+	margin-top: 20px;
+}
+
+h1 {
+	margin-bottom: 10px;
+	padding-left: 10px;
+	/* padding-bottom: 20px; */
+	font-size: 26px;	
+	/* color: #17568D; */
+}
+
+h1.title-info {
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.page-header  h1 {
+	padding-left: 20px;
+}
+
+h2 {
+	margin-bottom: 5px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+h3 span {
+	font-size: 16px;
+	color: #17568D;
+}
+
+h2, h3 {
+	margin-top: 5px;
+/*	text-align: left;*/
+}
+
+.contrato-info {
+	position: relative;
+	padding: 10px;
+	/* background-image: url('../image/road_.png');
+	background-position: left bottom;
+	background-repeat: no-repeat; */
+	border-bottom: 1px solid #17568D;
+}
+
+.contrato-info.objeto {
+	margin-bottom: 30px;
+	background-color: #ECEFF1;
+}
+
+.contrato-info .road {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 1px;
+	width: 100%;
+	height: auto;
+	z-index: 1;
+}
+
+.contrato-info .contrato-info {
+	padding: 5px;
+	border: none;
+}
+
+.pin-map {
+	position: absolute;
+	top: 7px;
+    left: 5px;
+    width: 75px;
+	height: auto;
+	z-index: 3;
+}
+
+
+/*#g-container {
+	margin: 50px auto 0 auto;
+	max-width: 100%;
+	min-width: 100%;
+}
+
+ .highcharts-background {
+	background-color: #f5f5f5;
+} */
+
+.table > thead > tr > th, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > td {
+	border-radius: 0;
+	border: none;
+}
+
+.table-info > tbody > tr:nth-of-type(odd) {
+    /* background-color: #f9f9f9; */
+    /* background-color: rgba(112,169,224,.3); */
+    background-color: #B0BEC5;
+}
+
+.table-info > tbody > tr:nth-of-type(even) {
+    background-color: #fff;
+}
+
+.table-info {
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+.contrato-info h2 {
+	font-size: 40px;
+}
+
+.contrato-info h3 {
+	font-size: 30px;
+}
+
+.contrato-info h2,
+.contrato-info h3 {
+	padding-left: 70px;
+	color: #17568D;
+}
+
+.contrato-info p {
+	text-align: left;
+	margin-bottom: 0;
+}
+
+.contrato-info p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.contrato-info.objeto p {
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.contrato-info p label {
+	color: #17568D;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.contrato-dados {
+	margin-top: 20px;
+}
+
+.contrato-dados .empresa {
+	font-size: 20px;
+}
+
+.contrato-dados .img-obra {
+	width: 100%;
+}
+
+.contrato-dados .img-obra img {
+	width: 100%;
+	height: auto;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	/* box-shadow: 20px 20px 0px #17568D; */
+	box-shadow: 15px 15px 0px #B0BEC5;
+	margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.contrato-dados,
+.contrato-dados p {
+	text-align: left;
+	font-size: 14px;
+/*	margin-bottom: 15px;*/
+}
+
+/*.contrato-dados,
+.contrato-dados p {
+	font-size: 14px;
+}
+
+.tables .contrato-dados {
+	margin: 10px 0;
+}
+*/
+.contrato-dados p label,
+.objeto p label {
+	display: block;
+	margin-bottom: 5px;
+	color: #17568D;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.contrato-dados.financeiro {
+	/* margin-top: 50px; */
+	margin-bottom: 0;
+	padding: 10px;
+	/* padding: 20px 5px; */
+	/* background-color: #f5f5f5; */
+}
+
+/*.contrato-dados.financeiro .contrato-dados{
+	padding-top: 20px;
+	 background-color: #f5f5f5; 
+}*/
+/* 
+@media print {
+	.contrato-dados.financeiro .contrato-dados{
+		padding-top: 10px;
+	}
+} 
+*/
+.progress {
+	position: relative;
+}
+
+.progress .km-inicio {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.progress .km-fim {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.contrato-fotos > div {
+	padding: 10px;
+}
+
+.contrato-fotos img {
+	padding: 2px;
+	width: 100%;
+	height: auto;
+	background: #f1f1f1;
+}
+
+.contrato-fotos p {
+	text-align: left;
+}
+
+.contrato-fotos p label {
+	color: #17568D;
+	font-weight: bold;
+}
+
+.contrato-fotos p.legenda {
+	padding: 10px 5px;
+	font-size: 12px;
+	background-color: #eee;
+}
+
+.content .row:last-child {
+	margin-bottom: 0 !important;
+}
+
+.footer {
+	color: #fff;
+	padding: 5px;
+	background-color: #17568D;
+}
+
+.footer p {
+	padding-left: 70px;
+}
+
+.footer img {
+	display: inline-block;
+	max-width: 300px;
+}
+
+.resumo-informativo .avanco-fisico {
+	margin: 0 30px;
+}
+
+.road {
+    width: 100%;
+}
+
+.road img {
+    min-width: 100%;
+    width: 100%;
+}
+
+/*.resumo-informativo .seguimentos {
+    margin-top: -100px;
+}*/
+
+.resumo-informativo .box-legenda > div {
+    margin: 0;
+    padding: 5px 10px;
+    text-align: left;
+    border: none;
+    border-radius: 5px;
+}
+
+.resumo-informativo .box-legenda p {
+    margin: 1px 0 !important;
+    font-size: 10px;
+}
+
+.resumo-informativo .box-legenda > div:last-child p {
+    margin: 5px 0 !important;
+}
+
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-0.highcharts-tracker .highcharts-shadow, #g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-0.highcharts-tracker .highcharts-point{
+	width: 30px !important;
+}
+
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-1.highcharts-tracker .highcharts-shadow, #g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-1.highcharts-tracker .highcharts-point{
+	width: 20px !important;
+}
+
+.resumo-informativo .unifilar-camadas {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.resumo-informativo .metros .mlabel {
+    display: inline;
+    font-size: 10px;
+    margin: 0;
+    text-align: left;
+    color: #0D47A1;
+    font-weight: bold;
+}
+
+
+.highcharts-background {
+    fill: transparent;
+}
+
+.highcharts-yaxis-grid .highcharts-grid-line {
+    display: none;
+}
+
+/*.highcharts-series-0.highcharts-tracker .highcharts-shadow,
+.highcharts-series-0.highcharts-tracker .highcharts-point {
+	width: 60px;
+}*/
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-0.highcharts-tracker .highcharts-shadow,
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-0.highcharts-tracker .highcharts-point
+{
+    width: 60px;
+}
+
+
+/*.highcharts-series-1.highcharts-tracker .highcharts-shadow,
+.highcharts-series-1.highcharts-tracker .highcharts-point {
+	width: 45px;
+}*/
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-1.highcharts-tracker .highcharts-shadow,
+#g-container .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series-1.highcharts-tracker .highcharts-point
+{
+    width: 45px;
+}
+
+.highcharts-series-0.highcharts-tracker .highcharts-label text {
+	display: none;
+}
+
+.highcharts-xaxis-labels text{
+	color: #000 !important;
+    fill: #000 !important;
+	font-weight: bold;
+	font-size: 14px !important;
+}
+
+.highcharts-yaxis-labels text:last-child {
+	display: none;
+}
+
+
+.no-print { 
+	display: block; 
+}
+
+.only-print {
+	display: none;
+}
+
+
+/*==================================*/
+
+
+@media screen {
+
+	.somentePrint {
+		display: none;
+	}
+
+	.somenteScreen {
+		display: block;
+	}
+
+	.printRotacao tabela, .printRotacao .tabela>tr, .printRotacao .tabela>tbody>tr,
+		.printRotacao .tabela>tr>td, .printRotacao .tabela>tbody>tr>td {
+		padding: 5px;
+	}
+
+	.width100ScreenOnly {
+		width: 100%;
+	}
+	.width100PrintOnly {
+		width: auto;
+	}
+	.width100ScreenHeight100Print {
+		width: 100%;
+	}
+	.tamanho350 {
+		width: 350px;
+	}
+
+	.rotacao {
+		writing-mode: tb-rl;
+		margin: auto;
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		white-space: nowrap;
+		display: block;
+		width: auto !important;
+		/* height: 100%; */
+	}
+
+	.rotacao img, 
+	.rotacao svg, 
+	.rotacao svg :not(text) {
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+	}
+
+	.rotacao270 {
+		-webkit-transform: rotate(270deg);
+		-moz-transform: rotate(270deg);
+		-o-transform: rotate(270deg);
+		white-space: nowrap;
+		display: block;
+		font-family: Arial, Helvetica, sans-serif;
+		padding: 4px;
+	}
+	
+	.rotacao270.print {
+		height: 360mm;
+		width: 360mm;
+		float: left;
+		position: relative;
+		margin: 50px 0;
+		padding: 20px;
+	}
+}
+
+/*==================================*/
+
+@media print {
+
+	.metros {
+		-ms-flex-preferred-size: 0;
+		flex-basis: 0;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		max-width: 100%;
+		height: 20px;
+		padding: 0px;
+		text-align: right;
+		border-right: 1px solid #0d47a1;
+	}
+	.sobe{
+		position: relative;
+		top: -30px;
+	}
+
+	.seguimento-info {
+		position: absolute;
+		top: -100px;
+	}
+
+	.seguimento-info h2{
+		font-size: 12px;
+	}
+
+	.seguimento-info p{
+		font-size: 10px;
+	}
+
+	.seguimento-info small{
+		font-size: 8px;
+	}
+
+	.container-fluid {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.content {
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color: #fff !important;
+	}
+
+	.print-col-full {
+		width: 100% !important;
+	}
+
+	.col-float-print {
+		float: left;
+		width: 50%;
+	}
+
+	.title img {
+		max-width: 150px;
+		height: auto;
+		margin-top: 10px;
+	}
+
+	.pin-map {
+		width: 50px;
+	}
+
+	h1.title-info {
+		font-size: 25px;
+	}
+
+	.contrato-info-box {
+		width: 100%;
+	}
+
+	.contrato-info h2 {
+		font-size: 25px;
+		padding-left: 50px;
+	}
+
+	.contrato-info h3 {
+		font-size: 20px;
+		padding-left: 50px;
+	}
+
+	.contrato-info p {
+		font-size: 12px;
+		font-weight: bold;
+	}
+	
+	.contrato-info.objeto p {
+		font-weight: normal;
+		font-size: 12px;
+	}
+	
+	.contrato-info p label {
+		display: block;
+		margin-bottom: 1px;
+		color: #17568D !important;
+		font-weight: normal !important;
+		font-size: 10px;
+	}
+
+	.contrato-dados {
+		margin-top: 5px;
+	}
+
+	.contrato-info .contrato-info{
+		padding: 3px;
+		border: none;
+	}
+
+	.contrato-dados, 
+	.contrato-dados p {
+		margin-bottom: 10px;
+		font-size: 12px;
+	}
+
+	.contrato-info.objeto {
+		margin-bottom: 10px;
+	}
+
+	.contrato-dados.financeiro {
+		margin-top: 5px;
+		margin-bottom: 0;
+		padding: 0;
+	}
+
+	.tables {
+		padding-right: 0;
+    	padding-left: 0;
+	}
+
+	.tables .contrato-dados {
+		margin: 2px 0 5px 0;
+		padding: 0 !important;
+	}
+
+	.tables .contrato-dados .col-sm-12 {
+		padding-right: 1px;
+    	padding-left: 1px;
+	}
+
+	.table-info {
+		max-width: 110%;
+		margin: 8px auto;
+		font-size: 8.4px;
+	}
+
+	.footer p {
+		padding-left: 0px;
+	}
+
+	#g-container {
+		margin: 10px auto 0 auto;
+	}
+	
+	/* .text-vertical-box {
+		top: 35%;
+		left: -170px;
+	} */
+
+	.text-vertical {
+		font-size: 1.4em;
+		transform: rotate(270deg);
+	}
+
+	.legenda.seta {
+		width: 20px;
+		height: auto;
+	}
+
+	.legenda.nivel1 {
+		top: 100px;
+	}
+
+	.legenda.nivel2 {
+		top: 115px;
+	}
+
+	.legenda.placa {
+		top: 70px;
+	}
+
+	.seguimento-road {
+		padding-top: 65px;
+		padding-bottom: 10px;
+	}
+
+	.restauracao .road {
+		top: 40% !important;
+	}
+
+	.kilometragemRodolfo{
+		position: relative;
+		top: -90px;
+		padding: 0;
+		margin: 30px 0;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.road.road-restauracao {
+		top: 210px;
+	}
+
+	.row-legenda {
+		position: relative;
+		top: -40px;
+	}
+
+	.fotos {
+		position: relative;
+		top: -40px;
+	}
+		
+	.fotos > div {
+		padding: 0px 5px;
+	}
+
+	.camada-restauracao-box .unifilar-camadas-box {
+		height: 60px;
+	}
+
+	.unifilar-camadas-box .unifilar-camada .imagem {
+		height: 35px;
+		transform: perspective(400px) rotatex(45deg);
+	
+	}
+
+	.unifilar-camadas-box .unifilar-camada .texto {
+		position: relative;
+		top: 5px;
+		width: 102%;
+		margin: 0 -1% 0 -1%;
+		height: 15px;
+		border-top: none;
+	}
+
+	.unifilar-camadas-box .unifilar-camada .texto img {
+		height: 100%;
+		box-shadow: 1px 2px 2px rgba(0, 0, 0, .3);
+	}
+
+	.unifilar-camadas-box p.camada-label.pavimento-label {
+		top: 26px;
+	}
+}

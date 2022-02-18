@@ -1,0 +1,715 @@
+
+/**
+ * Print CSS - Supra - DNIT
+ * @version         1.0
+ * @lastmodified    22.09.2018
+ * @Autor           Gustavo Costa
+**/
+
+@media print {
+
+    section {
+        page-break-after: always;
+        page-break-inside: avoid;
+        page-break-before: always;
+        margin-top: 10mm;
+        margin-bottom: 10mm;
+        margin-left: 0mm;
+        margin-right: 0mm;
+        font-size: 20px !important;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: justify;
+    }
+
+    h1{
+        font-size: 40px !important;
+    }
+
+    h2{
+        font-size: 35px !important;
+    }
+
+    h3{
+        font-size: 25px !important;
+    }
+
+    thead.fundoCinzaCabecalho {
+        background-color: #c9c9c9 !important;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .fundoCinzaCabecalho thead {
+        color: #c9c9c9 !important;
+    }
+
+
+
+    table.tabela{
+        /* font-size: 21px !important; */
+        font-size: 12px !important;
+    }
+
+    .headerTabelaVertical {
+        font-size: 20px !important;
+    }
+
+    .smallFont {
+        font-size: 30px !important;
+    }
+
+    .table-responsive {
+        min-height: 0 !important;
+        overflow-x: visible !important;
+    }
+
+    section.fullpage {
+        margin-left: 0mm !important;
+        margin-right: 0mm !important;
+        text-align: left;
+    }
+
+    .rotacionar{
+        -webkit-transform: rotate(-90deg);     /* Chrome and other webkit browsers */
+        -moz-transform: rotate(-90deg);        /* FF */
+        -o-transform: rotate(-90deg);          /* Opera */
+        -ms-transform: rotate(-90deg);         /* IE9 */
+        transform: rotate(-90deg);             /* W3C compliant browsers */
+        padding: 0px !important;
+
+
+    }
+
+    .deslocarEsquerda{
+        position: relative;
+        right:100px !important;
+        z-index: 999;
+        font-size: 10px !important;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none;
+    }
+
+    .tagAzul {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #0073b7 !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .tagAmarelo {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #f39c12 !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .tagVerde {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #008d4c !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .tagVermelho {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #b50000 !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+    
+    .tagDefault {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #b5bbc8 !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .tagVerdeClaro {
+        display: grid;
+        padding: .2em .6em .3em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        background: #72b998 !important;
+        margin: 2px 0px;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .pluviometricoB {
+        background-color: #FF0;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .pluviometricoC {
+        background-color: #7bb3d4;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .pluviometricoI {
+        background-color: #fb3a3a;
+        -webkit-print-color-adjust: exact; 
+    }
+
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        -webkit-print-color-adjust: exact; 
+    }
+
+
+    /* OAE ------------------------------------------------------- */
+
+    .oae { 
+        margin: 0% 0%;
+        max-height: 380px;
+      }
+      
+      .pistaZero{
+      
+        border-bottom: 10px solid #E0E0E0;
+        border-right: 20px solid #E0E0E0;
+        border-left: 20px solid #E0E0E0;
+        height: 40px;
+        top: 8px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .pista1{
+        border-bottom: 10px solid #999;
+        border-right: 20px solid #999;
+        border-left: 20px solid #999;
+        height: 40px;
+        top: 8px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .pista2{
+        border-bottom: 10px solid #747474;
+        border-right: 20px solid #747474;
+        border-left: 20px solid #747474;
+        height: 40px;
+        top: 8px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .pista3{
+        border-bottom: 10px solid #333;
+        border-right: 20px solid #333;
+        border-left: 20px solid #333;
+        height: 40px;
+        top: 8px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .contencaoZero{
+      
+        border-bottom: 10px solid #E0E0E0;
+        border-right: 10px solid #E0E0E0;
+        border-left: 10px solid #E0E0E0;
+        width: 75%;
+        position: absolute;
+        height: 50px;
+        left: 75px;
+        top: 4px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .contencao1{
+        border-bottom: 10px solid #999;
+        border-right: 10px solid #999;
+        border-left: 10px solid #999;
+        width: 75%;
+        position: absolute;
+        height: 50px;
+        left: 75px;
+        top: 4px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .contencao2{
+        border-bottom: 10px solid #747474;
+        border-right: 10px solid #747474;
+        border-left: 10px solid #747474;
+        width: 75%;
+        position: absolute;
+        height: 50px;
+        left: 75px;
+        top: 4px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .contencao3{
+        width: 75%;
+        position: absolute;
+        height: 50px;
+        left: 75px;
+        top: 4px;
+        border-bottom: 10px solid #333;
+        border-right: 10px solid #333;
+        border-left: 10px solid #333;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .perfilZero{
+        font-weight: bold;
+        font-size: 50px;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color:rgba(224, 224, 224);
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .perfil1{
+        font-weight: bold;
+        font-size: 50px;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color:#999;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .perfil2{
+        font-weight: bold;
+        font-size: 50px;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color:#747474;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .perfil3{
+        font-weight: bold;
+        font-size: 50px;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color:#333;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      /*Forma Cilindrica*/
+      
+      .cylinder {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 40px;
+        height: 150px;
+        border-radius: 50px/25px;
+        background-color: rgba(224, 224, 224);
+        z-index: 4;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 25px;
+        border-radius: 50px/25px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 25px;
+        border-radius: 50px/25px;
+        background-color: rgba(160, 160, 160, 0.4);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 0;
+        /*padding-top: 50px;*/
+        border-radius: 50px/25px;
+        background-color: rgb(104, 104, 104);
+        transition: 0.3s linear;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder-progress:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 25px;
+        border-radius: 50px/25px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder-progress:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 25px;
+        border-radius: 50px/25px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .cylinder-progress--0:checked ~ .cylinder .cylinder-progress {
+        bottom: -50px;
+      }
+      
+      .cylinder-progress--30:checked ~ .cylinder .cylinder-progress {
+        height: calc(200px * 0.3);
+      }
+      
+      .cylinder-progress--50:checked ~ .cylinder .cylinder-progress {
+        height: calc(200px * 0.5);
+      }
+      
+      .cylinder-progress--90:checked ~ .cylinder .cylinder-progress {
+        height: calc(200px * 0.9);
+      }
+      
+      /*Forma Retangular*/
+      
+      .rectangle {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 110%;
+        height: 75px;
+        right: 15px;
+        background-color: rgba(224, 224, 224);
+        z-index: 3;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .rectangle:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .rectangle:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgba(160, 160, 160, 0.4);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .rectangle-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+       /* padding-top: 50px;*/
+        background-color: rgb(104, 104, 104);
+        transition: 0.3s linear;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .rectangle-progress:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .rectangle-progress:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      /*Forma Triangular*/
+      
+      .triangle {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 100%;
+        height: 50px;
+        background-color: rgba(224, 224, 224);
+        z-index: 5;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgba(160, 160, 160, 0.4);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0;
+        /*padding-top: 50px;*/
+        background-color: rgb(104, 104, 104);
+        transition: 0.3s linear;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle-progress:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle-progress:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle-right{
+        z-index: 55;
+        position: relative;
+        width: 10px;
+        height: 10px;
+        border: 50px solid;
+        border-color: transparent transparent transparent white;
+        right: 12px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .triangle-left{
+        z-index: 55;
+        position: relative;
+        border: 50px solid;
+        border-color: transparent white transparent transparent;
+        left: 12px;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      /*Forma Cilindrica Pequena (Funda��o)*/
+      
+      .small-cylinder {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 20px;
+        height: 75px;
+        border-radius: 50px/25px;
+        background-color: rgba(224, 224, 224);
+        z-index: 1;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .small-cylinder:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 10px;
+        border-radius: 50px/25px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .small-cylinder:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 20px;
+        height: 10px;
+        border-radius: 50px/25px;
+        background-color: rgba(160, 160, 160, 0.4);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .small-cylinder-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 20px;
+        height: 0;
+        /*padding-top: 50px;*/
+        border-radius: 50px/25px;
+        background-color: rgb(104, 104, 104);
+        transition: 0.3s linear;
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .small-cylinder-progress:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 10px;
+        border-radius: 50px/25px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+      
+      .small-cylinder-progress:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 20px;
+        height: 10px;
+        border-radius: 50px/25px;
+        background-color: rgb(80, 80, 80);
+        content: '';
+        -webkit-print-color-adjust: exact; 
+      }
+}
+
+
+/** preview **/
+@media screen {
+
+  body { background: #e0e0e0 }
+
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm auto;
+  }
+
+}
+
+
+
+
+
+
+/*
+
+Para referência:
+
+
+
+    Pixels => Points
+    6px => 5pt
+    7px => 5pt
+    8px => 6pt
+    9px => 7pt
+    10px => 8pt
+    11px => 8pt
+    12px => 9pt
+    13px => 10pt
+    14px => 11pt
+    15px => 11pt
+    16px => 12pt
+    17px => 13pt
+    18px => 14pt
+    19px => 14pt
+    20px => 15pt
+    21px => 16pt
+    22px => 17pt
+    23px => 17pt
+    24px => 18pt
+
+
+
+
+*/

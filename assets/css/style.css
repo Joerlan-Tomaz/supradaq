@@ -1,0 +1,223 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../homeCgcont/fonts/icomoon/icomoon.eot?cs56u9');
+  src:  url('../homeCgcont/fonts/icomoon/icomoon.eot?cs56u9#iefix') format('embedded-opentype'),
+        url('../homeCgcont/fonts/icomoon/icomoon.ttf?cs56u9') format('truetype'),
+        url('../homeCgcont/fonts/icomoon/icomoon.woff?cs56u9') format('woff'),
+        url('../homeCgcont/fonts/icomoon/icomoon.svg?cs56u9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* the icon with pseudo class for icon font */
+.cbp-ig-icon {
+  padding: 30px 0 0 0;
+  display: block;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -moz-transform 0.2s;
+  transition: transform 0.2s;
+}
+
+.cbp-ig-icon:before {
+  font-family: 'icomoon';
+  font-size: 8em;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.org-processo{
+    font-size:8em !important;
+}
+
+.org-processo:hover{
+    color: white !important;
+}
+
+.cbp-ig-icon-ico_library:before {
+  content: "\e900";
+}
+.cbp-ig-icon-ico_library2:before {
+  content: "\e901";
+}
+.cbp-ig-icon-ico_cipi2:before {
+  content: "\e902";
+}
+.cbp-ig-icon-ico_cipi3:before {
+  content: "\e903";
+}
+.cbp-ig-icon-ico_cipi1:before {
+  content: "\e904";
+}
+.cbp-ig-icon-ico_cipi:before {
+  content: "\e905";
+}
+.cbp-ig-icon-ico_apresentacao1:before {
+  content: "\e906";
+}
+.cbp-ig-icon-ico_apresentacao2:before {
+  content: "\e907";
+}
+.cbp-ig-icon-ico_apresentacao3:before {
+  content: "\e908";
+}
+.cbp-ig-icon-ico_malha:before {
+  content: "\e909";
+}
+.cbp-ig-icon-ico_manutencao_malha:before {
+  content: "\e90a";
+}
+.cbp-ig-icon-ico_painel:before {
+  content: "\e90b";
+}
+.cbp-ig-icon-ico_carteira:before {
+  content: "\e90c";
+}
+.cbp-ig-icon-ico_assessoria2:before {
+  content: "\e90d";
+}
+.cbp-ig-icon-ico_briefing:before {
+  content: "\e90e";
+}
+.cbp-ig-icon-ico_caminhao:before {
+  content: "\e90f";
+}
+.cbp-ig-icon-ico_cavalete:before {
+  content: "\e910";
+}
+.cbp-ig-icon-ico_cone:before {
+  content: "\e911";
+}
+.cbp-ig-icon-ico_configuracoes:before {
+  content: "\e912";
+}
+.cbp-ig-icon-ico_construcao:before {
+  content: "\e913";
+}
+.cbp-ig-icon-ico_dispeo:before {
+  content: "\e914";
+}
+.cbp-ig-icon-ico_doc1:before {
+  content: "\e915";
+}
+.cbp-ig-icon-ico_doc2:before {
+  content: "\e916";
+}
+.cbp-ig-icon-ico_doc3:before {
+  content: "\e917";
+}
+.cbp-ig-icon-ico_doc4:before {
+  content: "\e918";
+}
+.cbp-ig-icon-ico_gerenciamento:before {
+  content: "\e919";
+}
+.cbp-ig-icon-ico_mapa:before {
+  content: "\e91a";
+}
+.cbp-ig-icon-ico_mobile:before {
+  content: "\e91b";
+}
+.cbp-ig-icon-ico_rel_digitais:before {
+  content: "\e91c";
+}
+.cbp-ig-icon-ico_rpfo:before {
+  content: "\e91d";
+}
+.cbp-ig-icon-ico_sala_situacao:before {
+  content: "\e91e";
+}
+.cbp-ig-icon-ico_suporte:before {
+  content: "\e91f";
+}
+.cbp-ig-icon-ico_acidente:before {
+  content: "\e920";
+}
+.cbp-ig-icon-ico_coin:before {
+  content: "\e921";
+}
+.cbp-ig-icon-ico_controle_projeto:before {
+  content: "\e922";
+}
+.cbp-ig-icon-ico_convenio:before {
+  content: "\e923";
+}
+.cbp-ig-icon-ico_gestao_demanda:before {
+  content: "\e924";
+}
+.cbp-ig-icon-ico_indicadores:before {
+  content: "\e925";
+}
+.cbp-ig-icon-ico_manutencao:before {
+  content: "\e926";
+}
+.cbp-ig-icon-ico_qrcode:before {
+  content: "\e927";
+}
+.cbp-ig-icon-ico_astronauta:before {
+  content: "\e928";
+}
+.cbp-ig-icon-ico_globe:before {
+  content: "\e929";
+}
+.cbp-ig-icon-ico_microscopio:before {
+  content: "\e92a";
+}
+.cbp-ig-icon-ico_satelite:before {
+  content: "\e92b";
+}
+.cbp-ig-icon-ico_streetview:before {
+  content: "\e92c";
+}
+.cbp-ig-icon-ico_avancar:before {
+  content: "\e92d";
+}
+.cbp-ig-icon-ico_avancar2:before {
+  content: "\e92e";
+}
+.cbp-ig-icon-ico_avancar3:before {
+  content: "\e92f";
+}
+.cbp-ig-icon-ico_avancar4:before {
+  content: "\e930";
+}
+.cbp-ig-icon-ico_avancar5:before {
+  content: "\e931";
+}
+.cbp-ig-icon-ico_avancar6:before {
+  content: "\e932";
+}
+
+.cbp-ig-grid li > a:hover .cbp-ig-icon {
+  /* -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  transform: translateY(10px); */
+  transform: scale(1.05);
+}
+
+.cbp-ig-grid li > a:hover .cbp-ig-icon:before,
+.cbp-ig-grid li > a:hover .cbp-ig-title {
+  /* color: #565d63;
+  color: #12719c; */
+  color: #0097db;
+}

@@ -1,0 +1,168 @@
+
+/*==================================*/
+
+
+@media screen {
+
+	body { background: #e0e0e0 !important;}
+
+	section {
+    margin: 5mm;
+		padding: 30px;
+		text-align: justify;
+		position: relative;
+    min-height: 650px;
+    font-size: 14px;
+	}
+	.somentePrint {
+		display: none;
+	}
+
+	.somenteScreen {
+		
+	}
+}
+
+section h1, .h1 {
+    font-size: 75px;
+    font-weight: bold;
+}
+
+.bold{
+	font-weight: bold !important;
+}
+
+.bookmark-red{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #f56954;
+  border-right: 30px solid #f56954;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-yellow{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #c9cc0c;
+  border-right: 30px solid #c9cc0c;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-blue{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #3c8dbc;
+  border-right: 30px solid #3c8dbc;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-green{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #3cbc5c;
+  border-right: 30px solid #3cbc5c;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-orange{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #f9802b;
+  border-right: 30px solid #f9802b;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-dark-blue{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #114088;
+  border-right: 30px solid #114088;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-gold{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #c5921e;
+  border-right: 30px solid #c5921e;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-dark-green{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #11881a;
+  border-right: 30px solid #11881a;
+  border-bottom: 30px solid transparent;
+}
+
+.bookmark-silver{ 
+  position: absolute;
+  height: 110px;
+  width: 15px;
+  margin: -30px 20px;
+  transform: rotate(0deg) skew(0deg);
+  border-left: 30px solid #3c3c3c;
+  border-right: 30px solid #3c3c3c;
+  border-bottom: 30px solid transparent;
+}
+
+.assinaturas{
+  position: absolute;
+  bottom: 10px;
+  left: 15%;
+}
+.bottom-assinaturas{
+  margin-bottom: 7%;
+}
+
+.paginacao{
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+}
+
+.titulo{
+  font-weight: bold;
+  margin: 2% 0;
+  font-size: 16px;
+}
+
+table > thead{
+  background-color: lightgrey;
+}
+.table > thead > tr > th{
+  border-radius: 0px !important;
+}
+
+.logo-relatorio{
+  display: block;
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}

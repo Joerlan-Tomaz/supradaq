@@ -1,0 +1,425 @@
+body{ 
+    background-color: #eee;
+ }
+ .apresentacao {
+    margin-top: -20px;
+    text-align: center;
+ }
+ .estadoMapa{
+     margin-right: 10%;
+     color: #434857;  
+ }
+ .apresentacao h2{
+     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 12pt;
+ }
+ 
+ /* menu-tab */
+ .menu-tab{
+     width: 100% !important;     
+   
+ }
+ 
+ .radio{
+     margin-left: 20px;
+ }
+ 
+ 
+ #tab{
+    width: 100% !important;
+    border-top: 1px solid #434857;  
+ }
+ 
+ .select-control{
+     display: block;
+     width: 220px;
+     height: 30px;
+     padding: 0.375rem 0.75rem;
+     font-size: 9pt;
+     line-height: 1.5;
+     color: #fff;
+     background-color: #434857;
+     background-clip: padding-box;
+     border: 1px solid #1997c6;
+     border-radius: 0.25rem;
+     -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }
+ .select-control:hover{
+     display: block;
+     width: 220px;
+     height: 30px;
+     padding: 0.375rem 0.75rem;
+     font-size: 9pt;
+     line-height: 1.5;
+     color: #fff;
+     background-color: #434857;
+     background-clip: padding-box;
+     border: 1px solid white;
+     border-radius: 0.25rem;
+     -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }
+ .select-group-control{
+     position: relative;
+     top: -100px;
+     margin-left: 20%;
+     align-items: center;
+    
+ }
+ 
+ .block-title {
+     font-size: 12px;
+     font-weight: 600;
+     text-transform: uppercase;
+     line-height: 2.2;
+     color: black;
+     background-color: #fff;
+     border-top: 1px  solid #337ab7;
+     border-left: 1px  solid #337ab7;
+     border-right: 1px  solid #337ab7;
+     border-bottom: 1px  solid #337ab7;
+     box-shadow: 1px 2px 10px #C3C3C3;
+ }
+ 
+ #situacao-faixa{     
+     margin-top: 20px;
+     min-width: 310px;
+     height: 300px; 
+     max-width: 800px;
+ }
+ 
+ #ExecucaoFinanceiraPNCV{
+     margin-top: 20px;
+     min-width: 310px;
+     height: 300px; 
+     max-width: 100%;   
+ }
+ 
+ .mapa{
+     height: 400px;
+ }
+ 
+ .imgRadar{
+    position: relative;
+    /* s padding-top: 20px;
+     padding-bottom: 12px;*/
+     height: 50px;   
+ }
+ .imgRadar:hover{
+ /*    position: relative; 
+     padding-top: 20px;
+     padding-bottom: 12px;*/
+     height: 60px;      
+ }
+ .imgBarreira{
+ /*    padding-top: 20px;
+     padding-bottom: 20px;*/
+     width: 87px!important;  
+     height: 87px!important;  
+ }
+
+ .imgAvanco{
+ /*    padding-top: 20px;*/
+ /*    padding-bottom: 20px;*/
+     height: 50px;  
+     
+ }
+ .imgAvanco:hover{
+ /*    padding-top: 20px;
+     padding-bottom: 20px;*/
+     height: 60px;
+     
+ }
+ #separador{
+   width: 100%;
+   height: 10px;
+   background-color: #D8D8D8;
+   position: relative;
+ 
+ }
+ 
+ #qtdEquipamentos  th{
+   
+    background-color:  #EFFBFB;
+ }
+ #qtdEquipamentos td{
+     font-size: 12pt;
+     
+ }
+ #qtdEquipamentos td:hover{
+     position: absolute;
+     font-size: 15pt;
+     font-weight: bold;
+     color: #337ab7;
+     border: 1px solid #337ab7;
+     width: 10%;
+ }
+ #qtdFaixas  th{
+     
+      background-color:  #EFFBFB;
+ }
+ #qtdFaixas  td{
+     font-size: 13pt;
+    
+ 
+ }
+ #qtdFaixas  td:hover{
+     position: absolute;
+     font-size: 15pt;
+     font-weight: bold;
+     color: #337ab7;
+     border: 1px solid #40FF00;
+     width: 10%;
+ 
+ }
+ #blockName{
+     color: #337ab7;
+     font-size: 18pt;
+ }
+ h5 span{
+ 
+     font-weight: bold;
+ }
+ 
+ /* Calendário Aferição */
+ .calendarAfericaoDia{
+     color: black;
+     font-size: 12pt;
+     font-weight: bold;
+ }
+ .calendarAfericaoDia:hover{
+     color: #337ab7;
+     font-size: 12pt;
+     font-weight: bold;
+ }
+ #tableAfericao th{
+     background-color: #EFFBFB;
+     text-align: center;
+     border: 1px solid #337ab7;
+ }
+ #totalEquipamentosAfericao{
+     color: #337ab7;
+     margin-top: 20px; 
+     font-size: 10pt; 
+ }
+ #tableAfericao td{
+     border: 1px solid #337ab7;
+     
+ }
+ .pull-right{
+     color:white;
+     width: 50px;
+     font-size: 12pt;
+ }
+ #maisInformacoes{
+      background-color: #424242;
+ }
+ #totalAf{
+      color: #848484;
+ }
+ #totalAf:hover{
+      color: #00FF00;
+ }
+ #val{
+     font-size: 10pt;
+ }
+ #quadro{
+     border: 0.5px solid #D8D8D8;
+     height: 350px;
+ }
+ .description-text{
+     padding-left: 15%;
+     font-weight: bold;
+     width: 50%;
+ }
+ .description-header{
+      padding-left: 15%;
+      width: 50%;
+ }
+ #dq{
+     text-align: center;
+     border-bottom-color: red;    
+ }
+ #dq h3{
+     font-size: 35pt;
+    margin-bottom: -10px;
+    color: blue;
+ }
+ #dq:hover{
+     color: blue;
+     font-weight: bold;
+     font-style: normal;
+ }
+ 
+ #dq h3:hover{
+      font-size: 35pt;
+  
+ }
+ .mapa-title{
+     margin-top: 10pt;
+ }
+ #tabela_eqptoInfracao tr:hover{
+      background-color: #D8D8D8;
+     
+ }
+ /* mapaBrasil */
+ .mapaBrasil{
+     position: relative;
+     margin-top: -100px;
+ }
+ /* fim mapaBrasil */
+ 
+ /* Sidemenu  */
+ .sidenav {
+     height: 100%;
+     width: 0;
+     position: fixed;
+     z-index: 10000;
+     top: 0;
+     left: 0;
+     background-color: #434857;
+     overflow-x: hidden;
+     transition: 0.5s;
+     padding-top: 60px;
+     -webkit-box-shadow: 5px 6px 60px 3px rgba(0,0,0,0.7);
+     -moz-box-shadow: 5px 6px 60px 3px rgba(0,0,0,0.7);
+     box-shadow: 5px 6px 60px 3px rgba(0,0,0,0.7);
+     overflow: hidden;
+ }
+ /* botao visao nacional */
+ .nr:hover {
+     color: #1997c6;
+     font-size: 11pt;
+ }
+ .nr {
+     color: white;
+     background-color: transparent;
+     background-image: none;
+     border-color: #1997c6;
+     display: inline-block;
+     font-weight: normal;
+     text-align: center;
+     white-space: nowrap;
+     vertical-align: middle;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     border: 1px solid transparent;
+     padding: 0.375rem 0.75rem;
+     font-size: 10pt;
+     line-height: 1.5;
+     border-radius: 0.25rem;
+     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ }
+ /*  fim botao visao nacional */
+ .sidenav a {
+     padding: 8px 8px 8px 32px;
+     text-decoration: none;
+     font-size: 25px;
+     color: #818181;
+     display: block;
+     transition: 0.3s;
+ }
+ 
+ .sidenav a:hover {
+     color: #f1f1f1;
+ }
+ 
+ .sidenav .closebtn {
+     position: absolute;
+     margin-top: 25px;
+     right: 25px;
+     font-size: 36px;
+     margin-left: 50px;
+     color:#7952B3;
+ }
+ 
+ @media screen and (max-height: 450px) {
+     .sidenav {padding-top: 15px;}
+     .sidenav a {font-size: 18px;}
+ }
+ .labelsidemenu{
+     color: #1997c6;
+     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 10pt;
+ }
+ .labelsidemenu:hover{
+     color: white;
+     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 10pt;
+ }
+ 
+ /* fim sidemenu */
+ 
+ /* spinner */
+ #spinner{
+     position: fixed;
+     height: 20%;
+     z-index: 1;
+     top: 50%;
+     margin-bottom: auto;
+     margin-left: 35%;
+     margin-right: 45%;
+ }        
+ .textoIdenti{
+     border: 1px solid #007FFF;
+     background: White;
+ }
+ 
+ #calendar {
+     width: 600px;
+     height: 600px;
+ }
+ 
+ .small-box:hover {
+     text-decoration: none;
+     color: black;
+ }
+ .verde {
+     border-radius: 50%;
+     display: -webkit-box;
+     height: 15px;
+     width: 15px;
+     background-color: #3DF036;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+     -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+     -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+     box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+     position: relative;
+     cursor: pointer;
+ }
+ .vermelho {
+     border-radius: 50%;
+     display: -webkit-box;
+     height: 15px;
+     width: 15px;
+     background-color:red;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+     -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+     -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+     box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+     position: relative;
+     cursor: pointer;
+ }
+ 
+ .amarelo {
+     border-radius: 50%;
+     display: -webkit-box;
+     height: 15px;
+     width: 15px;
+     background-color:#FFCC33;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+     -moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+     -webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+     box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+     position: relative;
+     cursor: pointer;
+ }
+ 
+ /* fim spinner */

@@ -1,0 +1,58 @@
+
+/**
+ * Print CSS - Supra - DNIT
+ * @version         1.0
+ * @lastmodified    22.09.2018
+ * @Autor           Gustavo Costa
+**/
+
+@media print {
+
+    section {
+        page-break-after: always;
+        page-break-inside: avoid;
+        page-break-before: always;
+        margin-top: 10mm;
+        margin-bottom: 10mm;
+        margin-left: 10mm;
+        margin-right: 10mm;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: justify;
+    }
+
+    .titulo{
+        letter-spacing: 3px;
+        font-size: 18px !important;
+    }
+
+    .titulo-relatorio{
+        font-size: 20px !important;
+        font-weight: bold !important;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    table.tabela{
+        font-size: 18px !important;
+    }
+
+    .headerTabelaVertical {
+        font-size: 20px !important;
+    }
+
+    .table-responsive {
+        min-height: 0 !important;
+        overflow-x: visible !important;
+    }
+
+    section.fullpage {
+        margin-left: 0mm !important;
+        margin-right: 0mm !important;
+        text-align: left;
+    }
+
+    .right{
+        text-align: right;
+    }
+
+}

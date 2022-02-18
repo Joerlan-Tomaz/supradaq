@@ -1,0 +1,191 @@
+.custom-file-input~.custom-file-label::after {
+    content: "Selecionar";
+}
+.textoIdenti{
+    border: 1px solid #007FFF;
+    background: White;
+}
+/* #spinner{
+    position: absolute;
+    height: 50%;
+    z-index: 1;
+    margin-top: 10%;
+    margin-bottom: auto;
+    margin-left: 40%;
+    margin-right: 45%;
+} */
+#btnNovo{
+    width: 10%;
+    margin-left: 90%;
+}
+.tblCadastroEmpresa th{
+    font-size: 11pt;
+    padding: 4px;
+}
+.tblCadastroEmpresa td{
+    font-size: 11pt;
+    padding: 4px;
+}
+#btnTable{
+    align-items: center;
+    text-align: center;
+    font-size: 5px;
+}
+#tableCadastroEntregaBtn{
+    width: 10px;
+}
+#tableCadastroEntregaProg{
+    width: 50%; 
+}
+#tableEntrega th{
+    text-align: center;
+    width: 5%;
+}
+#tableEntregaBtn{
+    width: 100%;
+}
+#Check{
+    min-width: 15px;
+    min-height: 20px;
+    margin-top: -3px; 
+}
+#input{
+    text-align: center;
+}
+.selectIntervencao{
+    width: 100%;
+    border-radius: 4px;
+}
+#titleCardHeader{
+    text-align: center;
+    margin-bottom: -20px;
+}
+#btnInicarCadastro{
+    margin-top:-50px;
+    margin-left: 95%;
+
+}
+#divIniciarCadastro{
+    width: 100%;
+}
+.titleVolumes{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+#dropdown-toggle{
+    color: black;
+    font-weight: bold;
+}
+#tblDetalhamentos tr{
+    -webkit-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.75);
+}
+.menuTab{
+    margin-top: 20px; 
+    padding: 2px;
+}
+.menuTab a{
+    border-top: 1px solid silver;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;     
+    border-top-left-radius: 5px;      
+    border-top-right-radius: 5px; 
+    padding-left: 10px;
+    padding-right:10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.menuTab a:focus   {
+    background-color:#0174DF;
+    color: #fff;
+    border-bottom: 2px solid red;
+}
+.timelineT{
+    position: fixed;
+    margin-top: -60px;
+    height: 100%;
+    margin-left: 5px;
+    width: 5px;
+    background-color: #28a745!important;
+    -webkit-box-shadow: -2px 2px 20px -6px rgba(0,0,0,1);
+    -moz-box-shadow: -2px 2px 20px -6px rgba(0,0,0,1);
+    box-shadow: -2px 2px 20px -6px rgba(0,0,0,1);
+
+}
+.tituloLoadPage{
+    color: black;
+    margin-left: 10px;
+    font-size: 12pt;
+    font-family: monospace;
+    font-weight: bold;
+}
+#listaRodoviaExtensao  td button{
+    margin-left: 40%;
+}
+#tblTHEntrar{
+    width: 100px;
+}
+#tblTHExtensao{
+    width: 100px;
+}
+#tblTHRodovia{
+    width: 100px;
+    font-weight: bold;
+}
+
+#tableSNVCadastro td {
+    font-size: 9pt; 
+}
+#tableSNVCadastro th {
+    text-align: center;
+    font-size: 12px;
+    height: 15px;
+}
+
+.checks{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#tblDetalhamentos td{
+    height: 110px;
+    width: 100px;
+    border: 1px solid silver;
+    text-align: center;
+    font-size: 12px;
+}
+#btnSalvarEntrega{
+    align-items: center;
+    text-align: center;
+}
+#btnSalvarEntrega button{
+    width: 100px;
+}
+#subTitleSpan{
+    font-size: 13pt;
+}
+.treadtableds tr{ 
+    background-color: #f8f9fa;
+    font-size: 9pt;
+}
+.tbodytableds{
+    font-size: 9pt;
+}

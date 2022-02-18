@@ -1,0 +1,65 @@
+#tabela_Movel td{
+    font-size: 10pt;
+}
+#tabela_Movel th{
+   background-color: #81BEF7;
+   text-align:  center;
+}
+#tabela_Movel td{  
+   text-align:  center;
+}
+/* #tabela_Movel tr:hover{  
+   background-color: #A9D0F5;
+} */
+#titulo{
+    color: #aba5a5;
+    font-size: 60pt; 
+}
+#subtitulo{
+    margin-top: -20px;
+    color: #3c8dbc;
+    margin-left: 5px;
+}
+
+#table td{
+    width: 100px;
+    height: 300px;
+    background-color: red;
+    border: 1px solid appworkspace;
+}
+#sidebar{
+    background-color: #FAFAFA;
+    border: 1px solid #81BEF7;   
+}
+#btnConsultar{
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 90%;
+}
+#menu{
+    margin-top: 80px;
+}
+
+#tblModal td{
+   width: 50%;
+   text-align: center;
+}
+#tblModal tr:hover{  
+   background-color: #A9D0F5;
+}
+.modal-header{
+   text-align: center; 
+   background-color: #2E9AFE;
+   color: white;
+}
+#tblPiafDadosCadastro td{
+     width: 50px;
+     text-align: center;
+     border: none;
+     background-color: transparent;
+}
+#tblPiafDadosCadastro th{
+     width: 50px;
+     text-align: center;
+     background-color: #81BEF7;
+}

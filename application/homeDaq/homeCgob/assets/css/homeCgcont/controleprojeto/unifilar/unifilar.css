@@ -1,0 +1,704 @@
+    /* =================================
+Diagrama Unifilar 1.0
+03/2017
+V 1.0
+Gustavo Costa
+====================================*/
+    /*------------------------
+> Pesquisa / Filtro
+------------------------*/
+    
+    .pesquisa-unifilar .nav>li>a {
+        padding: 5px 15px;
+    }
+    
+    .pesquisa-unifilar .nav>li.title,
+    .pesquisa-unifilar .nav>li.divider {
+        padding: 5px 0;
+    }
+    
+    .pesquisa-unifilar .nav>li.title {
+        margin-right: 10px;
+    }
+    
+    .pesquisa-unifilar .nav-pills>li.active>a,
+    .pesquisa-unifilar .nav-pills>li.active>a:hover,
+    .pesquisa-unifilar .nav-pills>li.active>a:focus {
+        background-color: #086a87;
+        border: none;
+    }
+    
+    .pesquisa-unifilar .box-body {
+        background-color: #f5f5f5;
+    }
+    /*------------------------
+> Tabela
+------------------------*/
+    
+    .table-unifilar-warapper {
+        width: 100%;
+        white-space: nowrap;
+        position: relative;
+        font-size: 12px;
+    }
+    
+    .table-box-unifilar {
+        /*margin-left: 0px;
+        width: calc( 100% - 125px);*/
+        border: none;
+    }
+    
+    .table-box-unifilar>table {
+        vertical-align: top;
+        /*table-layout: fixed;*/
+        max-width: 100%;
+        width: auto;
+        margin-top: 1px;
+        *margin-left: -125px;
+        /*ie7*/
+        margin-right: -1px;
+        margin-bottom: 0px;
+        background-color: #fff;
+    }
+    
+    .table-unifilar,
+    .table-unifilar tr th {
+        border-bottom: 1px solid #ccc !important;
+    }
+    
+    .table-unifilar,
+    .table.table-unifilar,
+    .table.table-unifilar>thead>tr>th,
+    .table.table-unifilar>tbody>tr>th,
+    .table.table-unifilar>tfoot>tr>th,
+    .table.table-unifilar>thead>tr>td,
+    .table.table-unifilar>tbody>tr>td,
+    .table.table-unifilar>tfoot>tr>td,
+    .table-unifilar>thead>tr>th,
+    .table-unifilar>tbody>tr>th,
+    .table-unifilar>tfoot>tr>th,
+    .table-unifilar>thead>tr>td,
+    .table-unifilar>tbody>tr>td,
+    .table-unifilar>tfoot>tr>td {
+        border: 1px solid #ccc;
+        padding: 1px 2px;
+    }
+
+    .table-unifilar.estacas,
+    .table.table-unifilar.estacas,
+    .table.table-unifilar.estacas>thead>tr>th,
+    .table.table-unifilar.estacas>tbody>tr>th,
+    .table.table-unifilar.estacas>tfoot>tr>th,
+    .table.table-unifilar.estacas>thead>tr>td,
+    .table.table-unifilar.estacas>tbody>tr>td,
+    .table.table-unifilar.estacas>tfoot>tr>td,
+    .table-unifilar.estacas>thead>tr>th,
+    .table-unifilar.estacas>tbody>tr>th,
+    .table-unifilar.estacas>tfoot>tr>th,
+    .table-unifilar.estacas>thead>tr>td,
+    .table-unifilar.estacas>tbody>tr>td,
+    .table-unifilar.estacas>tfoot>tr>td {
+        padding: 2px 2px;
+    }
+
+        
+    .table-box-unifilar .table-unifilar>thead>tr>td,
+    .table-box-unifilar .table-unifilar>tbody>tr>td,
+    .table-box-unifilar .table-unifilar>tfoot>tr>td {
+        height: 25px !important;
+    }
+    
+    .table-unifilar>tbody>tr>td.header-txt,
+    .table-unifilar>tbody>tr>th.header-txt {
+        white-space: nowrap;
+    }
+    
+    .table-box-unifilar .table-unifilar th.header-txt {
+        /*position: absolute;
+        position: relative;
+        ie7*/
+        left: 0;
+        margin-top: 0px;
+        text-align: center;
+        vertical-align: middle;
+        border-top: 1px solid #ccc !important;
+    }
+    
+    .table-unifilar th.header-txt {
+        width: 125px;
+    }
+    
+    .table-unifilar>thead>tr>th {
+        background-color: #5A6E82;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .table-box-unifilar .table-unifilar>thead>tr>th {
+        background-color: #f5f5f5;
+        text-align: center;
+        color: #333;
+        height: 35px;
+    }
+    
+    .table-box-unifilar .table-unifilar>thead>tr>th:nth-of-type(2n) {
+        background-color: #fff !important;
+    }
+    
+    .table-box-unifilar .table-unifilar.estacas>thead>tr:first-of-type>th {
+        background-color: #fff;
+        color: #333;
+    }
+    
+    .table-box-unifilar .table-unifilar.estacas>thead>tr:first-of-type>th:nth-of-type(2n) {
+        background-color: #5A6E82 !important;
+        color: #fff;
+    }
+    
+    .table-unifilar.km>thead>tr>th:first-of-type,
+    .table-unifilar.estacas>thead>tr:nth-of-type(2n)>th:first-of-type {
+        height: 35px !important;
+        padding-top: 8px;
+    }
+    
+    .table-unifilar>tbody>tr:nth-of-type(2n+1) th {
+        background-color: #f9f9f9;
+    }
+    
+    .table-unifilar .header-txt-totais {
+        padding: 0 5px !important;
+        vertical-align: middle;
+    }
+    
+    .table-box-unifilar .table-unifilar th.c-interferencia,
+    .table-box-unifilar .table-unifilar>thead>tr>th.c-interferencia {
+        /*background-color: #ff6347 !important;*/
+        border-top: 1px solid #ff6347 !important;
+        font-weight: bold;
+        color: #BC4031;
+    }
+    
+    .table-box-unifilar .table-unifilar th.active,
+    .table-box-unifilar .table-unifilar>thead>tr>th.active {
+        background-color: #32CD32 !important;
+        border-top: 1px solid #32CD32 !important;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .table-unifilar td.c-interferencia,
+    .table-unifilar tr td.c-interferencia,
+    .table-unifilar>tbody>tr>td.c-interferencia,
+    .table.table-unifilar>thead>tr>th.c-interferencia,
+    .table.table-unifilar>tbody>tr>th.c-interferencia,
+    .table.table-unifilar>tfoot>tr>th.c-interferencia,
+    .table.table-unifilar>thead>tr>td.c-interferencia,
+    .table.table-unifilar>tbody>tr>td.c-interferencia,
+    .table.table-unifilar>tfoot>tr>td.c-interferencia,
+    .table-unifilar>thead>tr>th.c-interferencia,
+    .table-unifilar>tbody>tr>th.c-interferencia,
+    .table-unifilar>tfoot>tr>th.c-interferencia,
+    .table-unifilar>thead>tr>td.c-interferencia,
+    .table-unifilar>tbody>tr>td.c-interferencia,
+    .table-unifilar>tfoot>tr>td.c-interferencia {
+        border-top: 1px solid #ffb89c !important;
+        border-right: 2px solid #ffb89c !important;
+        border-bottom: 1px solid #ffb89c !important;
+        border-left: 2px solid #ffb89c !important;
+        /*#ffb89c / ff6347*/
+    }
+    
+    .table-unifilar td.active-c,
+    .table-unifilar tr td.active-c,
+    .table-unifilar>tbody>tr>td.active-c,
+    .table.table-unifilar>thead>tr>th.active,
+    .table.table-unifilar>tbody>tr>th.active,
+    .table.table-unifilar>tfoot>tr>th.active,
+    .table.table-unifilar>thead>tr>td.active-c,
+    .table.table-unifilar>tbody>tr>td.active-c,
+    .table.table-unifilar>tfoot>tr>td.active-c,
+    .table-unifilar>thead>tr>th.active,
+    .table-unifilar>tbody>tr>th.active,
+    .table-unifilar>tfoot>tr>th.active,
+    .table-unifilar>thead>tr>td.active-c,
+    .table-unifilar>tbody>tr>td.active-c,
+    .table-unifilar>tfoot>tr>td.active-c {
+        border-top: 1px solid #32CD32 !important;
+        border-right: 2px solid #32CD32 !important;
+        border-bottom: 1px solid #32CD32 !important;
+        border-left: 2px solid #32CD32 !important;
+        /*FFB06B*/
+    }
+    
+    .table>thead>tr>th,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>tbody>tr>td,
+    .table>tfoot>tr>td {
+        border-radius: 0;
+        overflow: hidden;
+    }
+    
+    .form-search-unifilar .help-block-e {
+        display: none;
+        font-size: 0.9em;
+        margin: 3px;
+        padding: 5px;
+        background-color: #FFB06B;
+    }
+    
+    .s-resultado {
+        display: none;
+        background-color: #f1f1f1;
+        padding: 10px;
+    }
+    
+    td.interferencia {
+        /*background-color: # ff6347 FFA07A*/
+        /*background-color: #9b59b6;*/
+        /*background-color: #605CA8;*/
+        background-color: #bc4031;
+        /*background-color: #9895C6;*/
+    }
+    
+    td.interferencia>a {
+        display: block;
+        margin: 0;
+        background: url(img/interferencia.png) center center no-repeat;
+        background-size: 50%;
+        text-indent: -100px;
+    }
+
+      
+    td.vermelho,
+    span.vermelho {
+        background-color: #BC4031;
+        text-indent: -100px;
+    }
+    
+    td.amarelo,
+    span.amarelo {
+        background-color: #FFF59D;
+        text-indent: -100px;
+    }
+    
+    td.verde,
+    span.verde {
+        background-color: #609e63;
+        text-indent: -100px;
+    }
+    
+    td.azul,
+    span.azul {
+        background-color: #7a9bab;
+        text-indent: -100px;
+    }
+    
+    td.oae {
+        background-color: #ddd;
+    }
+    
+    td.oae-n {
+        background-color: #333;
+    }
+    
+    td.oae>a,
+    td.oae-n>a {
+        text-indent: -100px;
+    }
+    
+    td.oae-n>a {
+        /*background-image: url(img/oae.png);*/
+        background-image: url(img/interferencia.png);
+        background-position: center center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+    }
+    
+    td.unifilar-fotos {
+        text-align: center;
+    }
+    
+    span.ambiental,
+    td.ambiental a {
+        background-image: url(img/ambiental.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.a-urbana,
+    td.a-urbana a {
+        background-image: url(img/a-urbana.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.a-indigena,
+    td.a-indigena a {
+        background-image: url(img/a-indigena.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.interseccao,
+    td.interseccao a {
+        background-image: url(img/interseccao.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.ferrea,
+    td.ferrea a {
+        background-image: url(img/ferrea.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.ponte,
+    td.ponte a {
+        background-image: url(img/rior.png);
+        background-position: center center;
+        background-size: 95%;
+        background-repeat: no-repeat;
+    }
+    
+    span.interferencia {
+        background-image: url(img/interferencia-ico.png);
+        background-position: center center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .dados-contrato {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+    
+    .dados-contrato p {
+        margin: 5px 0;
+    }
+    
+    .dados-contrato p span {
+        color: #086A87;
+        font-size: 0.8em;
+    }
+    
+    .dados-contrato p b {
+        color: #006699;
+    }
+    
+    .legendas {
+        background-color: #efefef;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+    
+    .legendas h4 {
+        color: #006699;
+        padding: 0 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #fff;
+    }
+    
+    .legendas h5 {
+        color: #086A87;
+        font-size: 1.1em;
+        margin: 10px;
+    }
+    
+    .legendas ul,
+    ul.oae-lista {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .legendas ul li {
+        position: relative;
+        padding: 5px;
+        margin: 0 4%;
+        display: inline-block;
+        width: 40%;
+    }
+    
+    .legendas ul li span {
+        position: absolute;
+        top: 5px;
+        right: 20%;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #fff;
+    }
+    
+    .legendas .legendas-icones ul li {
+        min-height: 30px;
+    }
+    
+    .legendas .legendas-icones ul li span {
+        top: 1px;
+        right: 20%;
+        width: 25px;
+        height: 25px;
+        border: none;
+    }
+    
+    .legendas .legendas-cores li span {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color=#605959)";
+        -moz-box-shadow: 1px 1px 1px #605959;
+        -webkit-box-shadow: 1px 1px 1px #605959;
+        box-shadow: 1px 1px 1px #605959;
+    }
+    
+    .oae-lista {
+        margin: 10px 10px 0 10px;
+    }
+    
+    ul.oae-lista li {
+        margin: 0;
+        padding: 10px 0;
+        position: relative;
+        padding-left: 25px;
+        font-size: 0.9em;
+        border-bottom: 1px solid #eee;
+    }
+    
+    ul.oae-lista li span {
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 10px;
+        left: 1px;
+    }
+    
+    .popover {
+        width: 300px;
+    }
+    
+    .popover h3.popover-title {
+        background-color: #357ca5;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    .popover.popover-interf h3.popover-title {
+        background-color: #BC4031;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    .popover-content {
+        background-color: #fff;
+        /*max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hide;*/
+    }
+    
+    .popover-content p.estaca {
+        font-size: 0.9em;
+        padding: 3px;
+        padding-left: 15px;
+        margin-bottom: 0;
+        background: url(img/ico-estaca.png) left center no-repeat;
+        background-size: 12px 12px;
+    }
+    
+    .popover-content .obs {
+        font-size: 0.8em;
+    }
+    
+    .popover-content .mais {
+        text-align: right;
+        margin: 5px;
+    }
+    
+    .btn-oae {
+        display: block;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+        background: transparent;
+    }
+    
+    .uni-modal .modal-content {
+        max-height: 500px;
+        overflow: hidden;
+    }
+    
+    .uni-modal-oae .modal-header {
+        background-color: #086A87;
+        color: #fff;
+    }
+    
+    .uni-modal-inter .modal-header {
+        background-color: #BC4031;
+        color: #fff;
+    }
+    
+    .uni-modal .modal-footer .btn {
+        z-index: 10;
+    }
+    
+    .uni-modal .item {
+        margin: 0 20px;
+        padding: 0 10px;
+        height: 250px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .uni-modal .item h3 {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #ccc;
+    }
+    
+    .uni-modal .item h3 span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    
+    .uni-carousel p {
+        margin-bottom: 5px;
+    }
+    
+    .uni-modal .item p.estaca {
+        font-size: 1.1em;
+        padding: 5px 20px;
+        margin-bottom: 0;
+        background: url(img/ico-estaca.png) left center no-repeat;
+        background-size: 16px 16px;
+        margin-left: 15px;
+    }
+    
+    .uni-modal .item p.obs {
+        padding: 10px 0 0 0;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .bx-wrapper {
+        margin-bottom: 1px;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+    
+    .bx-wrapper .bx-controls-auto,
+    .bx-wrapper .bx-pager {
+        bottom: -60px;
+        width: 100px;
+        color: #333;
+        font-size: 1.5em;
+    }
+    
+    .bx-wrapper .bx-pager.bx-default-pager a:hover,
+    .bx-wrapper .bx-pager.bx-default-pager a.active {
+        background: #086A87;
+    }
+    
+    .bx-wrapper .bx-pager a {
+        font-size: 1.2em;
+        color: #086A87;
+    }
+    
+    .slider-ctrl {
+        margin-top: -16px;
+        outline: 0 none;
+        position: absolute;
+        /*text-indent: -9999px;*/
+        top: 40%;
+        z-index: 9999;
+    }
+    
+    .slider-ctrl a {
+        height: 100px;
+        width: 35px;
+        display: block;
+        padding-top: 30px;
+        text-align: center;
+        color: #086A87;
+    }
+    
+    .uni-modal-inter .slider-ctrl a {
+        color: #BC4031;
+    }
+    
+    .slider-prev {
+        left: 5px;
+    }
+    
+    .slider-next {
+        right: 5px;
+    }
+
+    .legInfraestrutura {
+ margin-right: 10px;
+ padding: 1px 10px;
+ border: 1px solid;
+ border-color: #9e9e9e;
+ background-color: #7cb5ec;
+ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+-moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+-webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+
+ }
+
+ .legMesoestrutura {
+ margin-right: 10px;
+ padding: 1px 10px;
+ border: 1px solid;
+ border-color: #9e9e9e;
+ background-color: #2b908f;
+ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+-moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+-webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+
+ }
+
+ .legSuperestrutura {
+ margin-right: 10px;
+ padding: 1px 10px;
+ border: 1px solid;
+ border-color: #9e9e9e;
+ background-color: #f45b5b;
+ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+-moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+-webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+
+ }
+
+ .legAcabamento {
+ margin-right: -1px;
+ padding: 1px 10px;
+ border: 1px solid;
+ border-color: #9e9e9e;
+ background-color: #434348;
+ -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888)";/*IE 8*/
+-moz-box-shadow: 2px 1px 5px #888888;/*FF 3.5+*/
+-webkit-box-shadow: 2px 1px 5px #888888;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+box-shadow: 2px 1px 5px #888888;/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=117, Color=#888888); /*IE 5.5-7*/
+
+ }
+
+ 

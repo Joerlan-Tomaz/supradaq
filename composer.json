@@ -1,0 +1,21 @@
+{
+    "description": "Gestão de Obras - DNIT",
+    "name": "SUPRA",
+    "type": "project",
+    "require": {
+        "php": "7.*",
+        "mpdf/mpdf": "^7.1",
+        "phpoffice/phpspreadsheet": "^1.5",
+        "php": "7.*",
+        "mpdf/mpdf": "^7.1",
+        "box/spout": "^2.7", 
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "suggest": {
+        "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "1.1.*",
+        "phpunit/phpunit": "4.* || 5.*"
+    }
+}

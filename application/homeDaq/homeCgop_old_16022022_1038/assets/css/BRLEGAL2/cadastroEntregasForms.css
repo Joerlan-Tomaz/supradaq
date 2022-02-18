@@ -1,0 +1,35 @@
+
+#memorialEstudoPreliminares {
+    margin-top: 10px;
+    position: relative;
+}
+
+.image-upload>input {
+    display: none;
+}
+.iconpaperclip{
+    position: relative;
+    padding: 10px;
+    font-size: 35pt;
+    color: #fff;
+}
+#btnUploadEstudoPreliminares{
+    left: 50%;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    border-radius: 50px;   
+    -webkit-box-shadow: -7px 9px 31px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -7px 9px 31px -4px rgba(0,0,0,0.75);
+    box-shadow: -7px 9px 31px -4px rgba(0,0,0,0.75);
+}
+#nomeArquivoMemorialEstudoPreliminares{
+    text-decoration: underline;
+    text-decoration-color: red;
+    width: 400px;
+
+}
+.tabs{
+    position: relative;
+}

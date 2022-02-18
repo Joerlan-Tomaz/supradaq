@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 19, 2018, 11:39:42 AM
+    Author     : herisson.c.silva
+*/
+
+.gallery_item{
+    margin-bottom: 30px;
+}
+
+.dropzone.dz-clickable{
+    border-style: dashed;
+    border-color:#007bff;
+    background: #e1eaf3;
+    color: #007bff;
+    transition: ease 0.3s;
+}
+
+.dropzone.dz-clickable i{
+    font-size: 50px;
+}
+
+.dropzone.dz-clickable:hover{
+    border-color:#006bde;
+    background: #d3e7fb;
+    color: #006bde;
+}
+
+.detalhesFoto{
+    opacity: 0;
+    position: absolute;
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top:100%;    
+    top:0;
+    transition:ease-in 0.4s;
+    height: 0;
+}
+
+.detalhesFoto span{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2.5em;
+    color: #6c757d;
+    text-decoration: none;
+}
+.gallery .gallery_item:hover .detalhesFoto{
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.74);
+    margin-top:0;
+    z-index: 1;
+    height: 100%;
+}
+
+.gallery .gallery_item:hover .detalhesFoto span i:hover{
+    color:#007bff ;
+}
+.centralizar .media{
+    margin: 0 auto;
+}
+
+.gallery .gallery_item:hover .detalhesFoto span i.fa-trash-alt:hover{
+    color:#bd2130;
+}
+.gallery .gallery_item:hover .detalhesFoto span i.fa-trash-alt{
+    z-index: 9999;
+}
+.gallery .gallery_item:hover .detalhesFoto span i{
+    cursor: pointer;
+}
+.gallery{
+    margin-bottom: 50px;
+}

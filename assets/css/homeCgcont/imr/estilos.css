@@ -1,0 +1,151 @@
+
+@media screen {
+
+	body { background: #e0e0e0 !important;}
+
+	section {
+		margin-top: 5%;
+		margin-bottom: 5%;
+		margin-left: 5%;
+		margin-right: 5%;
+		padding: 30px;
+		text-align: justify;
+
+		position: relative;
+   		min-height: 500px;
+	}
+	.somentePrint {
+		display: none;
+	}
+
+	/* .somenteScreen {
+		
+	} */
+}
+section #capa {
+  /* background: linear-gradient(90deg, white 20%, #015175 20%); */
+  background-image: linear-gradient(90deg, white 20%, #015175 22%);
+}
+
+section h1, .h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+
+.title-capa {
+text-align: left;
+font-weight: bold;
+margin-top: 15%;
+margin-left: 23%;
+color: white;
+}
+
+.logo-capa{
+  width: 17%;
+right: 84%;
+margin-top: 15%;
+position: absolute;
+}
+
+.logo-cabecalho{
+  width: 50px;
+}
+/* ---------------------------- */
+.table-cabecalho > thead > tr > th{
+  padding: 15px 5px;
+  background: #e0e0e0;
+border: 1px solid #cac7c7;
+font-weight: 700;
+border-radius: 0px !important;
+}
+.table-cabecalho > tbody > tr > td{
+  padding: 8px 5px;
+border-right: 1px solid #e0e0e0;
+vertical-align:middle !important;
+border-radius: 0px !important;
+}
+
+/* ---------------------------- */
+.table-cabecalho-legenda > thead > tr > th{
+  padding: 15px 5px;
+  background-color: rgb(250, 182, 137) !important;  
+font-weight: 700;
+border-radius: 0px !important;
+}
+.table-cabecalho-legenda > tbody > tr > td{
+  padding: 8px 5px;
+border-right: 1px solid #e0e0e0;
+vertical-align:middle !important;
+border-radius: 0px !important;
+background-color: rgb(252, 228, 214) !important;
+}
+
+/* ---------------------------- */
+.table-assinatura > tbody > tr > td{
+border: 0px;
+  padding: 8px 5px;
+border-bottom: 1px solid #e0e0e0;
+vertical-align:middle !important;
+border-radius: 0px !important;
+}
+
+/* .table-cabecalho-legenda{
+background-color: rgb(250, 182, 137) !important;  
+}
+.table-coluna-legenda{
+background-color: rgb(252, 228, 214) !important;
+} */
+
+.topo{
+margin-top: 5%;
+}
+
+.border-title{
+width: 100% !important;
+  border-bottom: 2px solid #015175;
+  min-height: 60px !important;
+text-align: left;
+font-size: 11px;
+}
+
+.info-assinatura{
+  background: #f3f2f2;
+border-radius: 10px;
+padding: 15px 0;
+}
+
+.info-aprovacao{
+  background: #0f9136 !important;
+  -webkit-print-color-adjust: exact !important; 
+  border-radius: 10px;
+  font-size: 12px !important;
+  padding: 10px 0;
+}
+
+.text-aprovacao{
+  color:white !important;
+}
+
+.info-reprovacao{
+  background: #921313 !important;
+  -webkit-print-color-adjust: exact !important; 
+  border-radius: 10px;
+  font-size: 12px !important;
+  padding: 10px 0;
+}
+
+.size-descricao{
+width: 15% !important;
+}
+
+.box-alert{
+border: 3px solid #d31818;
+height: 80px;
+color: #919191;
+text-align: justify;
+}
+.box-message{
+top: 20px;
+position: relative;
+}
