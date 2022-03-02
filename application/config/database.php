@@ -72,8 +72,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
   | The $query_builder variables lets you determine whether or not to load
   | the query builder class.
  */
-$active_group = 'default';
+$active_group = 'localpedro';
 $query_builder = true;
+
+$db['localpedro'] = array(
+	'hostname' => 'ECOP-1541',
+	'port' => '',
+	'username' => 'sa',
+	'password' => 'ecoplan',
+	'database' => 'DEV_SUPRA_DAQ',
+	'dbdriver' => 'pdo',
+	'subdriver' => 'sqlsrv',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
 
 
 /*$db['default'] = array(

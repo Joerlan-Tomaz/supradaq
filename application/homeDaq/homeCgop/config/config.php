@@ -23,8 +23,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
  */
-//$config['base_url'] = 'http://localhost/supra/';
-$config['base_url'] = 'http://supra.dnit.gov.br/';
+$config['base_url'] = 'http://localhost/supradaq/';
+//$config['base_url'] = 'http://supra.dnit.gov.br/';
 /*
 |--------------------------------------------------------------------------
 | Index File

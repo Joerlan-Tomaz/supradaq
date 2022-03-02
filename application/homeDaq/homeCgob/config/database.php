@@ -77,10 +77,10 @@ $query_builder = true;
 
 
 $db['DAQ'] = array(
-	'hostname' => '10.100.10.144\SQLCGMI',
-	'port' => '54246',
-	'username' => 'usr_supra_daq',
-	'password' => '2e53w1',
+	'hostname' => 'ECOP-1541',
+	'port' => '',
+	'username' => 'sa',
+	'password' => 'ecoplan',
 	'database' => 'DEV_SUPRA_DAQ',
 	'dbdriver' => 'pdo',
 	'subdriver' => 'sqlsrv',
