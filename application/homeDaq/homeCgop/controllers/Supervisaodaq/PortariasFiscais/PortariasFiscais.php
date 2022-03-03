@@ -146,8 +146,8 @@ class PortariasFiscais extends CI_Controller
 				// $arquivo = "<a download href='index_cgob.php/Supervisaodaq/Arquivo/DownloadArquivo?arq=" . $lista->nome_arquivo . "' target='_blank'>" . $nomeArquivo . "<a>";
 				$path_arq = base_url('index_cgob.php/70bc1de8a077e52493d9c41ffaa3c051ARQ?arq=' . $lista->nome_arquivo);
 				$arquivo = "<a download href=" . $path_arq . " target='_blank'>" . $nomeArquivo . "<a>";
-				$acao = "<button type='button' class='btn btn-default' href='javascript:void(0);' onclick = 'editarPortariasFiscais(" . $lista->id_portaria_fiscal . "," . $lista->id_arquivo . ")'><i class = 'fa fa-pencil'></i></button >";
-				$acao .= "<button type='button' class='btn btn-default' href='javascript:void(0);' onclick = 'excluirPortariasFiscais(" . $lista->id_portaria_fiscal . "," . $lista->id_arquivo . ")'><i class = 'fa fa-trash'></i></button >";
+				//$acao = "<button type='button' class='btn btn-default' href='javascript:void(0);' onclick = 'editarPortariasFiscais(" . $lista->id_portaria_fiscal . "," . $lista->id_arquivo . ")'><i class = 'fa fa-pencil'></i></button >";
+				$acao = "<button type='button' class='btn btn-default' href='javascript:void(0);' onclick = 'excluirPortariasFiscais(" . $lista->id_portaria_fiscal . "," . $lista->id_arquivo . ")'><i class = 'fa fa-trash'></i></button >";
 
 				if ($lista->contrato_fiscalizado == 'Supervisão') {
 					$contrato = "" . $lista->numero_supervisora . "-" . $lista->contrato_fiscalizado . "";

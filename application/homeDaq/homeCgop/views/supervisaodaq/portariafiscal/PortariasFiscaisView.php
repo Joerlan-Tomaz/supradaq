@@ -88,8 +88,8 @@
 
 					<div id="cadastro_portariafiscal" style="display: none;">
 						<form method="post" name="formularioPortariaFiscal" id="formularioPortariaFiscal">
-							<input id="id_portaria_fiscal" name="id_portaria_fiscal" class="form-control" type="hidden"
-								   value="">
+							<!--<input id="id_portaria_fiscal" name="id_portaria_fiscal" class="form-control" type="hidden"
+								   value="">-->
 							<div class="row">
 								<div class="col-md-2">
 									<div class="form-group">
