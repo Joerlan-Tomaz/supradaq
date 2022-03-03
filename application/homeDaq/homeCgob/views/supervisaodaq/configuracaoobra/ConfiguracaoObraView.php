@@ -116,7 +116,7 @@
                                 <span class="road-status"></span>
                             </li> -->
                             <li class="art">
-                                <span class="road-ico"><img src="<?php echo(base_url('application/homeDaq/assets/img/road/art.png'))?>" /></span>
+                                <span class="road-ico"><img src="<?php echo(base_url('application/homeDaq/homeCgob/assets/img/road/art.png'))?>" /></span>
                                 <a href="" data-toggle="modal" onclick="rotaArtDaq()"><span>ART de Supervisão</span></a>
                                 <span class="road-status"></span>
                             </li>
