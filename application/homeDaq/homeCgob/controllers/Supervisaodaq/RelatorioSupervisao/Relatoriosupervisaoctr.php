@@ -213,7 +213,7 @@ class Relatoriosupervisaoctr extends CI_Controller
 				if (($relatorio == "") or ($aceite == "aguardando análise" && $roteiro_analise == "fechar_relatorio" && $perfil == 2)) {
 					$status_versao = "Aguardando Análise - [" . $versao . "]";
 
-					if (count($this->session->permissao_telas_daq) > 0) {
+					if (is_array($this->session->permissao_telas_daq) && count($this->session->permissao_telas_daq) > 0) {
 						foreach ($this->session->permissao_telas_daq as $acesso) {
 							if ($acesso->tela == 'Menu Painéis Gerenciais') {
 								$acao = " <a data-toggle='tooltip' title='Painel Gerencial' data-placement='top' style='font-size:20px' href='javascript:void(0);' onclick=\"\"> <i class='fa fa-tachometer'style='color:grey'></i></a>";
@@ -256,7 +256,7 @@ class Relatoriosupervisaoctr extends CI_Controller
 				if ($aceite == "retificado") {
 					$status_versao = "Retificado - [" . $versao . "]";
 
-					if (count($this->session->permissao_telas_daq) > 0) {
+					if (is_array($this->session->permissao_telas_daq) && count($this->session->permissao_telas_daq) > 0) {
 						foreach ($this->session->permissao_telas_daq as $acesso) {
 							if ($acesso->tela == 'Menu Painéis Gerenciais') {
 								$acao = " <a data-toggle='tooltip' title='Painel Gerencial' data-placement='top' style='font-size:20px' href='javascript:void(0);' onclick=\"\"> <i class='fa fa-tachometer'style='color:grey'></i></a>";
@@ -277,7 +277,7 @@ class Relatoriosupervisaoctr extends CI_Controller
 				if ($aceite == "aprovado" && $roteiro_analise == "fechar_relatorio") {
 					$status_versao = "Aprovado - [" . $versao . "]";
 
-					if (count($this->session->permissao_telas_daq) > 0) {
+					if (is_array($this->session->permissao_telas_daq) && count($this->session->permissao_telas_daq) > 0) {
 						foreach ($this->session->permissao_telas_daq as $acesso) {
 							if ($acesso->tela == 'Menu Painéis Gerenciais') {
 								$acao = " <a data-toggle='tooltip' title='Painel Gerencial' data-placement='top' style='font-size:20px' href='javascript:void(0);' onclick=\"\"> <i class='fa fa-tachometer'style='color:grey'></i></a>";
@@ -298,7 +298,7 @@ class Relatoriosupervisaoctr extends CI_Controller
 
 				if ($aceite == "reprovado" && $roteiro_analise == "fechar_relatorio") {
 					$status_versao = "Reprovado - [" . $versao . "]";
-					if (count($this->session->permissao_telas_daq) > 0) {
+					if (is_array($this->session->permissao_telas_daq) && count($this->session->permissao_telas_daq) > 0) {
 						foreach ($this->session->permissao_telas_daq as $acesso) {
 							if ($acesso->tela == 'Menu Painéis Gerenciais') {
 								$acao = " <a data-toggle='tooltip' title='Painel Gerencial' data-placement='top' style='font-size:20px' href='javascript:void(0);' onclick=\"\"> <i class='fa fa-tachometer'style='color:grey'></i></a>";
@@ -319,7 +319,7 @@ class Relatoriosupervisaoctr extends CI_Controller
 
 				if (($aceite == "em analise" && $roteiro_analise == "fechar_relatorio")) {
 					$status_versao = "Em Análise - [" . $versao . "]";
-					if (count($this->session->permissao_telas_daq) > 0) {
+					if (is_array($this->session->permissao_telas_daq) && count($this->session->permissao_telas_daq) > 0) {
 						foreach ($this->session->permissao_telas_daq as $acesso) {
 							if ($acesso->tela == 'Menu Painéis Gerenciais') {
 								$acao = " <a data-toggle='tooltip' title='Painel Gerencial' data-placement='top' style='font-size:20px' href='javascript:void(0);' onclick=\"\"> <i class='fa fa-tachometer'style='color:grey'></i></a>";
