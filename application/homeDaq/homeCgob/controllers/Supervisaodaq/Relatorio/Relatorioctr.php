@@ -258,6 +258,11 @@ class Relatorioctr extends CI_Controller
 
 					$dados['data'] = "fechar_relatorio";
 				}
+
+				if (($aceite == "reaberto")) {
+
+					$dados['data'] = "reaberto";
+				}
 			}
 		} else {
 			$dados['data'] = "Elaboracao";

@@ -403,6 +403,7 @@ function finalizarRelatorio() {
 						$('#aguardandoanalise').show();
 						$('#Concluirrelatorio').hide();
 						$('#elaboracao').hide();
+						$('#reaberto').hide();
 						// $('#GerarRelatorio').hide();
 						$('#correcao').hide();
                     }, error: function (data) {
@@ -477,6 +478,26 @@ function elaboracaorelatorio(){
         url: base_url + 'index_cgob.php/RelatorioElaboracaoDaq?periodo='+termo,
         dataType: 'json',
         success: function (data) {
+			if(data.data == 'reaberto'){
+				$('.elaboracao').removeClass('nao_preenchido').addClass('aprovado');
+				$('.conclusao').removeClass('nao_preenchido').addClass('aprovado');
+				$('.elaboracao').removeClass('emelaboracao').addClass('aprovado');
+				$('.analisetecnica').removeClass('nao_preenchido').addClass('reprovado');
+				$('.analiseestrutural').removeClass('nao_preenchido').addClass('reprovado');
+				$('.impressora').removeClass('nao_preenchido').addClass('reprovado');
+				$('#GerarResultadoEstrutural').show();
+				$('#GerarResultadoTecnico').show();
+				$('#correcao').hide();
+				$('#aguardandoanalise').hide();
+				if(data.perfil == 2){
+					$('#Concluirrelatorio').show();
+				}
+				$('#elaboracao').hide();
+				$('#reaberto').show();
+				// botaoRelatorio();
+				$('#aguardandoanaliseResponsavel').hide();
+				$('#aguardandoanaliseFiscal').hide();
+			}
             if(data.data == 'Aprovado'){
                 $('#Concluirrelatorio').hide(); 
                 $('#aguardandoanalise').hide(); 
@@ -531,6 +552,7 @@ function elaboracaorelatorio(){
                 $('.elaboracao').removeClass('emelaboracao').addClass('aprovado');
                 // $('#GerarRelatorio').hide();
                 $('#aguardandoanaliseResponsavel').hide();
+				$('#Liberarrelatorio').show();
             }
             if(data.data == 'ReprovadoFiscal' || data.data == 'ReprovadoFiscalEstrutural'){
                 if(data.data == 'ReprovadoFiscal'){
