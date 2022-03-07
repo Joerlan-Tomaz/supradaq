@@ -17,6 +17,7 @@ class Tb_portaria_fiscais extends CI_Model {
         $this->db->select("*");
         //$this->db->where("publicar", "S");
         $this->db->from("CGOB_TB_UF");
+		$this->db->order_by("estado");
         $consulta = $this->db->get();
         $resultado = $consulta->result();
         return $resultado;
