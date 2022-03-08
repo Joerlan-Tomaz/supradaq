@@ -38,6 +38,7 @@ $().ready(function () {
 	$("#pesquisaruf").change(function () {
 		recuperaAnaliseContrato();
 	});
+
 });
 
 //----------------------------------------------------------------------------------------------------------------------------------------
@@ -400,12 +401,11 @@ function ModalconcluirAnalise() {
 	var Validar = confereAprovar(id_contrato);
 
 	if (Validar == 1) {
-		document.getElementById("aprovado").disabled = false;
-		document.getElementById("reprovado").disabled = false;
-
+		$('#formulariofinalizar #aprovado').prop('disabled', false);
+		$('#formulariofinalizar #aprovado').prop('checked', true);
 	} else {
-		document.getElementById("aprovado").disabled = true;
-		document.getElementById("reprovado").disabled = false;
+		$('#formulariofinalizar #aprovado').prop('disabled', true);
+		$('#formulariofinalizar #reprovado').prop('checked', true);
 	}
 
 }
