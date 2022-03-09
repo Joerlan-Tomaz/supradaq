@@ -553,12 +553,20 @@ class Relatoriosupervisaoctr extends CI_Controller
 		$dados["resumo"] = $this->input->post_get('descfinalizarMotivoAnalise');
 		$dados["periodo"] = $this->input->post_get('periodo');
 		$dados["idUsuario"] = $this->session->id_usuario_daq_cgop;
-                $dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-                foreach ($dadosusuario as $lista) {
-                        $perfil = $lista->id_perfil;
-                }
+		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+		foreach ($dadosusuario as $lista) {
+				$perfil = $lista->id_perfil;
+		}
 		$dados["id_perfil_analise"] = $perfil;
 		$retorno = $this->Tb_analise_relatorio->insereResumo($dados);
+
+		if ($this->input->post_get('aceite') == 'reprovado') {
+			$dados["resumo"] = "Relatório reaberto.";
+			$dados["aceite"] = "reaberto";
+			$dados["roteiro"] = "liberar_relatorio";
+			$retorno = $this->Tb_analise_relatorio->insereResumo($dados);
+		}
+
 		echo(json_encode($retorno));
 	}
 

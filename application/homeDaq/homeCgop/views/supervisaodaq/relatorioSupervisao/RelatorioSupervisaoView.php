@@ -357,8 +357,7 @@
 										<label style="font-size:16px;">Descreva o motivo</label>
 										<textarea rows="8" type="text" id="descfinalizarMotivoAnalise"
 												  name="descfinalizarMotivoAnalise"
-												  class="form-control " placeholder="Descreva o motivo">
-                           </textarea>
+												  class="form-control " placeholder="Descreva o motivo"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">

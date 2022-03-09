@@ -101,6 +101,9 @@
 								<div class="col-md-12" id="correcao">
 									<span class="badge badge-warning">Em Retificação</span>
 								</div>
+								<div class="col-md-12" id="reaberto" style="display:none">
+									<span class="badge badge-warning">Reaberto</span>
+								</div>
 							</div>
 						</div>
 

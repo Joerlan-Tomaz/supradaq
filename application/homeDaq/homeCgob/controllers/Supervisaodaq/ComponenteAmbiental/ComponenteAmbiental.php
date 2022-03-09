@@ -26,6 +26,18 @@ class ComponenteAmbiental extends CI_Controller {
    #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
    
     public function insereComponenteAmbiental() {
+		//verifica se já não foi cadastrado para o período que não houve atividade
+		$dados["idContrato"] = $this->session->idContrato;
+		$dados["periodo"] = $this->input->post_get('periodo');
+		$dados["roteiro"] = "11";
+		$DadosNaoAtividade = $this->Tb_resumo->confereNaoAtividade($dados);
+		if(!empty($DadosNaoAtividade)){
+			$retorno["mensagem"] = "Monitoramento ambiental não pode ser incluído, pois já existe um registro que não houve atividade no período";
+			$retorno["notify"] = "warning";
+			echo (json_encode($retorno));
+			die;
+		}
+
         if (isset($_FILES['arquivo'])) {
             $arquivo = $_FILES['arquivo'];
             $maxsize = 1024 * 1024 * 5;
@@ -44,24 +56,18 @@ class ComponenteAmbiental extends CI_Controller {
                     }
 
                     $dados["resumo"] = $this->input->post_get('resumoComponenteAmbiental');
-                    $dados["periodo"] = $this->input->post_get('periodo');
-                    $dados["roteiro"] = "11";
                     $dados["idUsuario"] = $this->session->id_usuario_daq;
-                    $dados["idContrato"] = $this->session->idContrato;
-
-                    
                     $dados["desc_arquivo"] = "ComponenteAmbiental";
                     
-                        if(($extensao == "pdf") || ($extensao == "PDF")){
-                             $dados["tipo_arquivo"] = "PDF";
-                        }
-                        else if(($extensao == "docx") || ($extensao == "DOCX") ){
-                             $dados["tipo_arquivo"] = "Word";
-                        }
-                        else if(($extensao == "xlsx") || ($extensao == "XLSX") ){
-                             $dados["tipo_arquivo"] = "Excel";
-                        }
-
+					if(($extensao == "pdf") || ($extensao == "PDF")){
+						 $dados["tipo_arquivo"] = "PDF";
+					}
+					else if(($extensao == "docx") || ($extensao == "DOCX") ){
+						 $dados["tipo_arquivo"] = "Word";
+					}
+					else if(($extensao == "xlsx") || ($extensao == "XLSX") ){
+						 $dados["tipo_arquivo"] = "Excel";
+					}
 
                     $name = substr_replace($name, '', -1);
                     $nomeArquivo = mt_rand() . "_" . $this->session->idContrato . ".$extensao";
@@ -72,7 +78,6 @@ class ComponenteAmbiental extends CI_Controller {
                     $dados["pasta_origem"] = "arquivo";
                     $dados["id_upload"] = $this->session->idContrato . "_" . mt_rand() . "_" . $this->session->id_usuario_daq . "_1";
                     $dados["extencao"] = $extensao;
-
 
                     $dados["id_arquivo"] = $this->Tb_arquivo->insereArquivo($dados);
                     if ($dados["id_arquivo"] !== FALSE) {
@@ -101,7 +106,6 @@ class ComponenteAmbiental extends CI_Controller {
         } else {
             $retorno["mensagem"] = "Arquivo Vazio";
             $retorno["notify"] = "warning";
-           
         }
 
         echo (json_encode($retorno));
@@ -169,7 +173,6 @@ public function RecuperaComponenteAmbiental() {
 	{
 		$dados["periodo"] = $this->input->post_get('periodo');
 		$dados["idContrato"] = $this->session->idContrato;
-		$dados["periodo"] = $this->input->post_get('periodo');
 		$dados["roteiro"] = "11";
 
 		$DadosControle = $this->Tb_resumo->recuperaPGQ($dados);
@@ -177,9 +180,7 @@ public function RecuperaComponenteAmbiental() {
 
 		$dadosNaoAtividade = $this->Tb_resumo->confereAtividade($dados);
 		if (!empty($DadosControle)) {
-			$dados["situacao"] = 'Com Atividade';
-		} else if (!empty($dadosNaoAtividade) && $dadosNaoAtividade[0]->situacao != 'Sem Registros') {
-			$dados["situacao"] = 'Sem Atividade';
+			$dados["situacao"] = $dadosNaoAtividade[0]->situacao;
 		} else {
 			$dados["situacao"] = 'Sem Registros';
 		}

@@ -261,10 +261,15 @@ class Relatorioctr extends CI_Controller
 
 					$dados['data'] = "fechar_relatorio";
 				}
-                                //-----------------------------------------------------------------
-                                if (($aceite == "aprovado")) {
+				//-----------------------------------------------------------------
+				if (($aceite == "aprovado")) {
 
 					$dados['data'] = "Aprovado";
+				}
+
+				if (($aceite == "reaberto")) {
+
+					$dados['data'] = "reaberto";
 				}
 			}
 		} else {
@@ -303,9 +308,11 @@ class Relatorioctr extends CI_Controller
 		$dados["idContrato"] = $this->session->idContrato;
 		$dados["periodo"] = $this->input->post_get("periodo");
 		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+
 		foreach ($dadosusuario as $lista) {
 			$perfil = $lista->id_perfil;
 		}
+
 		$dados["perfil"] = $perfil;
 
 		$dados["periodo"] = $this->input->post_get("periodo");
