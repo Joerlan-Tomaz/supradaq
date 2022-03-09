@@ -287,6 +287,7 @@ class Tb_resumo extends CI_Model {
             $this->db->set("id_arquivo", $dados["id_arquivo"]);
         }
 
+		$this->db->set("flag_atividade", "S");
         $this->db->set("publicar", "S");
         $this->db->set("periodo_referencia", $dados["periodo"]);
         $this->db->insert("Cgob_Tb_resumo");
@@ -342,6 +343,7 @@ class Tb_resumo extends CI_Model {
 			$this->db->set("id_arquivo", $dados["id_arquivo"]);
 		}
 
+		$this->db->set("flag_atividade", "N");
 		$this->db->set("publicar", "S");
 		$this->db->set("periodo_referencia", $dados["periodo"]);
 		$this->db->insert("Cgob_Tb_resumo");
@@ -367,7 +369,24 @@ class Tb_resumo extends CI_Model {
         FROM CGOB_TB_RESUMO AS res
         WHERE res.id_contrato_obra=". $dados['idContrato'] ."
         AND res.periodo_referencia='" . $dados["periodo"] . "'
+        AND res.id_roteiro='" . $dados["roteiro"] . "'
         AND res.publicar = 'S'
+        ";
+
+		$query = $this->db->query($SQL);
+		return $query->result();
+
+	}
+
+	public function confereNaoAtividade($dados){
+		$SQL = "
+        SELECT
+            res.id_resumo
+        FROM CGOB_TB_RESUMO AS res
+        WHERE res.id_contrato_obra=". $dados['idContrato'] ."
+        AND res.periodo_referencia='" . $dados["periodo"] . "'
+        AND res.id_roteiro='" . $dados["roteiro"] . "'
+        AND res.publicar = 'S' AND res.flag_atividade = 'N'
         ";
 
 		$query = $this->db->query($SQL);

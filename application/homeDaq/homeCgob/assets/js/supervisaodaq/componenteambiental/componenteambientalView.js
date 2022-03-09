@@ -97,7 +97,6 @@ $().ready(function () {
                         $("#searchdate").click();
                         $('#fileUpload').val("");
                         CKEDITOR.instances['componenteAmbiental'].setData("");
-						$('#btnNoAtividade').hide();
 						confereNaoAtividade();
                     }, error: function (data) {
                         $.notify("Falha no cadastro", "warning");  
@@ -136,6 +135,7 @@ $().ready(function () {
 							var tblComponenteAmbiental = $("#tableComponenteAmbiental").DataTable();
 							tblComponenteAmbiental.ajax.reload();
 							confereNaoAtividade();
+
 						}, error: function (data) {
 							$.notify('Falha no cadastro', "warning");
 						}
