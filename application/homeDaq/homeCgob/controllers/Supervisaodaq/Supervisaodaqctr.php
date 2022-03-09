@@ -217,6 +217,9 @@ public function homeAtasCorrespondenciasDaq(){
 public function homeGestaoTratativaDaq(){
     $this->load->view('/supervisaodaq/gestaotratativa/GestaoTratativaView');
 }
+public function homeRelatorioMonitoramentoAmbientalDaq(){
+	$this->load->view('/supervisaodaq/relatoriomonitoramentoambiental/RelatorioMonitoramentoAmbientalView');
+}
 public function homeConclusaoGeralDaq(){
     $this->load->view('/supervisaodaq/conclusaogeral/ConclusaoGeralView');
 }

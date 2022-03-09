@@ -134,6 +134,7 @@ $route['DiarioObraDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeDiarioObraDaq';
 
 $route['AtasCorrespondenciasDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeAtasCorrespondenciasDaq';
 $route['GestaoTratativaDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeGestaoTratativaDaq';
+$route['RelatorioMonitoramentoAmbientalDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeRelatorioMonitoramentoAmbientalDaq';
 $route['ConclusaoGeralDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeConclusaoGeralDaq';
 
 $route['AnexosHomeDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeAnexosDaq';
@@ -226,6 +227,10 @@ $route['MonitoramentoRetornaDaq'] = '/Supervisaodaq/ComponenteAmbiental/Componen
 $route['MonitoramentoExcluirDaq'] = '/Supervisaodaq/ComponenteAmbiental/ComponenteAmbiental/excluirArquivo';
 $route['MonitoramentoNaoAtividadeDaq'] = '/Supervisaodaq/ComponenteAmbiental/ComponenteAmbiental/insereNaoAtividade';
 $route['MonitoramentoConfereAtvDaq'] = '/Supervisaodaq/ComponenteAmbiental/ComponenteAmbiental/confereAtividade';
+
+$route['RelatorioMonitoramentoAmbientalInsereDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/insereRelatorioMonitoramentoAmbiental';
+$route['RelatorioMonitoramentoAmbientalRetornaDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/recuperaRelatorioMonitoramentoAmbiental';
+$route['RelatorioMonitoramentoAmbientalExcluirDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/excluirRelatorioMonitoramentoAmbiental';
 
 $route['ConclusaoInsereDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/insereConclusaoGeral';
 $route['ConclusaoRetornaDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/RecuperaConclusaoGeral';

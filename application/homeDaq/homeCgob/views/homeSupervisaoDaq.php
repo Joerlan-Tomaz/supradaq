@@ -76,6 +76,8 @@
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/gestaotratativas/gestaotratativas.js")) ?>"
 		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriomonitoramentoambiental/relatoriomonitoramentoambiental.js")) ?>"
+		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/conclusaogeral/conclusaogeral.js")) ?>"
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/anexos/anexos.js")) ?>"
@@ -466,6 +468,12 @@
 								<a href="javascript:void(0);" onclick="rotaGestaoTratativaDaq()" class="nav-link">
 									<i class="fa fa-envelope-o nav-icon"></i>
 									<p> Gestão de Tratativas</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaRelatorioMonitoramentoAmbiental()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Rel. de Monit. Ambiental</p>
 								</a>
 							</li>
 							<li class="nav-item">
