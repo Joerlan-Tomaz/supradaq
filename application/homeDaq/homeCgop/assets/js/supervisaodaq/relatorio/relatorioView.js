@@ -470,9 +470,8 @@ function elaboracaorelatorio(){
         }
 
         var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1)>9? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
-        
     }
-	alert('oi');
+
     dadosContrato(termo);
     $.ajax({
         type: 'POST',
