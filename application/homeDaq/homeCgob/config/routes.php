@@ -135,6 +135,7 @@ $route['DiarioObraDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeDiarioObraDaq';
 $route['AtasCorrespondenciasDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeAtasCorrespondenciasDaq';
 $route['GestaoTratativaDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeGestaoTratativaDaq';
 $route['RelatorioMonitoramentoAmbientalDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeRelatorioMonitoramentoAmbientalDaq';
+$route['BoletimSemanalDragagemDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeBoletimSemanalDragagemDaq';
 $route['ConclusaoGeralDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeConclusaoGeralDaq';
 
 $route['AnexosHomeDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeAnexosDaq';
@@ -233,6 +234,12 @@ $route['RelatorioMonitoramentoAmbientalRetornaDaq'] = '/Supervisaodaq/RelatorioM
 $route['RelatorioMonitoramentoAmbientalExcluirDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/excluirRelatorioMonitoramentoAmbiental';
 $route['RelatorioMonitoramentoAmbientalNaoAtividadeDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/insereNaoAtividade';
 $route['RelatorioMonitoramentoAmbientalConfereAtvDaq'] = '/Supervisaodaq/RelatorioMonitoramentoAmbiental/RelatorioMonitoramentoAmbiental/confereAtividade';
+
+$route['BoletimSemanalDragagemInsereDaq'] = '/Supervisaodaq/BoletimSemanalDragagem/BoletimSemanalDragagem/insereBoletimSemanalDragagem';
+$route['BoletimSemanalDragagemRetornaDaq'] = '/Supervisaodaq/BoletimSemanalDragagem/BoletimSemanalDragagem/recuperaBoletimSemanalDragagem';
+$route['BoletimSemanalDragagemExcluirDaq'] = '/Supervisaodaq/BoletimSemanalDragagem/BoletimSemanalDragagem/excluirBoletimSemanalDragagem';
+$route['BoletimSemanalDragagemNaoAtividadeDaq'] = '/Supervisaodaq/BoletimSemanalDragagem/BoletimSemanalDragagem/insereNaoAtividade';
+$route['BoletimSemanalDragagemConfereAtvDaq'] = '/Supervisaodaq/BoletimSemanalDragagem/BoletimSemanalDragagem/confereAtividade';
 
 $route['ConclusaoInsereDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/insereConclusaoGeral';
 $route['ConclusaoRetornaDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/RecuperaConclusaoGeral';

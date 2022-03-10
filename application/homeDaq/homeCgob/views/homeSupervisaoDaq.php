@@ -78,6 +78,8 @@
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriomonitoramentoambiental/relatoriomonitoramentoambiental.js")) ?>"
 		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/boletimsemanaldragagem/boletimsemanaldragagem.js")) ?>"
+		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/conclusaogeral/conclusaogeral.js")) ?>"
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/anexos/anexos.js")) ?>"
@@ -474,6 +476,13 @@
 								<a href="javascript:void(0);" onclick="rotaRelatorioMonitoramentoAmbiental()" class="nav-link">
 									<i class="fa fa-file-text nav-icon"></i>
 									<p>Rel. de Monit. Ambiental</p>
+								</a>
+							</li>-->
+							<!--
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaBoletimSemanalDragagem()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Bol. Semanal de Dragagem</p>
 								</a>
 							</li>-->
 							<li class="nav-item">

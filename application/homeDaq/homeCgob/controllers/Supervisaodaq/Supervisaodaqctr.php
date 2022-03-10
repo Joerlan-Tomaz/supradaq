@@ -220,6 +220,9 @@ public function homeGestaoTratativaDaq(){
 public function homeRelatorioMonitoramentoAmbientalDaq(){
 	$this->load->view('/supervisaodaq/relatoriomonitoramentoambiental/RelatorioMonitoramentoAmbientalView');
 }
+public function homeBoletimSemanalDragagemDaq(){
+	$this->load->view('/supervisaodaq/boletimsemanaldragagem/BoletimSemanalDragagemView');
+}
 public function homeConclusaoGeralDaq(){
     $this->load->view('/supervisaodaq/conclusaogeral/ConclusaoGeralView');
 }
