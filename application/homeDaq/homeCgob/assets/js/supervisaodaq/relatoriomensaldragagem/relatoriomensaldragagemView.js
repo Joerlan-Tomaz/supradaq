@@ -98,7 +98,7 @@ $().ready(function () {
 				var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
 			}
 			//----------------------------------------------------------------------------------------------------------------------------------------
-			bootbox.confirm("Confirmar operação [NÃO HOUVE ATIVIDADES ESTE MÊS]?", function (result) {
+			bootbox.confirm("Confirmar operação [NÃO HOUVERAM ATIVIDADES ESTE MÊS]?", function (result) {
 				if (result === true) {
 					$.ajax({
 						type: 'POST',

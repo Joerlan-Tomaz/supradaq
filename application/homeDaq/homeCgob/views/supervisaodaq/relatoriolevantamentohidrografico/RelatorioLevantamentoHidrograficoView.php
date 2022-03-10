@@ -49,7 +49,7 @@
 							<div class="col-xs-12 col-md-2">
 								<div>
 									<button type="button" name="btnNoAtividade" id="btnNoAtividade"
-											class="btn btn-block btn-info">Não houve atividades
+											class="btn btn-block btn-info">Não houveram atividades
 									</button>
 								</div>
 							</div>
@@ -79,7 +79,7 @@
                         <div class="col-md-12">
                             <form method="post" name="formularioRelatorioLevantamentoHidrografico" id="formularioRelatorioLevantamentoHidrografico">
                                 <div class="form-group">
-                                    <label>Número do SEI</label>
+                                    <label>Número SEI</label>
                                     <textarea id="numeroSeiRelatorioLevantamentoHidrografico" name="numeroSeiRelatorioLevantamentoHidrografico" rows="2" style="min-width: 100%"></textarea>
                                 </div>
                             </form>
