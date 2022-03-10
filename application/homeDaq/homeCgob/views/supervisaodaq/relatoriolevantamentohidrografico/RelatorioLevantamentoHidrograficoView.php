@@ -1,4 +1,4 @@
-<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriomonitoramentoambiental/relatoriomonitoramentoambientalView.js')) ?>" type="text/javascript"></script>
+<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrograficoView.js')) ?>" type="text/javascript"></script>
 <div oncontextmenu="return false">
 <div class="content-wrapper">
 
@@ -7,14 +7,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Relatório de Monitoramento Ambiental</h1>
+                    <h1>Relatório de Levantamento Hidrográfico</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="rotaHome()">Início</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="rotaHome()">DAQ</a></li>
                         <li class="breadcrumb-item"><a href="javascript:void(0);" onclick="rotaInfoContrato()"><?php echo $this->session->numero_contrato ?></a></li>
-                        <li class="breadcrumb-item active">Relatório de Monitoramento Ambiental</li>
+                        <li class="breadcrumb-item active">Relatório de Levantamento Hidrográfico</li>
                     </ol>
                 </div>
             </div>
@@ -59,9 +59,9 @@
 
                 <div class="card-body">
 
-                    <div class="row" id="novo_RelatorioMonitoramentoAmbiental">
+                    <div class="row" id="novo_RelatorioLevantamentoHidrografico">
                         <div class="col-md-12 table-responsive">
-                            <table id="tableRelatorioMonitoramentoAmbiental" class="table table-striped">
+                            <table id="tableRelatorioLevantamentoHidrografico" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Número SEI</th>
@@ -75,17 +75,17 @@
                         </div>
                     </div>
 
-                    <div id="cadastroRelatorioMonitoramentoAmbiental">
+                    <div id="cadastroRelatorioLevantamentoHidrografico">
                         <div class="col-md-12">
-                            <form method="post" name="formularioRelatorioMonitoramentoAmbiental" id="formularioRelatorioMonitoramentoAmbiental">
+                            <form method="post" name="formularioRelatorioLevantamentoHidrografico" id="formularioRelatorioLevantamentoHidrografico">
                                 <div class="form-group">
                                     <label>Número SEI</label>
-                                    <textarea id="numeroSeiRelMonitAmbiental" name="numeroSeiRelMonitAmbiental" rows="2" style="min-width: 100%"></textarea>
+                                    <textarea id="numeroSeiRelatorioLevantamentoHidrografico" name="numeroSeiRelatorioLevantamentoHidrografico" rows="2" style="min-width: 100%"></textarea>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-1">
-                            <button type="button" name="insereRelatorioMonitoramentoAmbiental" id="insereRelatorioMonitoramentoAmbiental" class="btn btn-block btn-primary">Salvar</button>
+                            <button type="button" name="insereRelatorioLevantamentoHidrografico" id="insereRelatorioLevantamentoHidrografico" class="btn btn-block btn-primary">Salvar</button>
                         </div>
                     </div>
                 </div>

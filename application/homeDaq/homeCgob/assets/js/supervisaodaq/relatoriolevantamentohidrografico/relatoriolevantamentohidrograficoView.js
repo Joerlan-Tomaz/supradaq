@@ -3,21 +3,21 @@ $().ready(function () {
 	$(".ocultar").click(function () {
 		$(this).next(".mostrar").slideToggle(600);
 	});
-	$("#novo_RelatorioMonitoramentoAmbiental").hide();
-	$("#cadastroRelatorioMonitoramentoAmbiental").hide();
+	$("#novo_RelatorioLevantamentoHidrografico").hide();
+	$("#cadastroRelatorioLevantamentoHidrografico").hide();
 	$("#searchdate").hide();
 	confereNaoAtividade();
 	$('#btnRecuperaUltimo').hide();
 	//--------------------------------------------------------------------------
 	$("#datepicker").on("changeDate", function () {
-		recuperaRelatorioMonitoramentoAmbiental();
+		recuperaRelatorioLevantamentoHidrografico();
 		$('#btnRecuperaUltimo').hide();
 	});
 	//--------------------------------------------------------------------------
-	recuperaRelatorioMonitoramentoAmbiental();
+	recuperaRelatorioLevantamentoHidrografico();
 	//--------------------------------------------------------------------------
 	$("#searchdate").click(function () {
-		recuperaRelatorioMonitoramentoAmbiental();
+		recuperaRelatorioLevantamentoHidrografico();
 		document.getElementById("datepicker").disabled = false;
 		$("#btnInclusao").show();
 		$("#searchdate").hide();
@@ -26,12 +26,12 @@ $().ready(function () {
 
 	$("#btnInclusao").click(function () {
 		var relatorio = confereRelatorio();
-		$('#numeroSeiRelMonitAmbiental').val('');
+		$('#numeroSeiRelatorioLevantamentoHidrografico').val('');
 		if (relatorio == 1) {
 			mensagemRelatorioFechado();
 		} else {
-			$("#novo_RelatorioMonitoramentoAmbiental").hide();
-			$("#cadastroRelatorioMonitoramentoAmbiental").show();
+			$("#novo_RelatorioLevantamentoHidrografico").hide();
+			$("#cadastroRelatorioLevantamentoHidrografico").show();
 			document.getElementById("datepicker").disabled = true;
 			$("#btnInclusao").hide();
 			$("#searchdate").show();
@@ -40,8 +40,8 @@ $().ready(function () {
 		}
 	})
 
-    $("#insereRelatorioMonitoramentoAmbiental").click(function () {
-        if ($('#numeroSeiRelMonitAmbiental').val() == "") {
+    $("#insereRelatorioLevantamentoHidrografico").click(function () {
+        if ($('#numeroSeiRelatorioLevantamentoHidrografico').val() == "") {
             $.notify("Insira os campos necessários!", "warning");
             return false;
         }
@@ -55,12 +55,12 @@ $().ready(function () {
         }
         var form = new FormData();
         form.append('periodo', termo);
-        form.append('numeroSeiRelMonitAmbiental', $('#numeroSeiRelMonitAmbiental').val());
+        form.append('numeroSeiRelatorioLevantamentoHidrografico', $('#numeroSeiRelatorioLevantamentoHidrografico').val());
         bootbox.confirm("Confirmar operação [INSERIR RELATÓRIO]?", function (result) {
             if (result === true) {
                 $.ajax({
                     type: 'POST',
-                    url: base_url + 'index_cgob.php/RelatorioMonitoramentoAmbientalInsereDaq',
+                    url: base_url + 'index_cgob.php/RelatorioLevantamentoHidrograficoInsereDaq',
                     data: form,
                     dataType: 'json',
                     cache: false,
@@ -68,10 +68,10 @@ $().ready(function () {
                     processData: false,
                     success: function (data) {
 						$.notify('Cadastro Efetuado', "success");
-						$('#cadastroRelatorioMonitoramentoAmbiental').hide();
-						$('#novo_RelatorioMonitoramentoAmbiental').show();
-						var tableRelatorioMonitoramentoAmbiental = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
-						tableRelatorioMonitoramentoAmbiental.ajax.reload();
+						$('#cadastroRelatorioLevantamentoHidrografico').hide();
+						$('#novo_RelatorioLevantamentoHidrografico').show();
+						var tableRelatorioLevantamentoHidrografico = $("#tableRelatorioLevantamentoHidrografico").DataTable();
+						tableRelatorioLevantamentoHidrografico.ajax.reload();
 						$("#searchdate").click();
 						confereNaoAtividade();
                     }, error: function (data) {
@@ -102,15 +102,15 @@ $().ready(function () {
 				if (result === true) {
 					$.ajax({
 						type: 'POST',
-						url: base_url + 'index_cgob.php/RelatorioMonitoramentoAmbientalNaoAtividadeDaq',
+						url: base_url + 'index_cgob.php/RelatorioLevantamentoHidrograficoNaoAtividadeDaq',
 						data: {
 							periodo: termo
 						},
 						dataType: 'json',
 						success: function (data) {
 							$.notify("Cadastrado", "success");
-							var tableRelatorioMonitoramentoAmbiental = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
-							tableRelatorioMonitoramentoAmbiental.ajax.reload();
+							var tableRelatorioLevantamentoHidrografico = $("#tableRelatorioLevantamentoHidrografico").DataTable();
+							tableRelatorioLevantamentoHidrografico.ajax.reload();
 							confereNaoAtividade();
 						}, error: function (data) {
 							$.notify('Falha no cadastro', "warning");
@@ -128,7 +128,7 @@ $().ready(function () {
 });
 //------------------------------------------------------------------------------
 
-function recuperaRelatorioMonitoramentoAmbiental() {
+function recuperaRelatorioLevantamentoHidrografico() {
     if (document.getElementById) {
         var dt = $("#datepicker").datepicker('getDate');
         if (dt.toString() == "Invalid Date") {
@@ -137,9 +137,9 @@ function recuperaRelatorioMonitoramentoAmbiental() {
         }
         var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
     }
-    $('#novo_RelatorioMonitoramentoAmbiental').show();
-    $('#cadastroRelatorioMonitoramentoAmbiental').hide();
-    $('#tableRelatorioMonitoramentoAmbiental').dataTable({
+    $('#novo_RelatorioLevantamentoHidrografico').show();
+    $('#cadastroRelatorioLevantamentoHidrografico').hide();
+    $('#tableRelatorioLevantamentoHidrografico').dataTable({
         "bProcessing": false,
         "bFilter": false,
         "bInfo": false,
@@ -161,7 +161,7 @@ function recuperaRelatorioMonitoramentoAmbiental() {
                 "sLast": "Último"
             }
         },
-        "sAjaxSource": base_url + "index_cgob.php/RelatorioMonitoramentoAmbientalRetornaDaq",
+        "sAjaxSource": base_url + "index_cgob.php/RelatorioLevantamentoHidrograficoRetornaDaq",
         "fnServerParams": function (aoData) {
             aoData.push({"name": "periodo", "value": termo});
         },
@@ -183,12 +183,12 @@ function excluirResumo(id_resumo) {
             if (result === true) {
                 $.ajax({
                     type: "POST",
-                    url: base_url + "index_cgob.php/RelatorioMonitoramentoAmbientalExcluirDaq",
+                    url: base_url + "index_cgob.php/RelatorioLevantamentoHidrograficoExcluirDaq",
                     data: {id_resumo: id_resumo},
                     dataType: "json",
                     success: function (data) {
                         $.notify("Removido com sucesso!", "success");
-                        var table = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
+                        var table = $("#tableRelatorioLevantamentoHidrografico").DataTable();
                         table.ajax.reload();
 						confereNaoAtividade();
                     }, error: function (jqXHR, textStatus, errorMessage) {
@@ -214,7 +214,7 @@ function confereNaoAtividade() {
 	//-----------------------------------------------------------------
 	$.ajax({
 		type: "POST",
-		url: base_url + "index_cgob.php/RelatorioMonitoramentoAmbientalConfereAtvDaq",
+		url: base_url + "index_cgob.php/RelatorioLevantamentoHidrograficoConfereAtvDaq",
 		data: {periodo: termo, status: status},
 		dataType: "json",
 		success: function (data) {
