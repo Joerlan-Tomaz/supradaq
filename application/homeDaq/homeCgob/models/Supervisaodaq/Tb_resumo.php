@@ -52,7 +52,9 @@ class Tb_resumo extends CI_Model {
         $this->db->set("ultima_alteracao", date("Y-m-d H:i:s"));
         $this->db->set("id_usuario", $dados["idUsuario"]);
         $this->db->set("id_roteiro", $dados["roteiro"]);
-
+		if (!empty($dados["flag_atividade"])) {
+			$this->db->set("flag_atividade", $dados["flag_atividade"]);
+		}
         if (!empty($dados["resumo"])) {
             $this->db->set("resumo", $dados["resumo"]);
         }
@@ -286,8 +288,10 @@ class Tb_resumo extends CI_Model {
         if (!empty($dados["id_arquivo"])) {
             $this->db->set("id_arquivo", $dados["id_arquivo"]);
         }
+		if (!empty($dados["flag_atividade"])) {
+		 $this->db->set("flag_atividade", $dados["flag_atividade"]);
+		}
 
-		$this->db->set("flag_atividade", "S");
         $this->db->set("publicar", "S");
         $this->db->set("periodo_referencia", $dados["periodo"]);
         $this->db->insert("Cgob_Tb_resumo");
@@ -343,7 +347,10 @@ class Tb_resumo extends CI_Model {
 			$this->db->set("id_arquivo", $dados["id_arquivo"]);
 		}
 
-		$this->db->set("flag_atividade", "N");
+		if (!empty($dados["flag_atividade"])) {
+			$this->db->set("flag_atividade", $dados["flag_atividade"]);
+		}
+
 		$this->db->set("publicar", "S");
 		$this->db->set("periodo_referencia", $dados["periodo"]);
 		$this->db->insert("Cgob_Tb_resumo");

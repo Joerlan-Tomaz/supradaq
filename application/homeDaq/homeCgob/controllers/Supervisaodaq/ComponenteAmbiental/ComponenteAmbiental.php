@@ -58,7 +58,7 @@ class ComponenteAmbiental extends CI_Controller {
                     $dados["resumo"] = $this->input->post_get('resumoComponenteAmbiental');
                     $dados["idUsuario"] = $this->session->id_usuario_daq;
                     $dados["desc_arquivo"] = "ComponenteAmbiental";
-                    
+
 					if(($extensao == "pdf") || ($extensao == "PDF")){
 						 $dados["tipo_arquivo"] = "PDF";
 					}
@@ -82,7 +82,7 @@ class ComponenteAmbiental extends CI_Controller {
                     $dados["id_arquivo"] = $this->Tb_arquivo->insereArquivo($dados);
                     if ($dados["id_arquivo"] !== FALSE) {
                         move_uploaded_file($arquivo['tmp_name'], $dir . $nomeArquivo);
-
+						$dados["flag_atividade"] = 'S';
                         $this->Tb_resumo->inserePGQ($dados);
 
                         $retorno["mensagem"] = "Cadastrado com sucesso!";
@@ -165,6 +165,7 @@ public function RecuperaComponenteAmbiental() {
 		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["periodo"] = $this->input->post_get('periodo');
 		$dados["roteiro"] = "11";
+		$dados["flag_atividade"] = 'N';
 		$retorno = $this->Tb_resumo->insereNaoAtividade($dados);
 		echo (json_encode($retorno));
 	}
