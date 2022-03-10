@@ -387,7 +387,38 @@ class Relatorioctr extends CI_Controller
 		$dados["periodo"] = $this->input->post_get("periodo");
 		$num = 1;
 
-		$lista = array('14' => 'Justificativa do Empreendimento', '15' => 'Mapa de Situação', '3' => 'Resumo do Projeto', '24' => 'RPFO - Revisão de projetos em fase de obra', '1' => 'Histórico da Obra', '2' => 'Introdução', '19' => 'Apresentação Supervisora', '22' => 'Relação de Mobilização da Supervisora', '9' => 'Atividades da Supervisora', '18' => 'Apresentação Construtora', '23' => 'Relação de Mobilização da Construtora', '12' => 'Atividades da Construtora', '25' => 'Acompanhamento financeiro', '26' => 'Acompanhamento físico', '10' => 'Análise Crítica Cronogramas', '27' => 'Controle pluviométrico', '13' => 'Documentação Fotográfica', '11' => 'Monitoramento Ambiental', '6' => 'Ensaios Construção', '7' => 'Ensaios Supervisão', '28' => 'Registro de não conformidade (RNC)', '29' => 'Gestão Jurídica,Garantias e Seguros', '30' => 'Riscos e Interferências', '31' => 'Diário de Obra', '32' => 'Atas e Correspondências', '33' => 'Gestão de Tratativas', '5' => 'Conclusão e Comentários', '34' => 'Termo de Encerramento', '8' => 'Anexos');
+		$lista = array(
+			'14' => 'Justificativa do Empreendimento',
+			'15' => 'Mapa de Situação',
+			'3' => 'Resumo do Projeto',
+			'24' => 'RPFO - Revisão de projetos em fase de obra',
+			'1' => 'Histórico da Obra',
+			'2' => 'Introdução',
+			'19' => 'Apresentação Supervisora',
+			'22' => 'Relação de Mobilização da Supervisora',
+			'9' => 'Atividades da Supervisora',
+			'18' => 'Apresentação Construtora',
+			'23' => 'Relação de Mobilização da Construtora',
+			'12' => 'Atividades da Construtora',
+			'25' => 'Acompanhamento financeiro',
+			'26' => 'Acompanhamento físico',
+			'10' => 'Análise Crítica Cronogramas',
+			'27' => 'Controle pluviométrico',
+			'13' => 'Documentação Fotográfica',
+			'11' => 'Monitoramento Ambiental',
+			'6' => 'Ensaios Construção',
+			'7' => 'Ensaios Supervisão',
+			'28' => 'Registro de não conformidade (RNC)',
+			'29' => 'Gestão Jurídica,Garantias e Seguros',
+			'30' => 'Riscos e Interferências',
+			'31' => 'Diário de Obra',
+			'32' => 'Atas e Correspondências',
+			'33' => 'Gestão de Tratativas',
+			'5' => 'Conclusão e Comentários',
+			'34' => 'Termo de Encerramento',
+			'8' => 'Anexos',
+			'35' => 'Relatório de Monitoramento Ambiental'
+		);
 		$ImpressaoRelatorioDaq = $this->Tb_relatorio->DadosImpressaoRelatorioDaq($dados);
 		$array = json_decode(json_encode($ImpressaoRelatorioDaq), true);
 		$total = count($array);
@@ -1148,6 +1179,8 @@ class Relatorioctr extends CI_Controller
 		}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+
 		$dadoResumo["id_contrato_obra"] = $this->session->idContrato;
 		$dadoResumo["idContrato"] = $this->session->idContrato;
 		$dadoResumo["periodo"] = $this->input->post_get("periodo");
@@ -1216,6 +1249,24 @@ class Relatorioctr extends CI_Controller
 
 		$atascorrespondenciasanexo = $this->Tb_AtasCorrespondencia->recuperaAtasCorrespondencias($dados);
 		$return['atascorrespondenciasAnexo'] = $atascorrespondenciasanexo;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+		$relatorioMonitoramentoAmbiental = $this->Tb_relatorio->relatorioMonitoramentoAmbiental($dados);
+
+		if (empty($relatorioMonitoramentoAmbiental)) {
+			$return['texto_relatorio_monitoramento_ambiental'] = '<div class="alert alert-danger" role="alert">[24. RELATÓRIO DE MONITORAMENTO AMBIENTAL] não cadastrado!</div>';
+		} else if($relatorioMonitoramentoAmbiental[0]["flag_atividade"] == 'S'){
+			$return['texto_relatorio_monitoramento_ambiental'] = 'Número SEI: ' . $relatorioMonitoramentoAmbiental[0]["texto_relatorio_monitoramento_ambiental"];
+		} else{
+			$return['texto_relatorio_monitoramento_ambiental'] = '<div class="alert alert-danger" role="alert">[24. RELATÓRIO DE MONITORAMENTO AMBIENTAL] Não houveram atividades!</div>';
+		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+
 		$this->load->view('/supervisaodaq/relatorio/Relatorio', $return);
 	}
 

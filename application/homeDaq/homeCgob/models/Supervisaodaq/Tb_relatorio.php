@@ -1307,6 +1307,17 @@ public function Mobilizacao_SICRO_Construtora_Atividade_Auxiliares($dados) {
             WHERE res.id_termo = (SELECT MAX(id_termo) FROM CGOB_TB_TERMO_ENCERRAMENTO 
             where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."')
 
+ 			union
+
+            SELECT
+            res.id_roteiro as id_modulo, 
+            res.id_resumo as id_relatorio, 
+            (SELECT desc_roteiro FROM CGOB_TB_ROTEIRO WHERE id_roteiro = res.id_roteiro) as modulo, 
+            concat( CONVERT(CHAR(10),res.ultima_alteracao , 103),' ', CONVERT(CHAR(8),res.ultima_alteracao , 114)) AS ultima_alteracao, 
+            (SELECT desc_nome FROM TB_USUARIO WHERE id_usuario = res.id_usuario) AS usuario 
+            FROM CGOB_TB_RESUMO as res 
+            WHERE res.id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO 
+            where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."' AND id_roteiro in ('35') )
             ";
         $SQL_OLD_20122021 = " 
             SELECT 
@@ -1858,7 +1869,27 @@ public function RecuperaFotosAnexo($dados){
         return $query->result();
     }
 
+	//-----------------------------------------------------------------------------------
+	public function relatorioMonitoramentoAmbiental($dados) {
+		$SQL = "
+        SELECT 
+           resumo as texto_relatorio_monitoramento_ambiental,
+               flag_atividade
+           FROM CGOB_TB_RESUMO 
+        WHERE id_contrato_obra = " . $dados["id_contrato_obra"] . " AND id_roteiro in ('35') AND publicar = 'S' 
+        AND id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO where publicar = 'S' AND id_contrato_obra = ". $dados["id_contrato_obra"] ." AND id_roteiro in ('35')) 
+            ";
+
+		if (!empty($dados["periodo"])) {
+			$SQL .= " AND periodo_referencia = '" . $dados["periodo"] . "' ";
+		}
+
+		$query = $this->db->query($SQL);
+		return $query->result_array();
+	}
+
 }//fecha classe Relatorio
+
 //######################################################################################################################################################################################################################## 
 //# DNIT - AQUAVIARIO
 //# Desenvolvedora:Jordana de Alencar

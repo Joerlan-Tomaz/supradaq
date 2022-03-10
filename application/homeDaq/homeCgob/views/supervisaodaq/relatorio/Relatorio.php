@@ -481,6 +481,11 @@
 				<a href="#anexo_demais" class="subItem">23.13 DEMAIS ANEXOS</a>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="#relatorioMonitoramentoAmbiental">24. RELATÓRIO DE MONITORAMENTO AMBIENTAL</a>
+			</div>
+		</div>
 	</section>
 	<!-- 1. JUSTIFICATIVA E APRESENTAÇÃO DO EMPREENDIMENTO -->
 	<section id="justificativa_empreendimento" class="sheet padding-10mm">
@@ -4311,6 +4316,22 @@
 						</tbody>
 					</table>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="relatorioMonitoramentoAmbiental" class="sheet padding-10mm">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
+				<h3>
+					<strong>24. RELATÓRIO DE MONITORAMENTO AMBIENTAL</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify"
+				 style='font:11px/21px Arial,tahoma,sans-serif;color:black'>
+				<?= $texto_relatorio_monitoramento_ambiental; ?>
 			</div>
 		</div>
 	</section>
