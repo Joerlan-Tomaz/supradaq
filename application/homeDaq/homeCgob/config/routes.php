@@ -137,6 +137,7 @@ $route['GestaoTratativaDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeGestaoTratat
 $route['RelatorioMonitoramentoAmbientalDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeRelatorioMonitoramentoAmbientalDaq';
 $route['BoletimSemanalDragagemDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeBoletimSemanalDragagemDaq';
 $route['RelatorioMensalDragagemDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeRelatorioMensalDragagemDaq';
+$route['RelatorioLevantamentoHidrograficoDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeRelatorioLevantamentoHidrograficoDaq';
 $route['ConclusaoGeralDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeConclusaoGeralDaq';
 
 $route['AnexosHomeDaq'] = '/Supervisaodaq/Supervisaodaqctr/homeAnexosDaq';
@@ -247,6 +248,12 @@ $route['RelatorioMensalDragagemRetornaDaq'] = '/Supervisaodaq/RelatorioMensalDra
 $route['RelatorioMensalDragagemExcluirDaq'] = '/Supervisaodaq/RelatorioMensalDragagem/RelatorioMensalDragagem/excluirRelatorioMensalDragagem';
 $route['RelatorioMensalDragagemNaoAtividadeDaq'] = '/Supervisaodaq/RelatorioMensalDragagem/RelatorioMensalDragagem/insereNaoAtividade';
 $route['RelatorioMensalDragagemConfereAtvDaq'] = '/Supervisaodaq/RelatorioMensalDragagem/RelatorioMensalDragagem/confereAtividade';
+
+$route['RelatorioLevantamentoHidrograficoInsereDaq'] = '/Supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrografico/insereRelatorioLevantamentoHidrografico';
+$route['RelatorioLevantamentoHidrograficoRetornaDaq'] = '/Supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrografico/recuperaRelatorioLevantamentoHidrografico';
+$route['RelatorioLevantamentoHidrograficoExcluirDaq'] = '/Supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrografico/excluirRelatorioLevantamentoHidrografico';
+$route['RelatorioLevantamentoHidrograficoNaoAtividadeDaq'] = '/Supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrografico/insereNaoAtividade';
+$route['RelatorioLevantamentoHidrograficoConfereAtvDaq'] = '/Supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrografico/confereAtividade';
 
 $route['ConclusaoInsereDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/insereConclusaoGeral';
 $route['ConclusaoRetornaDaq'] = '/Supervisaodaq/ConclusaoGeral/ConclusaoGeral/RecuperaConclusaoGeral';

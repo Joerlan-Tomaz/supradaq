@@ -223,6 +223,9 @@ public function homeRelatorioMonitoramentoAmbientalDaq(){
 public function homeBoletimSemanalDragagemDaq(){
 	$this->load->view('/supervisaodaq/boletimsemanaldragagem/BoletimSemanalDragagemView');
 }
+public function homeRelatorioLevantamentoHidrograficoDaq(){
+	$this->load->view('/supervisaodaq/relatoriolevantamentohidrografico/RelatorioLevantamentoHidrograficoView');
+}
 public function homeRelatorioMensalDragagemDaq(){
 	$this->load->view('/supervisaodaq/relatoriomensaldragagem/RelatorioMensalDragagemView');
 }
