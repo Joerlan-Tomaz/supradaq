@@ -21,6 +21,7 @@ class RelatorioMonitoramentoAmbiental extends CI_Controller {
 		$dados["roteiro"] = "35";
 		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["idContrato"] = $this->session->idContrato;
+		$dados["flag_atividade"] = 'S';
 		if (empty($dados["id_resumo"])) {
 			$retorno = $this->Tb_resumo->insereResumo($dados);
 		}
@@ -55,4 +56,33 @@ class RelatorioMonitoramentoAmbiental extends CI_Controller {
         $retorno = $this->Tb_resumo->excluirResumo($dados);
         echo (json_encode($retorno));
     }
+
+	public function insereNaoAtividade(){
+		$dados["idContrato"] = $this->session->idContrato;
+		$dados["idUsuario"] = $this->session->id_usuario_daq;
+		$dados["periodo"] = $this->input->post_get('periodo');
+		$dados["roteiro"] = "35";
+		$dados["flag_atividade"] = 'N';
+		$retorno = $this->Tb_resumo->insereNaoAtividade($dados);
+		echo (json_encode($retorno));
+	}
+
+	public function confereAtividade()
+	{
+		$dados["periodo"] = $this->input->post_get('periodo');
+		$dados["idContrato"] = $this->session->idContrato;
+		$dados["roteiro"] = "35";
+
+		$DadosControle = $this->Tb_resumo->recuperaPGQ($dados);
+		$dados["data"] = array();
+
+		$dadosNaoAtividade = $this->Tb_resumo->confereAtividade($dados);
+		if (!empty($DadosControle)) {
+			$dados["situacao"] = $dadosNaoAtividade[0]->situacao;
+		} else {
+			$dados["situacao"] = 'Sem Registros';
+		}
+		echo(json_encode($dados));
+	}
+
 }

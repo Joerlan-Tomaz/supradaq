@@ -38,14 +38,21 @@
                             </font>
                         </h2>
                         <div class="row">
-                            <div class="col-xs-12 col-md-1">
-                                <div>
-                                    <button type="button" name="btnInclusao" id="btnInclusao" class="btn btn-block btn-primary">Incluir</button>
-                                </div>
-                                <div>
-                                  <button type="button" name="searchdate" id="searchdate" class='btn btn-block btn-secondary'><i class="far fa-arrow-alt-circle-left"></i> Voltar</button>
-                                </div>
-                             </div>
+							<div class="col-xs-12 col-md-1">
+								<div>
+									<button type="button" name="btnInclusao" id="btnInclusao" class="btn btn-block btn-primary">Incluir</button>
+								</div>
+								<div>
+									<button type="button" name="searchdate" id="searchdate" class='btn btn-block btn-secondary'><i class="far fa-arrow-alt-circle-left"></i> Voltar</button>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-2">
+								<div>
+									<button type="button" name="btnNoAtividade" id="btnNoAtividade"
+											class="btn btn-block btn-info">Não houve atividades
+									</button>
+								</div>
+							</div>
                         </div>
                     </form>
                 </div>

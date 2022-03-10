@@ -6,6 +6,7 @@ $().ready(function () {
 	$("#novo_RelatorioMonitoramentoAmbiental").hide();
 	$("#cadastroRelatorioMonitoramentoAmbiental").hide();
 	$("#searchdate").hide();
+	confereNaoAtividade();
 	$('#btnRecuperaUltimo').hide();
 	//--------------------------------------------------------------------------
 	$("#datepicker").on("changeDate", function () {
@@ -20,10 +21,12 @@ $().ready(function () {
 		document.getElementById("datepicker").disabled = false;
 		$("#btnInclusao").show();
 		$("#searchdate").hide();
+		$('#btnNoAtividade').show();
 	});
 
 	$("#btnInclusao").click(function () {
 		var relatorio = confereRelatorio();
+		$('#numeroSeiRelMonitAmbiental').val('');
 		if (relatorio == 1) {
 			mensagemRelatorioFechado();
 		} else {
@@ -33,6 +36,7 @@ $().ready(function () {
 			$("#btnInclusao").hide();
 			$("#searchdate").show();
 			$('#btnRecuperaUltimo').show();
+			$('#btnNoAtividade').hide();
 		}
 	})
 
@@ -63,17 +67,13 @@ $().ready(function () {
                     contentType: false,
                     processData: false,
                     success: function (data) {
-                        $('#cadastroRelatorioMonitoramentoAmbiental').hide();
-                        $('#novo_RelatorioMonitoramentoAmbiental').show();
-                        $.notify('Cadastro Efetuado', "success");
-                        var tableRelatorioMonitoramentoAmbiental = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
+						$.notify('Cadastro Efetuado', "success");
+						$('#cadastroRelatorioMonitoramentoAmbiental').hide();
+						$('#novo_RelatorioMonitoramentoAmbiental').show();
+						var tableRelatorioMonitoramentoAmbiental = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
 						tableRelatorioMonitoramentoAmbiental.ajax.reload();
-                        document.getElementById("datepicker").disabled = false;
-                        document.getElementById("btnInclusao").disabled = false;
-                        document.getElementById("searchdate").disabled = false;
-                        $("#btnInclusao").show();
-                        $("#searchdate").hide();
-                        $('#btnRecuperaUltimo').hide();
+						$("#searchdate").click();
+						confereNaoAtividade();
                     }, error: function (data) {
                         $.notify('Falha no cadastro', "warning");
                     }
@@ -83,6 +83,44 @@ $().ready(function () {
 
     });
     //--------------------------------------------------------------------------
+
+	$("#btnNoAtividade").click(function () {
+		var relatorio = confereRelatorio();
+		if (relatorio == 1) {
+			mensagemRelatorioFechado();
+		} else {
+			if (document.getElementById) {
+				var dt = $("#datepicker").datepicker('getDate');
+				if (dt.toString() == "Invalid Date") {
+					$("#datepicker").datepicker("setDate", new Date());
+					return;
+				}
+				var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
+			}
+			//----------------------------------------------------------------------------------------------------------------------------------------
+			bootbox.confirm("Confirmar operação [NÃO HOUVE ATIVIDADES ESTE MÊS]?", function (result) {
+				if (result === true) {
+					$.ajax({
+						type: 'POST',
+						url: base_url + 'index_cgob.php/RelatorioMonitoramentoAmbientalNaoAtividadeDaq',
+						data: {
+							periodo: termo
+						},
+						dataType: 'json',
+						success: function (data) {
+							$.notify("Cadastrado", "success");
+							var tableRelatorioMonitoramentoAmbiental = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
+							tableRelatorioMonitoramentoAmbiental.ajax.reload();
+							confereNaoAtividade();
+						}, error: function (data) {
+							$.notify('Falha no cadastro', "warning");
+						}
+					});
+				}
+			});
+		}
+	});
+
     $("#btnRecuperaUltimo").click(function () {
         btnRecuperaUltimo();
     });
@@ -152,6 +190,7 @@ function excluirResumo(id_resumo) {
                         $.notify("Removido com sucesso!", "success");
                         var table = $("#tableRelatorioMonitoramentoAmbiental").DataTable();
                         table.ajax.reload();
+						confereNaoAtividade();
                     }, error: function (jqXHR, textStatus, errorMessage) {
                         $.notify("Ocorreu um erro: " + errorMessage, "warning");
                     }
@@ -159,4 +198,48 @@ function excluirResumo(id_resumo) {
             }
         });
     }
+}
+
+function confereNaoAtividade() {
+	if (document.getElementById) {
+		var dt = $("#datepicker").datepicker('getDate');
+		if (dt.toString() == "Invalid Date") {
+			$("#datepicker").datepicker("setDate", new Date());
+			return;
+		}
+		var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
+	}
+	//-----------------------------------------------------------------
+	var status = $("#filtroStatus").val();
+	//-----------------------------------------------------------------
+	$.ajax({
+		type: "POST",
+		url: base_url + "index_cgob.php/RelatorioMonitoramentoAmbientalConfereAtvDaq",
+		data: {periodo: termo, status: status},
+		dataType: "json",
+		success: function (data) {
+			if (data.situacao === "Com Atividade") {
+				if ($("#btnInclusao").length){
+					document.getElementById("btnInclusao").disabled = false;
+				}
+				if ($("#btnNoAtividade").length){
+					document.getElementById("btnNoAtividade").disabled = true;
+				}
+			} else if (data.situacao === "Sem Atividade") {
+				if ($("#btnInclusao").length){
+					document.getElementById("btnInclusao").disabled = true;
+				}
+				if ($("#btnNoAtividade").length){
+					document.getElementById("btnNoAtividade").disabled = true;
+				}
+			} else if ("Sem Registros") {
+				if ($("#btnInclusao").length){
+					document.getElementById("btnInclusao").disabled = false;
+				}
+				if ($("#btnNoAtividade").length){
+					document.getElementById("btnNoAtividade").disabled = false;
+				}
+			}
+		}
+	});
 }
