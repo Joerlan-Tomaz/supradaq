@@ -80,6 +80,8 @@
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/boletimsemanaldragagem/boletimsemanaldragagem.js")) ?>"
 		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriomensaldragagem/relatoriomensaldragagem.js")) ?>"
+		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/conclusaogeral/conclusaogeral.js")) ?>"
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgob/assets/js/supervisaodaq/anexos/anexos.js")) ?>"
@@ -485,6 +487,12 @@
 									<p>Bol. Semanal de Dragagem</p>
 								</a>
 							</li>-->
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaRelatorioMensalDragagem()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Relatório Mensal de Dragagem</p>
+								</a>
+							</li>
 							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaConclusaoGeralDaq()" class="nav-link">
 									<i class="fa fa-list-ul nav-icon"></i>
