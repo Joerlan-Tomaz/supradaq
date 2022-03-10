@@ -56,7 +56,7 @@ $().ready(function () {
         var form = new FormData();
         form.append('periodo', termo);
         form.append('numeroSeiRelMonitAmbiental', $('#numeroSeiRelMonitAmbiental').val());
-        bootbox.confirm("Confirmar operação [INSERIR CONCLUSÃO GERAL]?", function (result) {
+        bootbox.confirm("Confirmar operação [INSERIR RELATÓRIO]?", function (result) {
             if (result === true) {
                 $.ajax({
                     type: 'POST',
