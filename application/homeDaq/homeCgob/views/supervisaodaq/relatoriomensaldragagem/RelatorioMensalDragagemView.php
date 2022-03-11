@@ -1,4 +1,4 @@
-<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/RelatorioMensalDragagem/RelatorioMensalDragagemView.js')) ?>" type="text/javascript"></script>
+<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriomensaldragagem/relatoriomensaldragagemView.js')) ?>" type="text/javascript"></script>
 <div oncontextmenu="return false">
 <div class="content-wrapper">
 
