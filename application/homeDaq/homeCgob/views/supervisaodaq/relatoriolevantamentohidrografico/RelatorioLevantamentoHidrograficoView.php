@@ -1,4 +1,4 @@
-<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/RelatorioLevantamentoHidrografico/RelatorioLevantamentoHidrograficoView.js')) ?>" type="text/javascript"></script>
+<script src="<?php echo(base_url('application/homeDaq/homeCgob/assets/js/supervisaodaq/relatoriolevantamentohidrografico/relatoriolevantamentohidrograficoView.js')) ?>" type="text/javascript"></script>
 <div oncontextmenu="return false">
 <div class="content-wrapper">
 
