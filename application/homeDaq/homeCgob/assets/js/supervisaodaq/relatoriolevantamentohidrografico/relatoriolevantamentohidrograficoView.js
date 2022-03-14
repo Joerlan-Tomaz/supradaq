@@ -11,6 +11,7 @@ $().ready(function () {
 	//--------------------------------------------------------------------------
 	$("#datepicker").on("changeDate", function () {
 		recuperaRelatorioLevantamentoHidrografico();
+		confereNaoAtividade();
 		$('#btnRecuperaUltimo').hide();
 	});
 	//--------------------------------------------------------------------------
@@ -220,7 +221,8 @@ function confereNaoAtividade() {
 		success: function (data) {
 			if (data.situacao === "Com Atividade") {
 				if ($("#btnInclusao").length){
-					document.getElementById("btnInclusao").disabled = false;
+					/*desabilitado para permitir apenas um registro cadastrado*/
+					document.getElementById("btnInclusao").disabled = true;
 				}
 				if ($("#btnNoAtividade").length){
 					document.getElementById("btnNoAtividade").disabled = true;
