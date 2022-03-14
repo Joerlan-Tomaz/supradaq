@@ -476,12 +476,12 @@
 									<p> Gestão de Tratativas</p>
 								</a>
 							</li>
-							<!--<li class="nav-item">
+							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaRelatorioMonitoramentoAmbiental()" class="nav-link">
 									<i class="fa fa-file-text nav-icon"></i>
 									<p>Rel. de Monit. Ambiental</p>
 								</a>
-							</li>-->
+							</li>
 							<!--
 							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaBoletimSemanalDragagem()" class="nav-link">

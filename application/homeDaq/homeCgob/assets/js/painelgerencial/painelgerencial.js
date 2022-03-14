@@ -2085,7 +2085,7 @@ var dt = $("#datepicker").datepicker('getDate');
         dataType: 'json',
         success: function (data) {
            
-             if (data.relaboracao >= 1 & data.relaboracao < 28) {
+             if (data.relaboracao >= 1 & data.relaboracao < 29) {
                 $('.elaboracao').removeClass('nao_preenchido').addClass('emelaboracao');
                 $('.elaboracao').removeClass('aprovado').addClass('emelaboracao');
                 $('.conclusao').removeClass('aprovado').addClass('nao_preenchido');
@@ -2098,7 +2098,7 @@ var dt = $("#datepicker").datepicker('getDate');
                 $('#correcao').hide();
                 
             }
-            if(data.relaboracao < 28){
+            if(data.relaboracao < 29){
                 $('.analisetecnica').removeClass('aprovado').addClass('nao_preenchido'); 
                 $('.analiseestrutural').removeClass('aprovado').addClass('nao_preenchido'); 
                 $('.impressora').removeClass('aprovado').addClass('nao_preenchido'); 
@@ -2113,7 +2113,7 @@ var dt = $("#datepicker").datepicker('getDate');
                 $('#elaboracao').show();
                 $('#correcao').hide();  
             }
-            if (data.relaboracao >= 28) {
+            if (data.relaboracao >= 29) {
                 $('.elaboracao').removeClass('nao_preenchido').addClass('aprovado');
                 $('.conclusao').removeClass('nao_preenchido').addClass('aprovado');
                 $('.elaboracao').removeClass('emelaboracao').addClass('aprovado');
