@@ -1318,6 +1318,43 @@ public function Mobilizacao_SICRO_Construtora_Atividade_Auxiliares($dados) {
             FROM CGOB_TB_RESUMO as res 
             WHERE res.id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO 
             where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."' AND id_roteiro in ('35') )
+            
+            union
+
+            SELECT
+            res.id_roteiro as id_modulo, 
+            res.id_resumo as id_relatorio, 
+            (SELECT desc_roteiro FROM CGOB_TB_ROTEIRO WHERE id_roteiro = res.id_roteiro) as modulo, 
+            concat( CONVERT(CHAR(10),res.ultima_alteracao , 103),' ', CONVERT(CHAR(8),res.ultima_alteracao , 114)) AS ultima_alteracao, 
+            (SELECT desc_nome FROM TB_USUARIO WHERE id_usuario = res.id_usuario) AS usuario 
+            FROM CGOB_TB_RESUMO as res 
+            WHERE res.id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO 
+            where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."' AND id_roteiro in ('36') )
+            
+            union
+
+            SELECT
+            res.id_roteiro as id_modulo, 
+            res.id_resumo as id_relatorio, 
+            (SELECT desc_roteiro FROM CGOB_TB_ROTEIRO WHERE id_roteiro = res.id_roteiro) as modulo, 
+            concat( CONVERT(CHAR(10),res.ultima_alteracao , 103),' ', CONVERT(CHAR(8),res.ultima_alteracao , 114)) AS ultima_alteracao, 
+            (SELECT desc_nome FROM TB_USUARIO WHERE id_usuario = res.id_usuario) AS usuario 
+            FROM CGOB_TB_RESUMO as res 
+            WHERE res.id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO 
+            where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."' AND id_roteiro in ('37') )
+            
+            union
+
+            SELECT
+            res.id_roteiro as id_modulo, 
+            res.id_resumo as id_relatorio, 
+            (SELECT desc_roteiro FROM CGOB_TB_ROTEIRO WHERE id_roteiro = res.id_roteiro) as modulo, 
+            concat( CONVERT(CHAR(10),res.ultima_alteracao , 103),' ', CONVERT(CHAR(8),res.ultima_alteracao , 114)) AS ultima_alteracao, 
+            (SELECT desc_nome FROM TB_USUARIO WHERE id_usuario = res.id_usuario) AS usuario 
+            FROM CGOB_TB_RESUMO as res 
+            WHERE res.id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO 
+            where publicar = 'S' AND id_contrato_obra = " . $dados["id_contrato_obra"] . " AND periodo_referencia = '". $dados["periodo"] ."' AND id_roteiro in ('38') )
+            
             ";
         $SQL_OLD_20122021 = " 
             SELECT 
@@ -1878,6 +1915,63 @@ public function RecuperaFotosAnexo($dados){
            FROM CGOB_TB_RESUMO 
         WHERE id_contrato_obra = " . $dados["id_contrato_obra"] . " AND id_roteiro in ('35') AND publicar = 'S' 
         AND id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO where publicar = 'S' AND id_contrato_obra = ". $dados["id_contrato_obra"] ." AND id_roteiro in ('35')) 
+            ";
+
+		if (!empty($dados["periodo"])) {
+			$SQL .= " AND periodo_referencia = '" . $dados["periodo"] . "' ";
+		}
+
+		$query = $this->db->query($SQL);
+		return $query->result_array();
+	}
+
+	//-----------------------------------------------------------------------------------
+	public function boletimSemanalDragagem($dados) {
+		$SQL = "
+        SELECT 
+           resumo as texto_boletim_semanal_dragagem,
+               flag_atividade
+           FROM CGOB_TB_RESUMO 
+        WHERE id_contrato_obra = " . $dados["id_contrato_obra"] . " AND id_roteiro in ('36') AND publicar = 'S' 
+        AND id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO where publicar = 'S' AND id_contrato_obra = ". $dados["id_contrato_obra"] ." AND id_roteiro in ('36')) 
+            ";
+
+		if (!empty($dados["periodo"])) {
+			$SQL .= " AND periodo_referencia = '" . $dados["periodo"] . "' ";
+		}
+
+		$query = $this->db->query($SQL);
+		return $query->result_array();
+	}
+
+	//-----------------------------------------------------------------------------------
+	public function relatorioMensalDragagem($dados) {
+		$SQL = "
+        SELECT 
+           resumo as texto_relatorio_mensal_dragagem,
+               flag_atividade
+           FROM CGOB_TB_RESUMO 
+        WHERE id_contrato_obra = " . $dados["id_contrato_obra"] . " AND id_roteiro in ('37') AND publicar = 'S' 
+        AND id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO where publicar = 'S' AND id_contrato_obra = ". $dados["id_contrato_obra"] ." AND id_roteiro in ('37')) 
+            ";
+
+		if (!empty($dados["periodo"])) {
+			$SQL .= " AND periodo_referencia = '" . $dados["periodo"] . "' ";
+		}
+
+		$query = $this->db->query($SQL);
+		return $query->result_array();
+	}
+
+	//-----------------------------------------------------------------------------------
+	public function relatorioLevantamentoHidrografico($dados) {
+		$SQL = "
+        SELECT 
+           resumo as texto_relatorio_levantamento_hidrografico,
+               flag_atividade
+           FROM CGOB_TB_RESUMO 
+        WHERE id_contrato_obra = " . $dados["id_contrato_obra"] . " AND id_roteiro in ('38') AND publicar = 'S' 
+        AND id_resumo = (SELECT MAX(id_resumo) FROM CGOB_TB_RESUMO where publicar = 'S' AND id_contrato_obra = ". $dados["id_contrato_obra"] ." AND id_roteiro in ('38')) 
             ";
 
 		if (!empty($dados["periodo"])) {

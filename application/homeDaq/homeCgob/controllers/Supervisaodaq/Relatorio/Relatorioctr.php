@@ -417,7 +417,10 @@ class Relatorioctr extends CI_Controller
 			'5' => 'Conclusão e Comentários',
 			'34' => 'Termo de Encerramento',
 			'8' => 'Anexos',
-			'35' => 'Relatório de Monitoramento Ambiental'
+			'35' => 'Relatório de Monitoramento Ambiental',
+			'36' => 'Boletim Semanal de Dragagem',
+			'37' => 'Relatório Mensal de Dragagem',
+			'38' => 'Relatório de Levantamento Hidrográfico'
 		);
 		$ImpressaoRelatorioDaq = $this->Tb_relatorio->DadosImpressaoRelatorioDaq($dados);
 		$array = json_decode(json_encode($ImpressaoRelatorioDaq), true);
@@ -1261,6 +1264,45 @@ class Relatorioctr extends CI_Controller
 			$return['texto_relatorio_monitoramento_ambiental'] = 'Número SEI: ' . $relatorioMonitoramentoAmbiental[0]["texto_relatorio_monitoramento_ambiental"];
 		} else{
 			$return['texto_relatorio_monitoramento_ambiental'] = '<div class="alert alert-danger" role="alert">[24. RELATÓRIO DE MONITORAMENTO AMBIENTAL] Não houveram atividades!</div>';
+		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+		$boletimSemanalDragagem = $this->Tb_relatorio->boletimSemanalDragagem($dados);
+
+		if (empty($boletimSemanalDragagem)) {
+			$return['texto_boletim_semanal_dragagem'] = '<div class="alert alert-danger" role="alert">[25. BOLETIM SEMANAL DE DRAGAGEM] não cadastrado!</div>';
+		} else if($boletimSemanalDragagem[0]["flag_atividade"] == 'S'){
+			$return['texto_boletim_semanal_dragagem'] = 'Número SEI: ' . $boletimSemanalDragagem[0]["texto_boletim_semanal_dragagem"];
+		} else{
+			$return['texto_boletim_semanal_dragagem'] = '<div class="alert alert-danger" role="alert">[25. BOLETIM SEMANAL DE DRAGAGEM] Não houveram atividades!</div>';
+		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+		$relatorioMensalDragagem = $this->Tb_relatorio->relatorioMensalDragagem($dados);
+
+		if (empty($relatorioMensalDragagem)) {
+			$return['texto_relatorio_mensal_dragagem'] = '<div class="alert alert-danger" role="alert">[26. RELATÓRIO MENSAL DE DRAGAGEM] não cadastrado!</div>';
+		} else if($relatorioMensalDragagem[0]["flag_atividade"] == 'S'){
+			$return['texto_relatorio_mensal_dragagem'] = 'Número SEI: ' . $relatorioMensalDragagem[0]["texto_relatorio_mensal_dragagem"];
+		} else{
+			$return['texto_relatorio_mensal_dragagem'] = '<div class="alert alert-danger" role="alert">[26. RELATÓRIO MENSAL DE DRAGAGEM] Não houveram atividades!</div>';
+		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+
+		$relatorioLevantamentoHidrografico = $this->Tb_relatorio->relatorioLevantamentoHidrografico($dados);
+
+		if (empty($relatorioLevantamentoHidrografico)) {
+			$return['texto_relatorio_levantamento_hidrografico'] = '<div class="alert alert-danger" role="alert">[27. RELATÓRIO DE LEVANTAMENTO HIDROGRÁFICO] não cadastrado!</div>';
+		} else if($relatorioLevantamentoHidrografico[0]["flag_atividade"] == 'S'){
+			$return['texto_relatorio_levantamento_hidrografico'] = 'Número SEI: ' . $relatorioLevantamentoHidrografico[0]["texto_relatorio_levantamento_hidrografico"];
+		} else{
+			$return['texto_relatorio_levantamento_hidrografico'] = '<div class="alert alert-danger" role="alert">[27. RELATÓRIO DE LEVANTAMENTO HIDROGRÁFICO] Não houveram atividades!</div>';
 		}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
