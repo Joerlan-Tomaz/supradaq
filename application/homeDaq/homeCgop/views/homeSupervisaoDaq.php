@@ -81,6 +81,14 @@
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/gestaotratativas/gestaotratativas.js")) ?>"
 		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/relatoriomonitoramentoambiental/relatoriomonitoramentoambiental.js")) ?>"
+		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/boletimsemanaldragagem/boletimsemanaldragagem.js")) ?>"
+		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/relatoriomensaldragagem/relatoriomensaldragagem.js")) ?>"
+		type="text/javascript"></script>
+<script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/relatoriolevantamentohidrografico/relatoriolevantamentohidrografico.js")) ?>"
+		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/conclusaogeral/conclusaogeral.js")) ?>"
 		type="text/javascript"></script>
 <script src="<?php echo(base_url("application/homeDaq/homeCgop/assets/js/supervisaodaq/anexos/anexos.js")) ?>"
@@ -439,6 +447,30 @@
 								<a href="javascript:void(0);" onclick="rotaGestaoTratativaDaq()" class="nav-link">
 									<i class="fa fa-envelope-o nav-icon"></i>
 									<p> Gestão de Tratativas</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaRelatorioMonitoramentoAmbiental()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Rel. de Monit. Ambiental</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaBoletimSemanalDragagem()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Bol. Semanal de Dragagem</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaRelatorioMensalDragagem()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Relatório Mensal de Dragagem</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a href="javascript:void(0);" onclick="rotaRelatorioLevantamentoHidrografico()" class="nav-link">
+									<i class="fa fa-file-text nav-icon"></i>
+									<p>Rel. Levantamento Hidrográfico</p>
 								</a>
 							</li>
 							<li class="nav-item">

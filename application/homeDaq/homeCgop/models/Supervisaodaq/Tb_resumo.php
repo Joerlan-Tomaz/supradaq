@@ -358,9 +358,14 @@ class Tb_resumo extends CI_Model {
 		$SQL = "
         SELECT
             res.id_resumo,
-            CASE
+            /*CASE
                 WHEN res.flag_atividade = 'N' THEN 'Sem Atividade'
                 WHEN res.flag_atividade = 'S' THEN 'Com Atividade'
+                ELSE 'Sem Registros'
+            END as situacao*/
+            CASE
+                WHEN res.resumo = 'Não Houve Atividade' THEN 'Sem Atividade'
+                WHEN res.resumo != 'Não Houve Atividade' THEN 'Com Atividade'
                 ELSE 'Sem Registros'
             END as situacao
         FROM CGOB_TB_RESUMO AS res
