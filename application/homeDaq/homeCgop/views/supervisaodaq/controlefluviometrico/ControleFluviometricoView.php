@@ -13,7 +13,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Controle Fluviométrico</h1>
+					<h1>Status de Operação</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
 						<li class="breadcrumb-item"><a href="javascript:void(0);"
 													   onclick="rotaInfoContrato()"><?php echo $this->session->numero_contrato ?></a>
 						</li>
-						<li class="breadcrumb-item active">Controle Fluviométrico</li>
+						<li class="breadcrumb-item active">Status de Operação</li>
 					</ol>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 				<div class="card-header">
 					<form method="post" name="formulario">
 						<h6>
-							O controle Fluviométrico deverá ser incluído diariamente no SUPRA. Este controle deverá conter todos os dias do mês (inclusive os domingos e feriados).
+							O status de operação deverá ser incluído diariamente no SUPRA. Este controle deverá conter todos os dias do mês (inclusive os domingos e feriados).
 							<div class='ocultar'><u>[+/-] Leia mais...</u></div>
 							<div class='mostrar'>
 								As informações devem ser compatíveis com o Diário de Operações.<br>
@@ -77,11 +77,9 @@
 								</tbody>
 							</table>
 							<a class="dias" style="border: 2px solid #DCDCDC;padding: 2px; background-color: #DCDCDC; color: #DCDCDC">XX</a> Sem Preenchimento &nbsp;&nbsp;
-							<a class="dias" style="border: 2px solid #ADD8E6;padding: 2px; background-color: #ADD8E6; color: #ADD8E6">XX</a> Acima da média histórica&nbsp;&nbsp;
-							<a class="dias" style="border: 2px solid #6495ED;padding: 2px; background-color: #6495ED; color: #6495ED">XX</a> Acima do mesmo dia do ano anterior&nbsp;&nbsp;
-							<a class="dias" style="border: 2px solid #0000CD;padding: 2px; background-color: #0000CD; color: #0000CD">XX</a> Na média&nbsp;&nbsp;
-							<a class="dias" style="border: 2px solid #20B2AA;padding: 2px; background-color: #20B2AA; color: #20B2AA">XX</a> Abaixo do mesmo dia do ano anterior&nbsp;&nbsp;
-							<a class="dias" style="border: 2px solid #008080;padding: 2px; background-color: #008080; color: #008080">XX</a> Não houveram atividades
+							<a class="dias" style="border: 2px solid #37bf48;padding: 2px; background-color: #37bf48; color: #37bf48">XX</a> Em Operação&nbsp;&nbsp;
+							<a class="dias" style="border: 2px solid #c13259;padding: 2px; background-color: #c13259; color: #c13259">XX</a> Fora de Operação&nbsp;&nbsp;
+							<a class="dias" style="border: 2px solid #7e757d;padding: 2px; background-color: #7e757d; color: #7e757d">XX</a> Não Aplicável
 						</div>
 					</div>
 
@@ -90,17 +88,30 @@
 							<form method="post" name="formularioControleFluviometrico"
 								  id="formularioControleFluviometrico">
 								<input type="hidden" name="infraestrutura" id="infraestrutura" value="" />
+                                                                
 								<div class="row">
-									<div class="col-xs-12 col-md-1">
-										<div>
-										</div>
-										<div>
-											<button type="button" name="jusante" id="jusante"
-													class='btn btn-block btn-primary' onclick="editar('null', 'sim');"> Com Jusante
-											</button>
-										</div>
-									</div>
+                                                                    <div class="col-xs-12 col-md-1">
+                                                                        <div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button type="button" name="ip4" id="ip4"
+                                                                                    class='btn btn-block btn-primary' onclick="editar('null', 'sim');"> IP4
+                                                                            </button>
+                                                                        </div>                                                                               
+
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-md-1">
+                                                                        <div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button type="button" name="jusante" id="jusante"
+                                                                                    class='btn btn-block btn-primary' onclick="editar('null', 'sim');"> Eclusa
+                                                                            </button>
+                                                                        </div>                                                                               
+
+                                                                    </div>
 								</div>
+                                                                <br>
 								<table id="tableCadastroControleFluviometrico" class="table table-striped" style="width: 100%;">
 									<tbody>
 									</tbody>

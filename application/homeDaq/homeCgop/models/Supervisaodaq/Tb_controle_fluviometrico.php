@@ -1,7 +1,8 @@
 <?php
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
-
+ini_set('display_errors', 1);
+ error_reporting(E_ALL);
 class Tb_controle_fluviometrico extends CI_Model
 {
 
@@ -15,6 +16,7 @@ class Tb_controle_fluviometrico extends CI_Model
 //---------------------------------------------------------------------------------------------
 	public function insereControleFluv($dados)
 	{
+              
 		date_default_timezone_set("America/Sao_Paulo");
 		$this->db->set("id_contrato_obra", $dados["idContrato"]);
 		$this->db->set("ultima_alteracao", date("Y-m-d H:i:s"));
@@ -22,12 +24,27 @@ class Tb_controle_fluviometrico extends CI_Model
 		$this->db->set("infraestrutura", $dados["infraestrutura"]);
 
 		$this->db->set("dia", $dados["dia"]);
+                if(!empty($dados["manha"]) and $dados["manha"] != 'Selecione' ){
 		$this->db->set("manha", $dados["manha"]);
-		$this->db->set("manha_nivel", $dados["manha_nivel"]);
+                $this->db->set("jusante_manha", NULL);
+                }else{
+                $this->db->set("manha", NULL);    
+                }
+		//$this->db->set("manha_nivel", $dados["manha_nivel"]);
+                if(!empty($dados["jusante_manha"]) and $dados["jusante_manha"] != 'Selecione'){
 		$this->db->set("jusante_manha", $dados["jusante_manha"]);
+                 $this->db->set("manha", NULL); 
+                 $this->db->set("tarde", NULL); 
+                }else{
+                $this->db->set("jusante_manha", NULL);    
+                }
+                if(!empty($dados["tarde"]) and $dados["tarde"] != 'Selecione'){
 		$this->db->set("tarde", $dados["tarde"]);
-		$this->db->set("tarde_nivel", $dados["tarde_nivel"]);
-		$this->db->set("jusante_tarde", $dados["jusante_tarde"]);
+                }else{
+                $this->db->set("tarde", NULL);    
+                }
+		//$this->db->set("tarde_nivel", $dados["tarde_nivel"]);
+		//$this->db->set("jusante_tarde", $dados["jusante_tarde"]);
 
 		$this->db->set("publicar", "S");
 		$this->db->set("periodo_referencia", $dados["periodo"]);
@@ -56,7 +73,7 @@ class Tb_controle_fluviometrico extends CI_Model
             l.dia,    
             concat( CONVERT(CHAR(10),l.ultima_alteracao , 103),' ', CONVERT(CHAR(8),l.ultima_alteracao , 114)) AS ultima_alteracao,
             u.DESC_NOME as nome,
-       		concat(DATEPART(YEAR,l.periodo_referencia ),'-',DATEPART(MONTH,l.periodo_referencia ),'-',l.dia) as diaSemana
+       		concat(DATEPART(YEAR,l.periodo_referencia ),'-',DATEPART(MONTH,l.periodo_referencia ),'-',l.dia) as diaSemana                
             FROM CGOB_TB_CONTROLE_FLUVIOMETRICO AS l
             INNER JOIN TB_USUARIO AS u ON u.id_usuario = l.id_usuario
           
@@ -80,7 +97,8 @@ class Tb_controle_fluviometrico extends CI_Model
 		}
 
 		$SQL .= " ORDER BY l.dia ASC";
-
+               // echo('<pre>');
+               // die($SQL);
 		$query = $this->db->query($SQL);
 		return $query->result();
 	}
@@ -129,13 +147,17 @@ class Tb_controle_fluviometrico extends CI_Model
 		if(isset($dados["dia"])){
 			$SQL .= "AND dia = '" . $dados["dia"] . "'";
 		}
+               // echo('<pre>');
+               // die($SQL);
 		$query = $this->db->query($SQL);
 		return $query->result();
 	}
 
 	//-----------------------------------------------------------------------------------------
-	public function alteraControleFluv($dados)
-	{
+	public function alteraControleFluv($dados){
+               
+              
+              	
 		date_default_timezone_set("America/Sao_Paulo");
 		$this->db->where("dia", $dados["dia"]);
 		$this->db->where("id_contrato_obra", $dados["idContrato"]);
@@ -144,12 +166,32 @@ class Tb_controle_fluviometrico extends CI_Model
 
 		$this->db->set("id_usuario", $dados["idUsuario"]);
 		$this->db->set("dia", $dados["dia"]);
+                if(!empty($dados["manha"]) and $dados["manha"] != 'Selecione'){
 		$this->db->set("manha", $dados["manha"]);
-		$this->db->set("manha_nivel", $dados["manha_nivel"]);
+                $this->db->set("jusante_manha",NULL );  
+                }else{
+                  $this->db->set("manha",NULL );
+                }
+		//$this->db->set("manha_nivel", $dados["manha_nivel"]);
+                if(!empty($dados["jusante_manha"]) and $dados["jusante_manha"] != 'Selecione'){
 		$this->db->set("jusante_manha", $dados["jusante_manha"]);
+                 $this->db->set("manha",NULL );
+                 $this->db->set("tarde", NULL);
+                }else{
+                $this->db->set("jusante_manha",NULL );    
+                }
+                if(!empty($dados["tarde"]) and $dados["tarde"] != 'Selecione'){
 		$this->db->set("tarde", $dados["tarde"]);
-		$this->db->set("tarde_nivel", $dados["tarde_nivel"]);
+                $this->db->set("jusante_manha",NULL );  
+                }else{
+                    $this->db->set("tarde", NULL);
+                }
+		//$this->db->set("tarde_nivel", $dados["tarde_nivel"]);
+                if(!empty($dados["jusante_tarde"]) and $dados["jusante_tarde"] != 'Selecione'){
 		$this->db->set("jusante_tarde", $dados["jusante_tarde"]);
+                }else{
+                $this->db->set("jusante_tarde", NULL);    
+                }
 		$this->db->set("ultima_alteracao", date("Y-m-d H:i:s"));
 		$this->db->set("publicar", "S");
 		$this->db->set("data_publicacao", NULL);
@@ -166,6 +208,8 @@ class Tb_controle_fluviometrico extends CI_Model
 			return false;
 		}
 	}
+        
+        
 
 	public function insereNaoAtividade($dados)
 	{
@@ -222,6 +266,33 @@ class Tb_controle_fluviometrico extends CI_Model
 		$query = $this->db->query($SQL);
 		return $query->result();
 	}
+//------------------------------------------------------------------------------
+public function recuperaStatusControleFluv($dados)
+	{
+		$SQL = "
+                    
+
+SELECT
+           
+          case 
+		   when (count(manha) = 0  and count(tarde) = 0 and count(jusante_manha) = 0 ) then 'vazio'
+		   when (count(manha) >= 1 or count(tarde) >=1) then 'IP4'
+		   when (count(jusante_manha) >=1) then 'ECLUSA'
+		   end statusoperacao
+           
+            
+                          
+            FROM CGOB_TB_CONTROLE_FLUVIOMETRICO AS l
+           
+          
+        WHERE (l.publicar like '%S%')
+          AND l.id_contrato_obra = " . $dados['idContrato'] . "  AND l.periodo_referencia = '" . $dados["periodo"] . "'
+        
+        ";
+
+		$query = $this->db->query($SQL);
+		return $query->result();
+	}        
 }//fecha
 //######################################################################################################################################################################################################################## 
 //# DNIT

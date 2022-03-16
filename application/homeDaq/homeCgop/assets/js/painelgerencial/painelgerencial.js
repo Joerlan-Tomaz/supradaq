@@ -8,6 +8,21 @@ $(document).ready(function () {
 	CKEDITOR.replace("textoResumo", {height: 200});
     $('#dadosContratos').hide();
 //------------------------------------------------------------------------------
+ //-------------------------------------------------------
+        $('#datepickerStatusOperacao').datepicker({
+            format: "MM yyyy",
+            startView: 1,
+            minViewMode: 1,
+            language: "pt-BR",
+            autoclose: true
+        });
+        //-------------------------------------------------------  
+        var dt = new Date();
+        var myDate = new Date();
+        myDate.setMonth(myDate.getMonth() - 1);
+        $("#datepickerStatusOperacao").datepicker("setDate", myDate);
+
+//------------------------------------------------------------------------------
 // Cores para grafico apple watch 
     if (!Highcharts.theme) {
         Highcharts.setOptions({
@@ -154,6 +169,9 @@ $(document).ready(function () {
             montaTabelaObraResumoAditivos(this.value);
 
             $('#dadosContratos').show();
+            
+           
+            
         } else {
             $('#dadosContratos').hide();
         }
@@ -214,7 +232,7 @@ $('#painel_obra_relatorio').on('click', function () {
         var dt = new Date();
         var myDate = new Date();
         myDate.setMonth(myDate.getMonth() - 1);
-        $("#datepicker").datepicker("setDate", myDate);
+        $("#datepicker").datepicker("setDate", myDate);        
         //-------------------------------------------------------
         $('#elaboracao').hide();
         $('#correcao').hide();
@@ -253,8 +271,27 @@ $('#painel_obra_relatorio').on('click', function () {
 		finalizarRelatorio(id);
 	});
 });
-
+//-------------------------------------------------------
+	$("#infra_filtro").change(function() {
+		if(this.value == 'IP4'){
+                   statusIp4(); 
+                } 
+                if(this.value == 'ECLUSA'){
+                   statusEclusa(); 
+                } 
+	});
+//-------------------------------------------------------        
+        $('#datepickerStatusOperacao').on("changeDate", function () {
+            var infra_filtro = $("#infra_filtro").val();
+		if(infra_filtro == 'IP4'){
+                   statusIp4(); 
+                } 
+                if(infra_filtro == 'ECLUSA'){
+                   statusEclusa(); 
+                } 
+	});
 //------------------------------------------------------------------------------
+statusIp4();
 });
 
 function populaDadosAbaObra(id_contrato_obra) {  
@@ -289,7 +326,7 @@ function populaDadosAbaObra(id_contrato_obra) {
             $('#supervisao').html(obj.nu_con_formatado_supervisor);
 
         }, error: function (data) {
-            $.notify('Falha no cadastro', "warning");
+            $.notify('Falha no cadastro', "warning");           
         }
     });
 }
@@ -2409,4 +2446,30 @@ function returnRelatorio() {
 //------------------------------------------------------------------------------
 function GerarRelatorio(){ 
         returnRelatorio();
+}
+//------------------------------------------------------------------------------
+function statusIp4(){ 
+   
+     var dt = $("#datepickerStatusOperacao").datepicker('getDate');
+    if (dt.toString() == "Invalid Date") {
+        $("#datepickerStatusOperacao").datepicker("setDate", new Date());
+        return;
+    }
+    var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01"; 
+    $("#statusip4eclusa").empty();
+    $("#statusip4eclusa").load(base_url + "index_cgop.php/statusIp4?id_contrato_obra="+$('#id_contrato_obra').val()+"&periodo="+termo).slideUp(3).delay(3).fadeIn("slow");
+    
+     
+}
+//------------------------------------------------------------------------------
+function statusEclusa(){
+    
+      var dt = $("#datepickerStatusOperacao").datepicker('getDate');
+    if (dt.toString() == "Invalid Date") {
+        $("#datepickerStatusOperacao").datepicker("setDate", new Date());
+        return;
+    }
+    var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01"; 
+    $("#statusip4eclusa").empty();
+    $("#statusip4eclusa").load(base_url + "index_cgop.php/statusEclusa?id_contrato_obra="+$('#id_contrato_obra').val()+"&periodo="+termo).slideUp(3).delay(3).fadeIn("slow");
 }

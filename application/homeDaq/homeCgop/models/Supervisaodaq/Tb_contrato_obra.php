@@ -110,6 +110,8 @@ class Tb_contrato_obra extends CI_Model
         OR r.ds_fas_contrato LIKE '%" . $dados["contrato_busca"] . "%')
         GROUP BY r.id_contrato_obra,r.nu_con_formatado,r.no_empresa,r.nu_con_formatado_supervisor,r.descricao_br,r.ds_fas_contrato,r.sg_uf_unidade_local     
         ";
+       // echo('<pre>');
+        //die($SQL);
 		$query = $this->db->query($SQL);
 		return $query->result();
 	}
@@ -394,7 +396,7 @@ class Tb_contrato_obra extends CI_Model
 					AND pf.id_titularidade = 1 AND pf.publicar = 'S'
         WHERE con.id_contrato_obra = " . $dados["idContrato"];        
                 
-               // echo('<pre>');
+               /// echo('<pre>');
                // die($SQL);
 		$query = $this->db->query($SQL);
 		return $query->result();
@@ -430,7 +432,7 @@ class Tb_contrato_obra extends CI_Model
 							 LEFT JOIN CGOB_TB_CONTRATO_SUPERVISORA as sup 
 								 ON con.nu_con_formatado_supervisor = sup.nu_con_formatado
 					where 1 = 1";
-		if ($_REQUEST['tipo'] == 'supervisao' && $_REQUEST['id_supervisora'] != '0') {
+		if ($_REQUEST['tipo'] == 'supervisao') {
 			$SQL .= " AND sup.id_contrato_supervisora = " . $_REQUEST['id_supervisora'];
 		}
 		$SQL .= "GROUP BY con.id_contrato_obra, CONCAT(con.nu_con_formatado, ' - ', con.no_empresa)

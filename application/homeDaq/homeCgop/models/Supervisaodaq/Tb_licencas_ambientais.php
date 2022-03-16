@@ -31,7 +31,50 @@ class Tb_licencas_ambientais extends CI_Model
 				WHERE (geo.publicar = 'S' OR geo.publicar IS NULL)
 					AND id_contrato_obra = {$this->session->idContrato}
 				GROUP BY geo.nome_eixo";
+       // echo('<pre>');
+       // die($SQL);
+		$query = $this->db->query($SQL);
+		return $query->result();
+	}
+        public function populaNomeInfra_relatorio($dados)
+	{
+		$SQL = "SELECT geo.nome_eixo,
+              case      when(select manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and manha is not NULL)) = 'Selecione' then 'N/A'
+else (select manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and manha is not NULL)) end  status_ip4,
+    case      when(select tarde from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and tarde is not NULL)) = 'Selecione' then 'N/A'
+else (select tarde from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and tarde is not NULL)) end  status_fabricadegelo,
+    case      when(select jusante_manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and jusante_manha is not NULL)) = 'Selecione' then 'N/A'
+else (select jusante_manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and jusante_manha is not NULL)) end  status_eclusa
 
+
+
+				FROM CGOB_TB_CONFIG_GEORREFERENCIAMENTO as geo
+				WHERE (geo.publicar = 'S' OR geo.publicar IS NULL)
+					AND id_contrato_obra = {$this->session->idContrato}
+				GROUP BY geo.nome_eixo,geo.id_contrato_obra";
+        //echo('<pre>');
+        //die($SQL);
+		$query = $this->db->query($SQL);
+		return $query->result();
+	}
+         public function populaNomeInfra_painel($dados)
+	{
+		$SQL = "SELECT geo.nome_eixo,
+              case      when(select manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and manha is not NULL)) = 'Selecione' then 'N/A'
+else (select manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and manha is not NULL)) end  status_ip4,
+    case      when(select tarde from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and tarde is not NULL)) = 'Selecione' then 'N/A'
+else (select tarde from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and tarde is not NULL)) end  status_fabricadegelo,
+    case      when(select jusante_manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and jusante_manha is not NULL)) = 'Selecione' then 'N/A'
+else (select jusante_manha from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_controle_fluviometrico =(select max(id_controle_fluviometrico) from CGOB_TB_CONTROLE_FLUVIOMETRICO where id_contrato_obra=geo.id_contrato_obra and publicar='S' and periodo_referencia='" . $dados["periodo"] . "' and infraestrutura=geo.nome_eixo and jusante_manha is not NULL)) end  status_eclusa
+
+
+
+				FROM CGOB_TB_CONFIG_GEORREFERENCIAMENTO as geo
+				WHERE (geo.publicar = 'S' OR geo.publicar IS NULL)
+					AND id_contrato_obra = {$this->session->idContrato}
+				GROUP BY geo.nome_eixo,geo.id_contrato_obra";
+        //echo('<pre>');
+        //die($SQL);
 		$query = $this->db->query($SQL);
 		return $query->result();
 	}

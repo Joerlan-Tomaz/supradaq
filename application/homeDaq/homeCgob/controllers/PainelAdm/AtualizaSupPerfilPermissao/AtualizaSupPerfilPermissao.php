@@ -57,11 +57,7 @@ class AtualizaSupPerfilPermissao extends CI_Controller {
         foreach ($dadosSupervisao as $i => $lista) {
             $dados["nome_supervisora"][$i] = $lista->nome_supervisora;
             $dados["id_supervisora"][$i] = $lista->id_contrato_supervisora;
-			if(is_array($supervisaoUsuario) && count($supervisaoUsuario) > 1){
-				$dados["supervisaoAtiva"][$i] = '';
-			}else{
-				$dados["supervisaoAtiva"][$i] = (isset($supervisaoUsuario[0]->id_contrato_supervisora) && $supervisaoUsuario[0]->id_contrato_supervisora == $lista->id_contrato_supervisora) ? 'selected' : '';
-			}
+			$dados["supervisaoAtiva"][$i] = (isset($supervisaoUsuario[0]->id_contrato_supervisora) && $supervisaoUsuario[0]->id_contrato_supervisora == $lista->id_contrato_supervisora) ? 'selected' : '';
         }
         echo(json_encode($dados));
     }

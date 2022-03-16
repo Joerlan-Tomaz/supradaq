@@ -492,55 +492,30 @@
                                                                                 <div class="card-header"
                                                                                      style="padding: 10px 10px 0px 20px">
                                                                                     <div class="row">
-                                                                                        <div class="col-md-4">
+                                                                                        <div class="col-md-6">
                                                                                             <h3 class="card-title">
                                                                                                 <i class="fa fa-ship"></i>
                                                                                                 Status de Operação
                                                                                             </h3>
                                                                                         </div>
-                                                                                        <div class="col-md-4">
-                                                                                            
-                                                                                        </div>
-                                                                                        <div class="col-md-4">
+                                                                                        <div class="col-md-2">
                                                                                             <div class="pull-right">
+                                                                                            <input type="text" name="datepickerStatusOperacao" id="datepickerStatusOperacao" class="form-control">    
                                                                                             </div>
                                                                                         </div>
+                                                                                        <div class="col-md-4">
+                                                                                            <select class="form-control" name="infra_filtro" id="infra_filtro">
+                                                                                                <option value="IP4" selected>IP4</option>
+                                                                                                <option value="ECLUSA">ECLUSA</option>                                                                                                
+                                                                                            </select>  
+                                                                                        </div>
+                                                                                        
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="card-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-12">
-                                                                                            <?php if( ($id_perfil==5)  or ($id_perfil==9)){  ?>
-                                                                                            <table id="tableGeorreferenciamento" class="table table-striped" style="width: 100%">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th style="width: 5px;">Nome da Infraestrutura</th>
-                                                                                                        <th style="width: 5px;">Tipo</th>
-                                                                                                        <th style="width: 25px;">Definir Tipo</th>
-                                                                                                        <th style="width: 25px;">Status</th>                                                                                                        
-                                                                                                        <th style="width: 25px;">Definir Status</th>
-                                                                                                        <th style="width: 25px;">Status Fábrica de Gelo</th>
-                                                                                                        <th style="width: 25px;">Definir Status Fábrica de Gelo</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody style="font-size: 12px"></tbody>                               
-                                                                                            </table>
-                                                                                            <?php }else{ ?>
-                                                                                            <table id="tableGeorreferenciamentoUserComum" class="table table-striped" style="width: 100%">
-                                                                                                <thead>
-                                                                                                    <tr>
-                                                                                                        <th style="width: 5px;">Nome da Infraestrutura</th>
-                                                                                                        <th style="width: 5px;">Tipo</th>
-                                                                                                        <th style="width: 25px;">Status</th>                                                                                                        
-                                                                                                        <th style="width: 25px;">Status Fábrica de Gelo</th>
-                                                                                                    </tr>
-                                                                                                </thead>
-                                                                                                <tbody style="font-size: 12px"></tbody>                               
-                                                                                            </table>
-                                                                                            <?php } ?>
-                                                                                        </div>                  
-                                                                                    </div>
-                                                                                </div> 
+                                                                                <div class="card-body"
+                                                                             style="height: 300px; overflow-y: auto; font-size: 12px;"
+                                                                             id="statusip4eclusa">
+                                                                        </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -261,15 +261,10 @@ class Relatorioctr extends CI_Controller
 
 					$dados['data'] = "fechar_relatorio";
 				}
-				//-----------------------------------------------------------------
-				if (($aceite == "aprovado")) {
+                                //-----------------------------------------------------------------
+                                if (($aceite == "aprovado")) {
 
 					$dados['data'] = "Aprovado";
-				}
-
-				if (($aceite == "reaberto")) {
-
-					$dados['data'] = "reaberto";
 				}
 			}
 		} else {
@@ -308,11 +303,9 @@ class Relatorioctr extends CI_Controller
 		$dados["idContrato"] = $this->session->idContrato;
 		$dados["periodo"] = $this->input->post_get("periodo");
 		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-
 		foreach ($dadosusuario as $lista) {
 			$perfil = $lista->id_perfil;
 		}
-
 		$dados["perfil"] = $perfil;
 
 		$dados["periodo"] = $this->input->post_get("periodo");
@@ -1032,7 +1025,7 @@ class Relatorioctr extends CI_Controller
 
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
+
 		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra($dados);
 		$data = explode('-',$dados["periodo"]);
 		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
@@ -1228,9 +1221,6 @@ class Relatorioctr extends CI_Controller
 
 
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-                //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
                 
                 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
@@ -1769,7 +1759,7 @@ class Relatorioctr extends CI_Controller
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 
-        
+
 		$return['DocumentacaoFotografica'] = $this->Tb_relatorio->DocumentacaoFotografica($dados);
 		$return['LicencasAmbientais'] = $this->Tb_licencas_ambientais->recuperaLicencasAmbientais($dados);
 
@@ -1901,12 +1891,6 @@ class Relatorioctr extends CI_Controller
 
 		$atascorrespondenciasanexo = $this->Tb_AtasCorrespondencia->recuperaAtasCorrespondencias($dados);
 		$return['atascorrespondenciasAnexo'] = $atascorrespondenciasanexo;
-                
-                $Dados = $this->Tb_controle_fluviometrico->recuperaStatusControleFluv($dados);
-                 foreach ($Dados as $lista) {
-			$return["statusoperacao"] = $lista->statusoperacao;
-		}
-                
 		$this->load->view('/supervisaodaq/relatorio/Relatorio', $return);
 	}
 

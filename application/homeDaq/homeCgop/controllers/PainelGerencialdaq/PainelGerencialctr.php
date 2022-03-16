@@ -7,7 +7,8 @@
  * @subpackage controllers 
  */
 defined('BASEPATH') or exit('No direct script access allowed');
-
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 class PainelGerencialctr extends CI_Controller
 {
 
@@ -30,6 +31,7 @@ class PainelGerencialctr extends CI_Controller
         $this->load->model('/Supervisaodaq/Tb_apresentacao_construtora_aditivo');
         $this->load->model('/Supervisaodaq/Tb_configuracao_georreferenciamento');
         $this->load->model('/Supervisaodaq/Tb_telas_validacao');
+        $this->load->model('/Supervisaodaq/Tb_controle_fluviometrico');        
         $this->load->model('Tb_usuario');
         $this->load->database('DAQ', TRUE);
         $this->load->helper('url');
@@ -78,11 +80,11 @@ class PainelGerencialctr extends CI_Controller
         echo(json_encode($select));
     }
 
-    public function gerencialObraContrato($dados)
-    { 
+    public function gerencialObraContrato(){ 
+     
         $dados['idContrato'] = $_REQUEST['id_contrato_obra'];   
         $dadosContrato = $this->Tb_contrato_obra->dadosContratoPainelGerencial($dados);
-
+       
         $data_inicial = date('d/m/Y');
         $data_final = $dadosContrato[0]->dataTerminoVigencia;
 
@@ -1562,6 +1564,415 @@ public function statusFabricaGelo() {
 
 		echo json_encode($tabela);
 	}
+
+       public function statusIp4() {
+           $dados['id_contrato_obra'] = $this->input->post_get("id_contrato_obra");
+            $dados['periodo'] = $this->input->post_get("periodo");
+        $dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra_painel($dados);
+		$data = explode('-',$dados["periodo"]);
+		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
+                $tabelas = array();
+                $cont=1;
+		foreach ($dadosInfras as $linha => $listaInfra) {
+			$tabela = "";
+                        if($cont==1){
+			$tabela .= "<tr class='centerBold'>";
+			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
+			/*for($i = 1; $i <= $totaldias; $i++){
+				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
+			}*/
+                        $tabela .= "<td style='background-color: #DCDCDC'>SP</td>";
+                        $tabela .= "<td style='background-color: #33fd33'>OP</td>";
+                        $tabela .= "<td style='background-color: #fb3a3a'>FO</td>";
+                        $tabela .= "<td style='background-color: #9e9e9e'>N/A</td>";
+                        $tabela .= "<td>Último Status</td>";
+                        }
+			$tabela .= "</tr>";
+
+			$dados['infraestrutura'] = $listaInfra->nome_eixo;
+                        $status_ip4 = $listaInfra->status_ip4;
+                        $status_fabricadegelo = $listaInfra->status_fabricadegelo;
+			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
+                        
+			$jusante = false;
+			$arrayDias = array();
+			if(count($dadosControleFluv) > 0 ){
+				foreach($dadosControleFluv as $diasControle){
+					$arrayDias[$diasControle->dia]['manha'] = $diasControle->manha;
+					$arrayDias[$diasControle->dia]['manhaNivel'] = $diasControle->manha_nivel;
+					$arrayDias[$diasControle->dia]['manhaJusante'] = $diasControle->jusante_manha;
+
+					$arrayDias[$diasControle->dia]['tarde'] = $diasControle->tarde;
+					$arrayDias[$diasControle->dia]['tardeNivel'] = $diasControle->tarde_nivel;
+					$arrayDias[$diasControle->dia]['tardeJusante'] = $diasControle->jusante_tarde;
+
+					if($diasControle->jusante_manha != null || $diasControle->jusante_tarde != null){
+						$jusante = true;
+					}
+				}
+			}
+
+			$analiseManha = "";
+			$nivelManha = "";
+			$jusanteManha = "";
+			$manha_semPreenchimento = 0;
+			$manha_acimaMedia = 0;
+			$manha_acimaMesmo = 0;
+			$manha_naMedia = 0;
+			$manha_abaixoMesmo = 0;
+			$manha_nhouveatividade = 0;
+
+			$analiseTarde = "";
+			$nivelTarde = "";
+			$jusanteTarde = "";
+			$tarde_semPreenchimento = 0;
+			$tarde_acimaMedia = 0;
+			$tarde_acimaMesmo = 0;
+			$tarde_naMedia = 0;
+			$tarde_abaixoMesmo = 0;
+			$tarde_nhouveatividade = 0;
+                        
+                        $manha_op=0;
+                        $tarde_op=0;
+                        $manha_fo=0;
+                        $tarde_fo=0;
+                        $manha_na=0;
+                        $tarde_na=0;
+			for($i = 1; $i <= $totaldias; $i++){
+				if(isset($arrayDias[$i])){
+					if($arrayDias[$i]['manha'] == NULL){
+						$color = '#DCDCDC';
+                                                //$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
+						//$nivelManha .= "<td style='background-color: ".$color."'></td>";
+						//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
+						$manha_semPreenchimento++;
+                                                
+					}else if($arrayDias[$i]['manha'] == 'Em Operação'){
+						$color = '#37bf48';
+						//$analiseManha .= "<td style='background-color: ".$color."'>OP</td>";
+						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
+						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
+						//$manha_acimaMedia++;
+                                                $manha_op++;
+					}else if($arrayDias[$i]['manha'] == 'Fora de Operação'){
+						$color = '#c13259';
+						//$analiseManha .= "<td style='background-color: ".$color."'>FO</td>";
+						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
+						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
+						//$manha_acimaMesmo++;
+                                                $manha_fo++;
+					}else if($arrayDias[$i]['manha'] == 'Não Aplicável'){
+						$color = '#7e757d';
+						//$analiseManha .= "<td style='background-color: ".$color."'>N/A</td>";
+						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
+						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
+						//$manha_naMedia++;
+                                                $manha_na++;
+					}else{
+						$color = '#DCDCDC';
+						//$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
+						//$nivelManha .= "<td style='background-color: ".$color."'></td>";
+						//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
+						//$manha_semPreenchimento++;
+                                                $manha_semPreenchimento++;
+					}
+
+					if($arrayDias[$i]['tarde'] == NULL){
+						$color = '#DCDCDC';
+						//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
+						//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
+						//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
+						$tarde_semPreenchimento++;
+
+					}else if($arrayDias[$i]['tarde'] == 'Em Operação'){
+						$color = '#37bf48';
+						//$analiseTarde .= "<td style='background-color: ".$color."'>OP</td>";
+						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
+						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
+						$tarde_op++;
+
+					}else if($arrayDias[$i]['tarde'] == 'Fora de Operação'){
+						$color = '#c13259';
+						//$analiseTarde .= "<td style='background-color: ".$color."'>FO</td>";
+						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
+						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
+						$tarde_fo++;
+
+					}else if($arrayDias[$i]['tarde'] == 'Não Aplicável'){
+						$color = '#7e757d';
+						//$analiseTarde .= "<td style='background-color: ".$color."'>N/A</td>";
+						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
+						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
+						$tarde_na++;
+
+					}else{
+						//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
+						//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
+						//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
+						$tarde_semPreenchimento++;
+					}
+				}else{
+					$color = '#DCDCDC';
+					//$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
+					//$nivelManha .= "<td style='background-color: ".$color."'></td>";
+					//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
+					$manha_semPreenchimento++;
+                                       
+                                        
+
+					//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
+					//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
+					//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
+					$tarde_semPreenchimento++;
+				}
+			}
+                        
+			$tabela .= "<tr>";
+			$tabela .= ($jusante) ? '<td rowspan="7">' : '<td rowspan="5">';
+			$tabela .= $listaInfra->nome_eixo . "</td>";
+			$tabela .= "<tr>";
+			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
+			$tabela .= "IP4</td>";
+			//$tabela .= "<td>Condição</td>";
+			$tabela .= $analiseManha . "</tr>";
+			$tabela .= "<tr>";
+                        $tabela .= "<td style='background-color: #DCDCDC'>$manha_semPreenchimento</td>";
+                        $tabela .= "<td style='background-color: #33fd33'>$manha_op</td>";
+                        $tabela .= "<td style='background-color: #fb3a3a'>$manha_fo</td>";
+                        $tabela .= "<td style='background-color: #9e9e9e'>$manha_na</td>";
+                        $tabela .= "<td>$status_ip4</td>";
+			/*if($jusante){
+				$tabela .= "<td>Montante(cm)</td>";
+				$tabela .= $nivelManha . "</tr>";
+				$tabela .= "<td>Jusante(cm)</td>";
+				$tabela .= $jusanteManha . "</tr>";
+			}else{
+				$tabela .= "<td>Nível(cm)</td>";
+				$tabela .= $nivelManha . "</tr>";
+			}*/
+			$tabela .= "<tr>";
+			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
+			$tabela .= "Fábrica de Gelo</td>";
+			//$tabela .= "<td>Condição</td>";
+			$tabela .= $analiseTarde . "</tr>";
+			$tabela .= "<tr>";
+                        $tabela .= "<td style='background-color: #DCDCDC'>$tarde_semPreenchimento</td>";
+                        $tabela .= "<td style='background-color: #33fd33'>$tarde_op</td>";
+                        $tabela .= "<td style='background-color: #fb3a3a'>$tarde_fo</td>";
+                        $tabela .= "<td style='background-color: #9e9e9e'>$tarde_na</td>";
+                        $tabela .= "<td>$status_fabricadegelo</td>";
+			/*if($jusante){
+				$tabela .= "<td>Montante(cm)</td>";
+				$tabela .= $nivelTarde . "</tr>";
+				$tabela .= "<td>Jusante(cm)</td>";
+				$tabela .= $jusanteTarde . "</tr>";
+			}else{
+				$tabela .= "<td>Nível(cm)</td>";
+				$tabela .= $nivelTarde . "</tr>";
+			}*/
+
+			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
+
+			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
+			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
+			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
+			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
+			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
+			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
+			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
+			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
+			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
+			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
+			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
+			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
+                $cont++; 
+                $manha_op=0;
+                $tarde_op=0;
+                $manha_fo=0;
+                $tarde_fo=0;
+                $manha_na=0;
+                $tarde_na=0;
+		}
+
+
+
+		$return['fluviometrico_resumo'] = $tabelas;
+                $this->load->view('painelgerencialdaq/statusOperacaoView', $return);
+
+    }
+//------------------------------------------------------------------------------
+public function statusEclusa() {
+    $dados['id_contrato_obra'] = $this->input->post_get("id_contrato_obra");
+            $dados['periodo'] = $this->input->post_get("periodo");
+        $dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra_painel($dados);
+		$data = explode('-',$dados['periodo']);
+		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
+		$tabelas = array();
+                $cont=1;
+		foreach ($dadosInfras as $linha => $listaInfra) {
+			$tabela = "";
+                        if($cont==1){
+			$tabela .= "<tr class='centerBold'>";
+			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
+			/*for($i = 1; $i <= $totaldias; $i++){
+				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
+			}*/
+                        $tabela .= "<td style='background-color: #DCDCDC'>SP</td>";
+                        $tabela .= "<td style='background-color: #33fd33'>OP</td>";
+                        $tabela .= "<td style='background-color: #fb3a3a'>FO</td>";
+                        $tabela .= "<td style='background-color: #9e9e9e'>N/A</td>";
+                        $tabela .= "<td>Último Status</td>";
+                        }
+			$tabela .= "</tr>";
+
+			$dados['infraestrutura'] = $listaInfra->nome_eixo;
+                        $status_eclusa = $listaInfra->status_eclusa;
+                        $status_fabricadegelo = $listaInfra->status_fabricadegelo;
+			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
+                        
+			$jusante = false;
+			$arrayDias = array();
+			if(count($dadosControleFluv) > 0 ){
+				foreach($dadosControleFluv as $diasControle){
+					
+					$arrayDias[$diasControle->dia]['manhaJusante'] = $diasControle->jusante_manha;
+
+					
+
+					if($diasControle->jusante_manha != NULL ){
+						$jusante = true;
+					}
+				}
+			}
+
+			$analiseManha = "";
+			$nivelManha = "";
+			$jusanteManha = "";
+			$manha_semPreenchimento = 0;
+			$manha_acimaMedia = 0;
+			$manha_acimaMesmo = 0;
+			$manha_naMedia = 0;
+			$manha_abaixoMesmo = 0;
+			$manha_nhouveatividade = 0;
+
+			$analiseTarde = "";
+			$nivelTarde = "";
+			$jusanteTarde = "";
+			$tarde_semPreenchimento = 0;
+			$tarde_acimaMedia = 0;
+			$tarde_acimaMesmo = 0;
+			$tarde_naMedia = 0;
+			$tarde_abaixoMesmo = 0;
+			$tarde_nhouveatividade = 0;
+                        
+                        $manhajusante_semPreenchimento=0;
+                        $manhajusante_op=0;
+                        $manhajusante_fo=0;
+                        $manhajusante_na=0;
+                        
+                        $manha_op=0;
+                        $tarde_op=0;
+                        $manha_fo=0;
+                        $tarde_fo=0;
+                        $manha_na=0;
+                        $tarde_na=0;
+			for($i = 1; $i <= $totaldias; $i++){
+				if(isset($arrayDias[$i])){
+					if($arrayDias[$i]['manhaJusante'] == NULL){
+						$color = '#DCDCDC';
+                                                
+						$manhajusante_semPreenchimento++;
+                                                
+					}else if($arrayDias[$i]['manhaJusante'] == 'Em Operação'){
+						$color = '#37bf48';
+						
+                                                $manhajusante_op++;
+					}else if($arrayDias[$i]['manhaJusante'] == 'Fora de Operação'){
+						$color = '#c13259';
+						
+                                                $manhajusante_fo++;
+					}else if($arrayDias[$i]['manhaJusante'] == 'Não Aplicável'){
+						$color = '#7e757d';
+						
+                                                $manhajusante_na++;
+					}else{
+						$color = '#DCDCDC';
+						
+                                                $manhajusante_semPreenchimento++;
+					}
+
+					
+				}else{
+					$color = '#DCDCDC';
+					
+					$manhajusante_semPreenchimento++;
+                                       
+                                        
+
+					
+				}
+			}
+                        
+			
+                        
+                        $tabela .= "<tr>";
+                        $tabela .= "<td>";
+                        $tabela .= $listaInfra->nome_eixo . "</td>";
+                        $tabela .= "<td>";
+                        $tabela .= "ECLUSA</td>";
+                        
+                       
+                       $tabela .= "<td style='background-color: #DCDCDC'>$manhajusante_semPreenchimento</td>";
+                        $tabela .= "<td style='background-color: #33fd33'>$manhajusante_op</td>";
+                        $tabela .= "<td style='background-color: #fb3a3a'>$manhajusante_fo</td>";
+                        $tabela .= "<td style='background-color: #9e9e9e'>$manhajusante_na</td>";
+                        $tabela .= "<td>$status_eclusa</td>";
+                        
+                        
+                        
+                       
+                       
+                        
+			
+			
+
+			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
+
+			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
+			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
+			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
+			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
+			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
+			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
+			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
+			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
+			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
+			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
+			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
+			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
+                $cont++; 
+                $manhajusante_op=0;
+                $tardejusante_op=0;
+                $manhajusante_fo=0;
+                $tardejusante_fo=0;
+                $manhajusante_na=0;
+                $tardejusante_na=0;
+		}
+
+
+
+		$return['fluviometrico_resumo_eclusa'] = $tabelas;
+                $this->load->view('painelgerencialdaq/statusOperacaoEclusaView', $return);
+
+}    
+//------------------------------------------------------------------------------
+public function populaNomeInfra(){
+    $dados['id_contrato_obra'] = $this->input->post_get("id_contrato_obra");
+                $dados['periodo'] = $this->input->post_get("periodo");
+                $dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra($dados);
+                
+    echo json_encode($dadosInfras);            
+}
 
 }//Fecha Classe
 //######################################################################################################################################################################################################################## 

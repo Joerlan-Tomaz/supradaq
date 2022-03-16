@@ -429,7 +429,7 @@ public function RecuperaTabelaContrato()
 							 LEFT JOIN CGOB_TB_CONTRATO_SUPERVISORA as sup 
 								 ON con.nu_con_formatado_supervisor = sup.nu_con_formatado
 					where 1 = 1";
-		if ($_REQUEST['tipo'] == 'supervisao' && $_REQUEST['id_supervisora'] != '0') {
+		if ($_REQUEST['tipo'] == 'supervisao') {
 			$SQL .= " AND sup.id_contrato_supervisora = " . $_REQUEST['id_supervisora'];
 		}
 		$SQL .= "GROUP BY con.id_contrato_obra, CONCAT(con.nu_con_formatado, ' - ', con.no_empresa)

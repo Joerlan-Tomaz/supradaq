@@ -2930,22 +2930,21 @@
 		</div>
 	</section>
 	<?php } ?>
-	<?php
-	$cabecalho = true;
-	foreach($fluviometrico as $controleFluv){ ?>
-	<section id="controle_pluviometrico" class="sheet padding-10mm">
-		<?php if($cabecalho){ ?>
+	
+        <!-- --------------------------------------------------------------- -->
+        <section id="controle_pluviometrico" class="sheet padding-10mm">
+		
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
 				<h3>
-					<strong>12. CONTROLE FLUVIOMÉTRICO</strong>
+					<strong>12. STATUS DE OPERAÇÃO</strong>
 				</h3>
 			</div>
 		</div>
-		<?php }
-		$cabecalho = false;
-		?>
-		<div class="row">
+		
+		
+            <?php if($statusoperacao=='IP4'){ ?>
+                <div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
 				<table class="tabela bordaCompleta" style=" width: 100%;">
 					<tbody>
@@ -2954,7 +2953,9 @@
 							<br>
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<table class="bordaCompleta center tabela" style=" width: 100%;">
-									<?php echo $controleFluv['tabela'] ?>
+                                                                <?php    foreach($fluviometrico as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
 								</table>
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
@@ -2969,59 +2970,20 @@
 										<td>"SP"</td>
 									</tr>
 									<tr class="pluviometricoB">
-										<td>Acima da média histórica</td>
-										<td>"AC"</td>
-									</tr>
-									<tr class="pluviometricoIS">
-										<td>Acima do mesmo dia do ano anterior</td>
-										<td>"AA"</td>
-									</tr>
-									<tr class="pluviometricoC">
-										<td>Na média</td>
-										<td>"NM"</td>
+										<td>Em Operação</td>
+										<td>"OP"</td>
 									</tr>
 									<tr class="pluviometricoI">
-										<td>Abaixo do mesmo dia do ano anterior</td>
-										<td>"AB</td>
+										<td>Fora de Operação</td>
+										<td>"FO</td>
 									</tr>
 									<tr class="pluviometricoNA">
-										<td>NÃO HOUVERAM ATIVIDADES</td>
+										<td>Não Aplicável</td>
 										<td>"N/A"</td>
 									</tr>
 								</table>
 							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
-								Resumo: <br>
-								<table class="bordaCompleta center tabela" style=" width: 40%;">
-									<tr class="centerBold">
-										<td>PERÍODO</td>
-										<td class="pluviometricoSP">SP</td>
-										<td class="pluviometricoB">AC</td>
-										<td class="pluviometricoIS">AA</td>
-										<td class="pluviometricoC">NM</td>
-										<td class="pluviometricoI">AB</td>
-										<td class="pluviometricoNA">N/A</td>
-									</tr>
-									<tr>
-										<td>Manhã</td>
-										<td class="pluviometricoSP"><?= $controleFluv['manha_semPreenchimento'] ?> </td>
-										<td class="pluviometricoB"><?= $controleFluv['manha_acimaMedia'] ?> </td>
-										<td class="pluviometricoIS"><?= $controleFluv['manha_acimaMesmo'] ?> </td>
-										<td class="pluviometricoC"><?= $controleFluv['manha_naMedia'] ?> </td>
-										<td class="pluviometricoI"><?= $controleFluv['manha_abaixoMesmo'] ?> </td>
-										<td class="pluviometricoNA"><?= $controleFluv['manha_nhouveatividade'] ?> </td>
-									</tr>
-									<tr>
-										<td>Manhã</td>
-										<td class="pluviometricoSP"><?= $controleFluv['tarde_semPreenchimento'] ?> </td>
-										<td class="pluviometricoB"><?= $controleFluv['tarde_acimaMedia'] ?> </td>
-										<td class="pluviometricoIS"><?= $controleFluv['tarde_acimaMesmo'] ?> </td>
-										<td class="pluviometricoC"><?= $controleFluv['tarde_naMedia'] ?> </td>
-										<td class="pluviometricoI"><?= $controleFluv['tarde_abaixoMesmo'] ?> </td>
-										<td class="pluviometricoNA"><?= $controleFluv['tarde_nhouveatividade'] ?> </td>
-									</tr>
-								</table>
-							</div>
+							
 						</td>
 					</tr>
 					<tr>
@@ -3061,8 +3023,436 @@
 				</table>
 			</div>
 		</div>
+                    
+               <?php } ?>
+              <?php  if($statusoperacao=='ECLUSA'){ ?>
+                <div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
+				<table class="tabela bordaCompleta" style=" width: 100%;">
+					<tbody>
+					<tr>
+						<td colspan="12">
+							<br>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="bordaCompleta center tabela" style=" width: 100%;">
+                                                                <?php    foreach($fluviometrico_eclusa as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
+								</table>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
+								Convenção: <br>
+								<table class="bordaCompleta center tabela" style=" width: 40%;">
+									<tr class="centerBold">
+										<td>CONDIÇÃO</td>
+										<td>LEGENDA - LETRA</td>
+									</tr>
+									<tr class="pluviometricoSP">
+										<td>SEM PREENCHIMENTO</td>
+										<td>"SP"</td>
+									</tr>
+									<tr class="pluviometricoB">
+										<td>Em Operação</td>
+										<td>"OP"</td>
+									</tr>
+									<tr class="pluviometricoI">
+										<td>Fora de Operação</td>
+										<td>"FO</td>
+									</tr>
+									<tr class="pluviometricoNA">
+										<td>Não Aplicável</td>
+										<td>"N/A"</td>
+									</tr>
+								</table>
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: #015175;color:white;">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6" style="border-right: 1px solid black;">
+									<dl class="dl-horizontal">
+										<!--									<dt>Hidrovia</dt>-->
+										<!--									<dd>--><?//= $hidrovia_localizacao; ?><!--</dd>-->
+										<!--									<dt>Municipio</dt>-->
+										<!--									<dd>--><?//= $municio_localizacao; ?><!--</dd>-->
+										<!--									<dt>Extensão/Área</dt>-->
+										<!--									<dd>--><?//= $extensao_localizacao; ?><!--</dd>-->
+										<dt>Contrato</dt>
+										<dd><?= $n_contrato_obra; ?></dd>
+										<dt>Empresa</dt>
+										<dd><?= $empresa_obra; ?></dd>
+									</dl>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<dl class="dl-horizontal">
+										<dt>Mês de referência</dt>
+										<dd><?= $periodo_referencia ?></dd>
+										<!--									<dt>Versão</dt>-->
+										<!--									<dd>--><?// ?><!--</dd>-->
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dd><img src="<?php echo(base_url('assets/img/LogoDNIT.png')) ?>"
+												 style="width: 150px"></dd>
+									</dl>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>    
+              <?php   } ?>
+              <?php  if($statusoperacao=='vazio'){ ?>
+               <div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
+				<table class="tabela bordaCompleta" style=" width: 100%;">
+					<tbody>
+					<tr>
+						<td colspan="12">
+							<br>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="bordaCompleta center tabela" style=" width: 100%;">
+                                                                <?php    foreach($fluviometrico as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
+								</table>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
+								Convenção: <br>
+								<table class="bordaCompleta center tabela" style=" width: 40%;">
+									<tr class="centerBold">
+										<td>CONDIÇÃO</td>
+										<td>LEGENDA - LETRA</td>
+									</tr>
+									<tr class="pluviometricoSP">
+										<td>SEM PREENCHIMENTO</td>
+										<td>"SP"</td>
+									</tr>
+									<tr class="pluviometricoB">
+										<td>Em Operação</td>
+										<td>"OP"</td>
+									</tr>
+									<tr class="pluviometricoI">
+										<td>Fora de Operação</td>
+										<td>"FO</td>
+									</tr>
+									<tr class="pluviometricoNA">
+										<td>Não Aplicável</td>
+										<td>"N/A"</td>
+									</tr>
+								</table>
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: #015175;color:white;">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6" style="border-right: 1px solid black;">
+									<dl class="dl-horizontal">
+										<!--									<dt>Hidrovia</dt>-->
+										<!--									<dd>--><?//= $hidrovia_localizacao; ?><!--</dd>-->
+										<!--									<dt>Municipio</dt>-->
+										<!--									<dd>--><?//= $municio_localizacao; ?><!--</dd>-->
+										<!--									<dt>Extensão/Área</dt>-->
+										<!--									<dd>--><?//= $extensao_localizacao; ?><!--</dd>-->
+										<dt>Contrato</dt>
+										<dd><?= $n_contrato_obra; ?></dd>
+										<dt>Empresa</dt>
+										<dd><?= $empresa_obra; ?></dd>
+									</dl>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<dl class="dl-horizontal">
+										<dt>Mês de referência</dt>
+										<dd><?= $periodo_referencia ?></dd>
+										<!--									<dt>Versão</dt>-->
+										<!--									<dd>--><?// ?><!--</dd>-->
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dd><img src="<?php echo(base_url('assets/img/LogoDNIT.png')) ?>"
+												 style="width: 150px"></dd>
+									</dl>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>     
+              <?php  } ?>
+
+               
+		
 	</section>
-	<?php } ?>
+        <!-- --------------------------------------------------------------- -->
+        
+        <!-- --------------------------------------------------------------- -->
+        <section id="controle_pluviometrico_resumo" class="sheet padding-10mm">
+		
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
+				<h3>
+					<strong>12.1 STATUS DE OPERAÇÃO RESUMO</strong>
+				</h3>
+			</div>
+		</div>
+		<?php if($statusoperacao=='IP4'){ ?>
+            <div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
+				<table class="tabela bordaCompleta" style=" width: 100%;">
+					<tbody>
+					<tr>
+						<td colspan="12">
+							<br>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="bordaCompleta center tabela" style=" width: 100%;">
+                                                                <?php    foreach($fluviometrico_resumo as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
+								</table>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
+								Convenção: <br>
+								<table class="bordaCompleta center tabela" style=" width: 40%;">
+									<tr class="centerBold">
+										<td>CONDIÇÃO</td>
+										<td>LEGENDA - LETRA</td>
+									</tr>
+									<tr class="pluviometricoSP">
+										<td>SEM PREENCHIMENTO</td>
+										<td>"SP"</td>
+									</tr>
+									<tr class="pluviometricoB">
+										<td>Em Operação</td>
+										<td>"OP"</td>
+									</tr>
+									<tr class="pluviometricoI">
+										<td>Fora de Operação</td>
+										<td>"FO</td>
+									</tr>
+									<tr class="pluviometricoNA">
+										<td>Não Aplicável</td>
+										<td>"N/A"</td>
+									</tr>
+								</table>
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: #015175;color:white;">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6" style="border-right: 1px solid black;">
+									<dl class="dl-horizontal">
+										<!--									<dt>Hidrovia</dt>-->
+										<!--									<dd>--><?//= $hidrovia_localizacao; ?><!--</dd>-->
+										<!--									<dt>Municipio</dt>-->
+										<!--									<dd>--><?//= $municio_localizacao; ?><!--</dd>-->
+										<!--									<dt>Extensão/Área</dt>-->
+										<!--									<dd>--><?//= $extensao_localizacao; ?><!--</dd>-->
+										<dt>Contrato</dt>
+										<dd><?= $n_contrato_obra; ?></dd>
+										<dt>Empresa</dt>
+										<dd><?= $empresa_obra; ?></dd>
+									</dl>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<dl class="dl-horizontal">
+										<dt>Mês de referência</dt>
+										<dd><?= $periodo_referencia ?></dd>
+										<!--									<dt>Versão</dt>-->
+										<!--									<dd>--><?// ?><!--</dd>-->
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dd><img src="<?php echo(base_url('assets/img/LogoDNIT.png')) ?>"
+												 style="width: 150px"></dd>
+									</dl>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+                <?php } ?>
+                <?php if($statusoperacao=='ECLUSA'){ ?>
+                <div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
+				<table class="tabela bordaCompleta" style=" width: 100%;">
+					<tbody>
+					<tr>
+						<td colspan="12">
+							<br>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="bordaCompleta center tabela" style=" width: 100%;">
+                                                                <?php    foreach($fluviometrico_resumo_eclusa as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
+								</table>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
+								Convenção: <br>
+								<table class="bordaCompleta center tabela" style=" width: 40%;">
+									<tr class="centerBold">
+										<td>CONDIÇÃO</td>
+										<td>LEGENDA - LETRA</td>
+									</tr>
+									<tr class="pluviometricoSP">
+										<td>SEM PREENCHIMENTO</td>
+										<td>"SP"</td>
+									</tr>
+									<tr class="pluviometricoB">
+										<td>Em Operação</td>
+										<td>"OP"</td>
+									</tr>
+									<tr class="pluviometricoI">
+										<td>Fora de Operação</td>
+										<td>"FO</td>
+									</tr>
+									<tr class="pluviometricoNA">
+										<td>Não Aplicável</td>
+										<td>"N/A"</td>
+									</tr>
+								</table>
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: #015175;color:white;">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6" style="border-right: 1px solid black;">
+									<dl class="dl-horizontal">
+										<!--									<dt>Hidrovia</dt>-->
+										<!--									<dd>--><?//= $hidrovia_localizacao; ?><!--</dd>-->
+										<!--									<dt>Municipio</dt>-->
+										<!--									<dd>--><?//= $municio_localizacao; ?><!--</dd>-->
+										<!--									<dt>Extensão/Área</dt>-->
+										<!--									<dd>--><?//= $extensao_localizacao; ?><!--</dd>-->
+										<dt>Contrato</dt>
+										<dd><?= $n_contrato_obra; ?></dd>
+										<dt>Empresa</dt>
+										<dd><?= $empresa_obra; ?></dd>
+									</dl>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<dl class="dl-horizontal">
+										<dt>Mês de referência</dt>
+										<dd><?= $periodo_referencia ?></dd>
+										<!--									<dt>Versão</dt>-->
+										<!--									<dd>--><?// ?><!--</dd>-->
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dd><img src="<?php echo(base_url('assets/img/LogoDNIT.png')) ?>"
+												 style="width: 150px"></dd>
+									</dl>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+                <?php } ?> 
+                <?php if($statusoperacao=='vazio'){ ?>
+            <div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify table-responsive">
+				<table class="tabela bordaCompleta" style=" width: 100%;">
+					<tbody>
+					<tr>
+						<td colspan="12">
+							<br>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<table class="bordaCompleta center tabela" style=" width: 100%;">
+                                                                <?php    foreach($fluviometrico_resumo as $controleFluv){ 
+									 echo $controleFluv['tabela']; 
+                                                                } ?>                 
+								</table>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="  margin: 2% 0%;">
+								Convenção: <br>
+								<table class="bordaCompleta center tabela" style=" width: 40%;">
+									<tr class="centerBold">
+										<td>CONDIÇÃO</td>
+										<td>LEGENDA - LETRA</td>
+									</tr>
+									<tr class="pluviometricoSP">
+										<td>SEM PREENCHIMENTO</td>
+										<td>"SP"</td>
+									</tr>
+									<tr class="pluviometricoB">
+										<td>Em Operação</td>
+										<td>"OP"</td>
+									</tr>
+									<tr class="pluviometricoI">
+										<td>Fora de Operação</td>
+										<td>"FO</td>
+									</tr>
+									<tr class="pluviometricoNA">
+										<td>Não Aplicável</td>
+										<td>"N/A"</td>
+									</tr>
+								</table>
+							</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td style="background-color: #015175;color:white;">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6" style="border-right: 1px solid black;">
+									<dl class="dl-horizontal">
+										<!--									<dt>Hidrovia</dt>-->
+										<!--									<dd>--><?//= $hidrovia_localizacao; ?><!--</dd>-->
+										<!--									<dt>Municipio</dt>-->
+										<!--									<dd>--><?//= $municio_localizacao; ?><!--</dd>-->
+										<!--									<dt>Extensão/Área</dt>-->
+										<!--									<dd>--><?//= $extensao_localizacao; ?><!--</dd>-->
+										<dt>Contrato</dt>
+										<dd><?= $n_contrato_obra; ?></dd>
+										<dt>Empresa</dt>
+										<dd><?= $empresa_obra; ?></dd>
+									</dl>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<dl class="dl-horizontal">
+										<dt>Mês de referência</dt>
+										<dd><?= $periodo_referencia ?></dd>
+										<!--									<dt>Versão</dt>-->
+										<!--									<dd>--><?// ?><!--</dd>-->
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dd><img src="<?php echo(base_url('assets/img/LogoDNIT.png')) ?>"
+												 style="width: 150px"></dd>
+									</dl>
+								</div>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+                <?php } ?>
+		
+		
+	</section>
+        
+        
+        <!-- --------------------------------------------------------------- -->        
+        
 
 	<section id="resumo_avanco_fisico" class="sheet padding-10mm">
 		<div class="row" id="resumo_avanco_fisico">

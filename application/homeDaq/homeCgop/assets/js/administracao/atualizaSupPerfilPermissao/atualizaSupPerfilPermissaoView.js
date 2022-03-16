@@ -129,8 +129,8 @@ function populaSupervisora(id_usuario) {
 			var inputOrigem = $('select[id=supervisora_atualizaPerfil]');
 			inputOrigem.html('');
 			inputOrigem.append("<option value=''>Selecione</option>");
-			inputOrigem.append("<option value='0' selected>00 00000/0000 - CONTARATO SEM SUPERVISÃO</option>");
 			for (var i = 0; i < data.id_supervisora.length; i++) {
+				// inputOrigem.append("<option value='" + data.id_supervisora[i] + "'>" + data.nome_supervisora[i] + "</option>");
 				inputOrigem.append("<option value='" + data.id_supervisora[i] + "' " + data.supervisaoAtiva[i] + ">" + data.nome_supervisora[i] + "</option>");
 			}
 		}, error: function (data) {

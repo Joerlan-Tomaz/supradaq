@@ -36,17 +36,14 @@ class Relatorioctr extends CI_Controller
 		$this->load->model('/Supervisaodaq/Tb_apresentacao_construtora_localizacao');
 		$this->load->model('/Supervisaodaq/Tb_art_supervisao');
 		$this->load->model('/Supervisaodaq/Tb_licencas_ambientais');
-		$this->load->model('Tb_usuario');
-		$this->load->model('/Supervisaodaq/Tb_telas_validacao');
-		$this->load->model('/Supervisaodaq/Tb_controle_pluviometrico');
-		$this->load->model('/Supervisaodaq/Tb_controle_fluviometrico');
+                $this->load->model('Tb_usuario');
 		$this->load->database('DAQ', TRUE);
 		$this->load->helper('url');
 		if (empty($this->session->id_usuario)) {
 			redirect(base_url());
 		}
 	}
-
+       
 //----------------------------------------------------------------------------------------------------------
 	public function ResultadoElabracaoRelatorioDaqq()
 	{
@@ -87,12 +84,12 @@ class Relatorioctr extends CI_Controller
 	public function finalizarelatoriodaq()
 	{
 		$dados["id_contrato_obra"] = $this->session->idContrato;
-		$dados["idUsuario"] = $this->session->id_usuario_daq_cgop;
+		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["periodo"] = $this->input->post_get("periodo");
-		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-		foreach ($dadosusuario as $lista) {
-			$perfil = $lista->id_perfil;
-		}
+                $dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+                foreach ($dadosusuario as $lista) {
+                    $perfil = $lista->id_perfil;
+                }
 		$dados["id_perfil_analise"] = $perfil;
 		//print_r( $dados["id_perfil_analise"]);
 		//-----------------------------------------------------------------
@@ -111,12 +108,12 @@ class Relatorioctr extends CI_Controller
 	public function validaperfil()
 	{
 		$dados["id_contrato_obra"] = $this->session->idContrato;
-		$dados["idUsuario"] = $this->session->id_usuario_daq_cgop;
+		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["periodo"] = $this->input->post_get("periodo");
-		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-		foreach ($dadosusuario as $lista) {
-			$perfil = $lista->id_perfil;
-		}
+                $dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+                foreach ($dadosusuario as $lista) {
+                        $perfil = $lista->id_perfil;
+                }
 		$dados["id_perfil_analise"] = $perfil;
 		//print_r( $dados["id_perfil_analise"]);
 		//-----------------------------------------------------------------
@@ -133,7 +130,7 @@ class Relatorioctr extends CI_Controller
 	public function validaRecibodaq()
 	{
 		$dados["id_contrato_obra"] = $this->session->idContrato;
-		$dados["idUsuario"] = $this->session->id_usuario_daq_cgop;
+		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["periodo"] = $this->input->post_get("periodo");
 		$resultadorecibo = $this->Tb_analise_relatorio->AndamentoReciboDaq($dados);
 		//-----------------------------------------------------------------
@@ -172,12 +169,12 @@ class Relatorioctr extends CI_Controller
 //----------------------------------------------------------------------------------------------------------
 
 	public function returnelaboracaodaq()
-	{
+	{ 
 		$dados["id_contrato_obra"] = $this->session->idContrato;
-		$dados["idUsuario"] = $this->session->id_usuario_daq_cgop;
+		$dados["idUsuario"] = $this->session->id_usuario_daq;
 		$dados["periodo"] = $this->input->post_get("periodo");
-
-
+                
+                
 		$resultadoelaboracao = $this->Tb_relatorio->AndamentoDaq($dados);
 
 		$var1 = 0;
@@ -200,7 +197,7 @@ class Relatorioctr extends CI_Controller
 			}
 			if ($var1 > 0 and $var2 > 0) {
 				$dados['data'] = "Aprovado";
-				die (json_encode($dados));
+                                die (json_encode($dados));
 			}
 		}
 
@@ -209,19 +206,19 @@ class Relatorioctr extends CI_Controller
 		$roteiro = '';
 		$perfil = '';
 
-		if (!empty($AndamentoanaliseDaq) and ($var1 == 0 || $var2 == 0)) {
+		if (!empty($AndamentoanaliseDaq) and ($var1 == 0 || $var2 == 0)) { 
 			foreach ($AndamentoanaliseDaq as $andamento) {
 
 				$aceite = $andamento->id_aceite;
 				$roteiro = $andamento->roteiro_analise;
 				$dados['aceite'] = $aceite;
-				$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-				foreach ($dadosusuario as $lista) {
-					$perfil = $lista->id_perfil;
-				}
-				$dados['perfil'] = $perfil;
+                                $dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+                                foreach ($dadosusuario as $lista) {
+                                    $perfil = $lista->id_perfil;
+                                }
+                                $dados['perfil'] = $perfil;
 
-				//---------------------------------------------------------------
+                //---------------------------------------------------------------
 				if ($aceite == "aprovado" && $perfil == 2) {
 
 					$dados['data'] = "aguardando_analise_fiscal";
@@ -261,23 +258,13 @@ class Relatorioctr extends CI_Controller
 
 					$dados['data'] = "fechar_relatorio";
 				}
-				//-----------------------------------------------------------------
-				if (($aceite == "aprovado")) {
-
-					$dados['data'] = "Aprovado";
-				}
-
-				if (($aceite == "reaberto")) {
-
-					$dados['data'] = "reaberto";
-				}
 			}
 		} else {
 			$dados['data'] = "Elaboracao";
 		}
 
 		# code...
-                
+               
 		echo json_encode($dados);
 	}
 
@@ -307,17 +294,30 @@ class Relatorioctr extends CI_Controller
 		$dados["id_contrato_obra"] = $this->session->idContrato;
 		$dados["idContrato"] = $this->session->idContrato;
 		$dados["periodo"] = $this->input->post_get("periodo");
-		$dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
-
-		foreach ($dadosusuario as $lista) {
-			$perfil = $lista->id_perfil;
-		}
-
+                $dadosusuario = $this->Tb_usuario->recuperaUsuarioSessao();
+                foreach ($dadosusuario as $lista) {
+                        $perfil = $lista->id_perfil;
+                }
 		$dados["perfil"] = $perfil;
 
-		$dados["periodo"] = $this->input->post_get("periodo");
-		$dados['relaboracao'] = $this->Tb_telas_validacao->valida_formulario($dados);
+		//-----------------------------------------------------------------
+		$ElaboracaoRelatorioDaq = $this->Tb_relatorio->DadosImpressaoRelatorioDaq($dados);
+		$j = 0;
+		$retorno = array();
+		if (!empty($ElaboracaoRelatorioDaq)) {
+			foreach ($ElaboracaoRelatorioDaq as $elaboracao) {
+                                if($elaboracao->id_modulo != 25){
+				$retorno["relaboracao"][$j] = $elaboracao->id_modulo;
 
+				$j++;
+                                }
+			}
+			$counts = array_unique($retorno["relaboracao"]);
+			$dados["relaboracao"] = sizeof($counts);
+		} else {
+			$dados["relaboracao"] = 0;
+		}
+               
 		echo json_encode($dados);
 	}
 
@@ -380,42 +380,46 @@ class Relatorioctr extends CI_Controller
 		$dados["id_contrato_obra"] = $this->session->idContrato;
 		$dados["id"] = $this->session->idContrato;
 		$dados["periodo"] = $this->input->post_get("periodo");
+		$num = 1;
 
-		$lista = $this->Tb_telas_validacao->buscaTelas();
-                
-		foreach ($lista as $id => $tela) {
-			$dados['id_tela_formulario'] = $tela->id_tela_formulario;
-			$dados['validacao_unica'] = $tela->validacao_unica;
-			$validacaoTela = $this->Tb_telas_validacao->BuscaValidacao($dados);
+		$lista = array('14' => 'Justificativa do Empreendimento', '15' => 'Mapa de Situação', '3' => 'Resumo do Projeto', '24' => 'RPFO - Revisão de projetos em fase de obra', '1' => 'Histórico da Obra', '2' => 'Introdução', '19' => 'Apresentação Supervisora', '22' => 'Relação de Mobilização da Supervisora', '9' => 'Atividades da Supervisora', '18' => 'Apresentação Construtora', '23' => 'Relação de Mobilização da Construtora', '12' => 'Atividades da Construtora', '25' => 'Acompanhamento financeiro', '26' => 'Acompanhamento físico', '10' => 'Análise Crítica Cronogramas', '27' => 'Controle pluviométrico', '13' => 'Documentação Fotográfica', '11' => 'Monitoramento Ambiental', '6' => 'Ensaios Construção', '7' => 'Ensaios Supervisão', '28' => 'Registro de não conformidade (RNC)', '29' => 'Gestão Jurídica,Garantias e Seguros', '30' => 'Riscos e Interferências', '31' => 'Diário de Obra', '32' => 'Atas e Correspondências', '33' => 'Gestão de Tratativas', '5' => 'Conclusão e Comentários', '34' => 'Termo de Encerramento', '8' => 'Anexos');
+		$ImpressaoRelatorioDaq = $this->Tb_relatorio->DadosImpressaoRelatorioDaq($dados);
+		$array = json_decode(json_encode($ImpressaoRelatorioDaq), true);
+		$total = count($array);
 
-			if (count($validacaoTela) > 0) {
-				if($validacaoTela[0]->id_usuario_analise == '' && $validacaoTela[0]->id_usuario_analise == null){
-					$usuario = $validacaoTela[0]->DESC_NOME;
-					$alteracao = $validacaoTela[0]->ultima_alteracao;
-					$acao = "<a data-toggle='tooltip' title='Status Análise' data-placement='top' style='font-size:20px'>
-										 <i class=' fa fa-check-circle' style='color:green'></i></a>";
-				}else{
-					$usuario = $validacaoTela[0]->nome_analise;
-					$alteracao = $validacaoTela[0]->data_ultima_analise;
-					$acao = "<a data-toggle='tooltip' title='Status Análise' data-placement='top' style='font-size:20px'>
-										 <i class=' fa fa-circle' style='color:red'></i></a>";
-				}
+		$arr = [];
+		for ($j = 0; $j < $total; $j++) {
+			$a = $array[$j]['id_modulo'];
+			array_push($arr, $a);
+		}
+
+		foreach ($lista as $id => $var) {
+
+			if (array_search($id, $arr) !== false) {
+				$key = array_search($id, $arr);
+				$usuario = $array[$key]['usuario'];
+				$alteracao = $array[$key]['ultima_alteracao'];
+
+				$acao = "<a data-toggle='tooltip' title='Status Análise' data-placement='top' style='font-size:20px'>
+                                     <i class=' fa fa-check-circle' style='color:green'></i></a>";
+
 			} else {
 				$usuario = '- - -';
 				$alteracao = '- - -';
 				$acao = "<a data-toggle='tooltip' title='Status Análise' data-placement='top' style='font-size:20px'>
                                      <i class=' fa fa-check-circle' style='color:#9E9E9E'></i></a>";
+
 			}
 
 			$dados['data'][] = array(
-				"cont" => $id,
-				"modulo" => $tela->nome_tela,
+				"cont" => $num++,
+				"modulo" => $var,
 				"nome" => $usuario,
 				"data" => $alteracao,
 				"acao" => $acao
 			);
 		}
-               
+
 		echo(json_encode($dados));
 	}
 
@@ -605,7 +609,7 @@ class Relatorioctr extends CI_Controller
 
 //----------------------------------------
 	public function returnRelatorioDaq()
-	{
+	{ 
 		$dados["periodo"] = $this->input->post_get("periodo");
 
 		if (!empty($this->input->post_get("id"))) {
@@ -668,23 +672,20 @@ class Relatorioctr extends CI_Controller
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 
-		/*$JustificativaDeEmpreendimento = $this->Tb_relatorio->JustificativaDeEmpreendimento($dados);
+		$JustificativaDeEmpreendimento = $this->Tb_relatorio->JustificativaDeEmpreendimento($dados);
 
 		if (!empty($JustificativaDeEmpreendimento)) {
 			$return['resumo_justificativa'] = $JustificativaDeEmpreendimento[0]["resumo_justificativa"];
 		} else {
 			$return['resumo_justificativa'] = '<div class="alert alert-danger" role="alert">[1. JUSTIFICATIVA E APRESENTAÇÃO DO EMPREENDIMENTO] não cadastrado!</div>';
-		}*/
-                
-                $return['JustificativaDeEmpreendimentoTodos'] = $this->Tb_relatorio->JustificativaDeEmpreendimentoTodos($dados);
-        	 
+		}
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 		$mapasituacao = $this->Tb_relatorio->mapasituacao($dados);
 
 		if (!empty($mapasituacao)) {
-			$return['mapa_situacao'] = $mapasituacao;
+			$return['mapa_situacao'] = $mapasituacao[0]["mapa_situacao"];
 		} else {
 			$return['mapa_situacao_nao_cadastrado'] = '<div class="alert alert-danger" role="alert">[2. MAPA DE SITUAÇÃO] não cadastrado!</div>';
 		}
@@ -694,9 +695,84 @@ class Relatorioctr extends CI_Controller
 		$resumoprojeto = $this->Tb_relatorio->resumoprojeto($dados);
 
 		if (!empty($resumoprojeto)) {
-			$return['reumo_projeto_obra'] = $resumoprojeto;
+			foreach ($resumoprojeto as $key) {
+
+				if ($key->tipo_resumo == 1) {
+					$return['reumo_projeto_obra'] = '3.1 Construção Portuária';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 2) {
+					$return['reumo_projeto_obra'] = '3.1 Derrocagem';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 3) {
+					$return['reumo_projeto_obra'] = '3.1 Dragagem';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 4) {
+					$return['reumo_projeto_obra'] = '3.1 Desobstrução';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 5) {
+					$return['reumo_projeto_obra'] = '3.1 Recuperação Portuária';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 6) {
+					$return['reumo_projeto_obra'] = '3.1 Monitoramento Hidroviário';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 7) {
+					$return['reumo_projeto_obra'] = '3.1 Remoção do Navio';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 8) {
+					$return['reumo_projeto_obra'] = '3.1 Implantação de Sinalização em Hidrovias';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+				if ($key->tipo_resumo == 9) {
+					$return['reumo_projeto_obra'] = '3.1 Recuperação Eclusas e Barragens';
+					$return['reumo_projeto_obra_especifica'] = $key->resumo_projeto;
+				}
+
+				if (empty($return['reumo_projeto_obra_especifica'])) {
+					$return['reumo_projeto_obra_especifica'] = '<div class="alert alert-danger" role="alert">[3.1 RESUMO PROJETO] não cadastrado!</div>';
+				}
+				if (empty($return['reumo_projeto_obra'])) {
+					$return['reumo_projeto_obra'] = '3.1 Não cadastrado';
+				}
+				if (empty($return['Dragagem'])) {
+					$return['Dragagem'] = '<div class="alert alert-danger" role="alert">[3.3 Dragagem] não cadastrado!</div>';
+				}
+				if (empty($return['desobstrucao_presenca_vegetacao'])) {
+					$return['desobstrucao_presenca_vegetacao'] = '<div class="alert alert-danger" role="alert">[3.4 Desobstrução] não cadastrado!</div> ';
+				}
+				if (empty($return['dragagem_portos_maritimos'])) {
+					$return['dragagem_portos_maritimos'] = '<div class="alert alert-danger" role="alert">[3.5 Recuperação Portuária] não cadastrado!</div> ';
+				}
+				if (empty($return['construcao_estacao_passageiro'])) {
+					$return['construcao_estacao_passageiro'] = '<div class="alert alert-danger" role="alert">[3.6 Monitoramento Hidroviário] não cadastrado!</div> ';
+				}
+				if (empty($return['remocao_navio_haider'])) {
+					$return['remocao_navio_haider'] = '<div class="alert alert-danger" role="alert">[3.7 Remoção do Navio ] não cadastrado!</div> ';
+				}
+				if (empty($return['implantacao_sinalizacao_hidrovias'])) {
+					$return['implantacao_sinalizacao_hidrovias'] = '<div class="alert alert-danger" role="alert">[3.8 Implantação de Sinalização em Hidrovias] não cadastrado!</div> ';
+				}
+				if (empty($return['obras_em_clusas'])) {
+					$return['obras_em_clusas'] = '<div class="alert alert-danger" role="alert">[3.9 Recuperação Eclusas e Barragens] não cadastrado!</div> ';
+				}
+			}
 		} else {
-			$return['resumo_projeto'] = '<div class="alert alert-danger" role="alert">[3. RESUMO DO PROJETO] - não cadastrado! </div>';
+			$return['reumo_projeto_obra_especifica'] = '<div class="alert alert-danger" role="alert">[3.1 RESUMO PROJETO] não cadastrado!</div>';
+			$return['reumo_projeto_obra'] = '3.1 Não cadastrado';
+			$return['Dragagem'] = '<div class="alert alert-danger" role="alert">[3.3 Dragagem] não cadastrado!</div>';
+			$return['desobstrucao_presenca_vegetacao'] = '<div class="alert alert-danger" role="alert">[3.4 Desobstrução] não cadastrado!</div> ';
+			$return['dragagem_portos_maritimos'] = '<div class="alert alert-danger" role="alert">[3.5 Recuperação Portuária] não cadastrado!</div> ';
+			$return['construcao_estacao_passageiro'] = '<div class="alert alert-danger" role="alert">[3.6 Monitoramento Hidroviário] não cadastrado!</div> ';
+			$return['remocao_navio_haider'] = '<div class="alert alert-danger" role="alert">[3.7 Remoção do Navio ] não cadastrado!</div> ';
+			$return['implantacao_sinalizacao_hidrovias'] = '<div class="alert alert-danger" role="alert">[3.8 Implantação de Sinalização em Hidrovias] não cadastrado!</div> ';
+			$return['obras_em_clusas'] = '<div class="alert alert-danger" role="alert">[3.9 Recuperação Eclusas e Barragens] não cadastrado!</div> ';
+
 		}
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
@@ -706,7 +782,7 @@ class Relatorioctr extends CI_Controller
 		if (!empty($resumorpfo)) {
 			$return['resumo_rpfo'] = $resumorpfo[0]["resumo_rpfo"];
 		} else {
-			$return['resumo_rpfo'] = '<div class="alert alert-danger" role="alert">[3.10 REVISÕES DE PROJETO EM FASE DE OPERAÇÔES - RPFO] - Não houve atividade no mês </div>';
+			$return['resumo_rpfo'] = '<div class="alert alert-danger" role="alert">[3.10 REVISÕES DE PROJETO EM FASE DE OBRAS - RPFO] - Não houve atividade no mês </div>';
 		}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -900,7 +976,7 @@ class Relatorioctr extends CI_Controller
 		$AtividadeSupervisora = $this->Tb_relatorio->AtividadeSupervisora($dados);
 
 		if (!empty($AtividadeSupervisora)) {
-			$return['atividadesupervisoraexecutada'] = $AtividadeSupervisora;
+			$return['atividadesupervisoraexecutada'] = $AtividadeSupervisora[0]["atividade_supervisora"];
 		} else {
 			$return['atividadesupervisoraexecutada'] = '<div class="alert alert-danger" role="alert">[7.3 ATIVIDADES EXECUTADAS PELA SUPERVISORA] não cadastrado!</div>  ';
 		}
@@ -944,832 +1020,66 @@ class Relatorioctr extends CI_Controller
 		$return['anoacompanhemtofinanceiro'] = $this->Tb_cronogramafinanceiro->anoacompanhentofinanceiro($dados);
 		$return['acompanhamentofinanceirov'] = $this->Tb_cronogramafinanceiro->acompanhamentofinanceirov($dados);
 		$return['dadosresumoavancofisico'] = $this->Tb_cronogramafinanceiro->dadosresumoavancofisico($dados);
-
+                
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
+		$controlePluviometrico = $this->Tb_relatorio->controlePluviometrico($dados);
+		$controlePluviometricototal = $this->Tb_relatorio->controlePluviometricototal($dados);
 
-		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra($dados);
-		$data = explode('-',$dados["periodo"]);
-		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
-		$tabelas = array();
+		$return['total_dias'] = "";
+		$return['status_dia'] = "";
+		$return['total_bom'] = "-";
+		$return['total_instavel'] = "-";
+		$return['total_chuva'] = "-";
+		$return['total_imp'] = "-";
+		$return['total_nhouveatividade'] = "-";
 
-		foreach ($dadosInfras as $linha => $listaInfra) {
-			$tabela = "";
-			$tabela .= "<tr class='centerBold'>";
-			$tabela .= "<td>INFRAESTRUTURA\DIAS</td>";
-			for($i = 1; $i <= $totaldias; $i++){
-				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
+		foreach ($controlePluviometricototal as $controlePluviometricototal) {
+
+			if ($controlePluviometricototal->situacao == 'Bom') {
+				$return['total_bom'] = $controlePluviometricototal->qtd;
 			}
-			$tabela .= "</tr>";
-
-			$tabela .= "<tr>";
-			$tabela .= "<td>" . $listaInfra->nome_eixo . "</td>";
-			$semPreenchimento = 0;
-			$total_bom = 0;
-			$total_chuva = 0;
-			$total_imp = 0;
-			$total_instavel = 0;
-			$total_nhouveatividade = 0;
-
-			$dados['infraestrutura'] = $listaInfra->nome_eixo;
-			$dadosControlePluv = $this->Tb_controle_pluviometrico->recuperaControlePluv($dados);
-
-			if(count($dadosControlePluv) > 0){
-				foreach($dadosControlePluv as $diasControle){
-					if($diasControle->situacao == null){
-						$color = '#DCDCDC';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>SP</td>";
-						$semPreenchimento++;
-					}else if($diasControle->situacao == 'Bom'){
-						$color = '#33fd33';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>B</td>";
-						$total_bom++;
-					}else if($diasControle->situacao == 'Chuva'){
-						$color = '#7bb3d4';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>C</td>";
-						$total_chuva++;
-					}else if($diasControle->situacao == 'Impraticável'){
-						$color = '#fb3a3a';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>I</td>";
-						$total_imp++;
-					}else if($diasControle->situacao == 'Instavel'){
-						$color = '#FF0';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>S</td>";
-						$total_instavel++;
-					}else if($diasControle->situacao == 'Não houveram atividades'){
-						$color = '#9e9e9e';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>N/A</td>";
-						$total_nhouveatividade++;
-					}else{
-						$color = '#DCDCDC';
-						$arrayDias[$diasControle->dia] = "<td style='background-color: ".$color."'>SP</td>";
-						$semPreenchimento++;
-					}
-				}
+			if ($controlePluviometricototal->situacao == 'Chuva') {
+				$return['total_chuva'] = $controlePluviometricototal->qtd;
 			}
-			$total_semPreenchimento = 0;
-			for($i = 1; $i <= $totaldias; $i++){
-				if(isset($arrayDias[$i])){
-					$tabela .= $arrayDias[$i];
-				}else{
-					$total_semPreenchimento++;
-					$tabela .= "<td style='background-color: #DCDCDC'>SP</td>";
-				}
+
+			if ($controlePluviometricototal->situacao == 'Instavel') {
+				$return['total_instavel'] = $controlePluviometricototal->qtd;
 			}
-			$return['total_semPreenchimento'] = $total_semPreenchimento;
-			$tabela .= "</tr>";
 
-			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
+			if ($controlePluviometricototal->situacao == 'Impraticável') {
+				$return['total_imp'] = $controlePluviometricototal->qtd;
+			}
 
-			$tabelas[$listaInfra->nome_eixo]['semPreenchimento'] = $semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['total_bom'] = $total_bom;
-			$tabelas[$listaInfra->nome_eixo]['total_chuva'] = $total_chuva;
-			$tabelas[$listaInfra->nome_eixo]['total_imp'] = $total_imp;
-			$tabelas[$listaInfra->nome_eixo]['total_instavel'] = $total_instavel;
-			$tabelas[$listaInfra->nome_eixo]['total_nhouveatividade'] = $total_nhouveatividade;
+			if ($controlePluviometricototal->situacao == 'Não houveram atividades') {
+				$return['total_nhouveatividade'] = $controlePluviometricototal->qtd;
+			}
+
 		}
-		$return['pluviometrico'] = $tabelas;
+		foreach ($controlePluviometrico as $keycontrolePluviometrico) {
+			# code...
+			$situacao = $keycontrolePluviometrico->situacao;
+			$return['total_dias'] .= "<td>" . $keycontrolePluviometrico->dia . "</td>";
 
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra($dados);
-		$data = explode('-',$dados["periodo"]);
-		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
-		$tabelas = array();
-                $cont=1;
-		foreach ($dadosInfras as $linha => $listaInfra) {
-			$tabela = "";
-                        if($cont==1){
-			$tabela .= "<tr class='centerBold'>";
-			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
-			for($i = 1; $i <= $totaldias; $i++){
-				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
+			if ($situacao == 'Bom') {
+				$return['status_dia'] .= "<td class='pluviometricoB'>B</td>";
 			}
-                        }
-			$tabela .= "</tr>";
-
-			$dados['infraestrutura'] = $listaInfra->nome_eixo;
-			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
-
-			$jusante = false;
-			$arrayDias = array();
-			if(count($dadosControleFluv) > 0){
-				foreach($dadosControleFluv as $diasControle){
-					$arrayDias[$diasControle->dia]['manha'] = $diasControle->manha;
-					$arrayDias[$diasControle->dia]['manhaNivel'] = $diasControle->manha_nivel;
-					$arrayDias[$diasControle->dia]['manhaJusante'] = $diasControle->jusante_manha;
-
-					$arrayDias[$diasControle->dia]['tarde'] = $diasControle->tarde;
-					$arrayDias[$diasControle->dia]['tardeNivel'] = $diasControle->tarde_nivel;
-					$arrayDias[$diasControle->dia]['tardeJusante'] = $diasControle->jusante_tarde;
-
-					if($diasControle->jusante_manha != null || $diasControle->jusante_tarde != null){
-						$jusante = true;
-					}
-				}
+			if ($situacao == 'Chuva') {
+				$return['status_dia'] .= "<td class='pluviometricoC'>C</td>";
 			}
-
-			$analiseManha = "";
-			$nivelManha = "";
-			$jusanteManha = "";
-			$manha_semPreenchimento = 0;
-			$manha_acimaMedia = 0;
-			$manha_acimaMesmo = 0;
-			$manha_naMedia = 0;
-			$manha_abaixoMesmo = 0;
-			$manha_nhouveatividade = 0;
-
-			$analiseTarde = "";
-			$nivelTarde = "";
-			$jusanteTarde = "";
-			$tarde_semPreenchimento = 0;
-			$tarde_acimaMedia = 0;
-			$tarde_acimaMesmo = 0;
-			$tarde_naMedia = 0;
-			$tarde_abaixoMesmo = 0;
-			$tarde_nhouveatividade = 0;
-
-			for($i = 1; $i <= $totaldias; $i++){
-				if(isset($arrayDias[$i])){
-					if($arrayDias[$i]['manha'] == NULL){
-						$color = '#DCDCDC';
-						$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-						$nivelManha .= "<td style='background-color: ".$color."'></td>";
-						$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-						$manha_semPreenchimento++;
-					}else if($arrayDias[$i]['manha'] == 'Em Operação'){
-						$color = '#37bf48';
-						$analiseManha .= "<td style='background-color: ".$color."'>OP</td>";
-						$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						$manha_acimaMedia++;
-					}else if($arrayDias[$i]['manha'] == 'Fora de Operação'){
-						$color = '#c13259';
-						$analiseManha .= "<td style='background-color: ".$color."'>FO</td>";
-						$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						$manha_acimaMesmo++;
-					}else if($arrayDias[$i]['manha'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						$analiseManha .= "<td style='background-color: ".$color."'>N/A</td>";
-						$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						$manha_naMedia++;					
-					}else{
-						$color = '#DCDCDC';
-						$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-						$nivelManha .= "<td style='background-color: ".$color."'></td>";
-						$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-						$manha_semPreenchimento++;
-					}
-
-					if($arrayDias[$i]['tarde'] == null){
-						$color = '#DCDCDC';
-						$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-						$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-						$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-						$tarde_semPreenchimento++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Em Operação'){
-						$color = '#37bf48';
-						$analiseTarde .= "<td style='background-color: ".$color."'>OP</td>";
-						$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_acimaMedia++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Fora de Operação'){
-						$color = '#c13259';
-						$analiseTarde .= "<td style='background-color: ".$color."'>FO</td>";
-						$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_acimaMesmo++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						$analiseTarde .= "<td style='background-color: ".$color."'>N/A</td>";
-						$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_naMedia++;
-
-					}else{
-						$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-						$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-						$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-						$tarde_semPreenchimento++;
-					}
-				}else{
-					$color = '#DCDCDC';
-					$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-					$nivelManha .= "<td style='background-color: ".$color."'></td>";
-					$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-					$manha_semPreenchimento++;
-
-					$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-					$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-					$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-					$tarde_semPreenchimento++;
-				}
+			if ($situacao == 'Impraticável') {
+				$return['status_dia'] .= "<td class='pluviometricoI'>I</td>";
 			}
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="7">' : '<td rowspan="5">';
-			$tabela .= $listaInfra->nome_eixo . "</td>";
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
-			$tabela .= "IP4</td>";
-			//$tabela .= "<td>Condição</td>";
-			$tabela .= $analiseManha . "</tr>";
-			$tabela .= "<tr>";
-			/*if($jusante){
-				$tabela .= "<td>Montante(cm)</td>";
-				$tabela .= $nivelManha . "</tr>";
-				$tabela .= "<td>Jusante(cm)</td>";
-				$tabela .= $jusanteManha . "</tr>";
-			}else{
-				$tabela .= "<td>Nível(cm)</td>";
-				$tabela .= $nivelManha . "</tr>";
-			}*/
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
-			$tabela .= "Fábrica de Gelo</td>";
-			//$tabela .= "<td>Condição</td>";
-			$tabela .= $analiseTarde . "</tr>";
-			$tabela .= "<tr>";
-			/*if($jusante){
-				$tabela .= "<td>Montante(cm)</td>";
-				$tabela .= $nivelTarde . "</tr>";
-				$tabela .= "<td>Jusante(cm)</td>";
-				$tabela .= $jusanteTarde . "</tr>";
-			}else{
-				$tabela .= "<td>Nível(cm)</td>";
-				$tabela .= $nivelTarde . "</tr>";
-			}*/
-
-			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
-
-			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
-			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
-                $cont++;        
+			if ($situacao == 'Instavel') {
+				$return['status_dia'] .= "<td class='pluviometricoIS'>S</td>";
+			}
+			if ($situacao == 'Não houveram atividades') {
+				$return['status_dia'] .= "<td class='pluviometricoNA'>N/A</td>";
+			}
 		}
-
-
-
-		$return['fluviometrico'] = $tabelas;
-
-
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-                //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-                //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-
-		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra($dados);
-		$data = explode('-',$dados["periodo"]);
-		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
-		$tabelas = array();
-                $cont=1;
-		foreach ($dadosInfras as $linha => $listaInfra) {
-			$tabela = "";
-                        if($cont==1){
-			$tabela .= "<tr class='centerBold'>";
-			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
-			for($i = 1; $i <= $totaldias; $i++){
-				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
-			}
-                        }
-			$tabela .= "</tr>";
-
-			$dados['infraestrutura'] = $listaInfra->nome_eixo;
-			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
-
-			$jusante = false;
-			$arrayDias = array();
-			if(count($dadosControleFluv) > 0){
-				foreach($dadosControleFluv as $diasControle){
-					
-					$arrayDias[$diasControle->dia]['jusante_manha'] = $diasControle->jusante_manha;
-
-					
-
-					if($diasControle->jusante_manha != NULL){
-						$jusante = true;
-					}
-				}
-			}
-
-			$analiseManha = "";
-			$nivelManha = "";
-			$jusanteManha = "";
-			$manha_semPreenchimento = 0;
-			$manha_acimaMedia = 0;
-			$manha_acimaMesmo = 0;
-			$manha_naMedia = 0;
-			$manha_abaixoMesmo = 0;
-			$manha_nhouveatividade = 0;
-
-			$analiseTarde = "";
-			$nivelTarde = "";
-			$jusanteTarde = "";
-			$tarde_semPreenchimento = 0;
-			$tarde_acimaMedia = 0;
-			$tarde_acimaMesmo = 0;
-			$tarde_naMedia = 0;
-			$tarde_abaixoMesmo = 0;
-			$tarde_nhouveatividade = 0;
-
-			for($i = 1; $i <= $totaldias; $i++){
-				if(isset($arrayDias[$i])){
-					if($arrayDias[$i]['jusante_manha'] == NULL){
-						$color = '#DCDCDC';
-						$jusanteManha .= "<td style='background-color: ".$color."'>SP</td>";
-						$manha_semPreenchimento++;
-					}else if($arrayDias[$i]['jusante_manha'] == 'Em Operação'){
-						$color = '#37bf48';
-						$jusanteManha .= "<td style='background-color: ".$color."'>OP</td>";
-						$manha_acimaMedia++;
-					}else if($arrayDias[$i]['jusante_manha'] == 'Fora de Operação'){
-						$color = '#c13259';
-						$jusanteManha .= "<td style='background-color: ".$color."'>FO</td>";
-						$manha_acimaMesmo++;
-					}else if($arrayDias[$i]['jusante_manha'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						$jusanteManha .= "<td style='background-color: ".$color."'>N/A</td>";
-						$manha_naMedia++;					
-					}else{
-						$color = '#DCDCDC';
-						$jusanteManha .= "<td style='background-color: ".$color."'>SP</td>";
-						$manha_semPreenchimento++;
-					}
-
-					
-				}else{
-					$color = '#DCDCDC';
-					$jusanteManha .= "<td style='background-color: ".$color."'>SP</td>";
-					$manha_semPreenchimento++;
-					
-				}
-			}
-			/*$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="7">' : '<td rowspan="5">';
-			$tabela .= $listaInfra->nome_eixo . "</td>";
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
-			$tabela .= "ECLUSA</td>";
-			//$tabela .= "<td>Condição</td>";
-			$tabela .= $jusanteManha . "</tr>";
-			$tabela .= "<tr>";*/
-                        
-                        $tabela .= "<tr>";
-                        $tabela .= "<td>";
-                        $tabela .= $listaInfra->nome_eixo . "</td>";
-                        $tabela .= "<td>";
-                        $tabela .= "ECLUSA</td>";
-                        $tabela .= $jusanteManha . "</tr>";
-                        
-			
-
-			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
-
-			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
-			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
-                $cont++;        
-		}
-
-
-
-		$return['fluviometrico_eclusa'] = $tabelas;
-
-
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-                
-                //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-
-		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra_relatorio($dados);
-		$data = explode('-',$dados["periodo"]);
-		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
-		$tabelas = array();
-                $cont=1;
-		foreach ($dadosInfras as $linha => $listaInfra) {
-			$tabela = "";
-                        if($cont==1){
-			$tabela .= "<tr class='centerBold'>";
-			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
-			/*for($i = 1; $i <= $totaldias; $i++){
-				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
-			}*/
-                        $tabela .= "<td style='background-color: #DCDCDC'>SP</td>";
-                        $tabela .= "<td style='background-color: #33fd33'>OP</td>";
-                        $tabela .= "<td style='background-color: #fb3a3a'>FO</td>";
-                        $tabela .= "<td style='background-color: #9e9e9e'>N/A</td>";
-                        $tabela .= "<td>Último Status</td>";
-                        }
-			$tabela .= "</tr>";
-
-			$dados['infraestrutura'] = $listaInfra->nome_eixo;
-                        $status_ip4 = $listaInfra->status_ip4;
-                        $status_fabricadegelo = $listaInfra->status_fabricadegelo;
-			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
-                        
-			$jusante = false;
-			$arrayDias = array();
-			if(count($dadosControleFluv) > 0 ){
-				foreach($dadosControleFluv as $diasControle){
-					$arrayDias[$diasControle->dia]['manha'] = $diasControle->manha;
-					$arrayDias[$diasControle->dia]['manhaNivel'] = $diasControle->manha_nivel;
-					$arrayDias[$diasControle->dia]['manhaJusante'] = $diasControle->jusante_manha;
-
-					$arrayDias[$diasControle->dia]['tarde'] = $diasControle->tarde;
-					$arrayDias[$diasControle->dia]['tardeNivel'] = $diasControle->tarde_nivel;
-					$arrayDias[$diasControle->dia]['tardeJusante'] = $diasControle->jusante_tarde;
-
-					if($diasControle->jusante_manha != null || $diasControle->jusante_tarde != null){
-						$jusante = true;
-					}
-				}
-			}
-
-			$analiseManha = "";
-			$nivelManha = "";
-			$jusanteManha = "";
-			$manha_semPreenchimento = 0;
-			$manha_acimaMedia = 0;
-			$manha_acimaMesmo = 0;
-			$manha_naMedia = 0;
-			$manha_abaixoMesmo = 0;
-			$manha_nhouveatividade = 0;
-
-			$analiseTarde = "";
-			$nivelTarde = "";
-			$jusanteTarde = "";
-			$tarde_semPreenchimento = 0;
-			$tarde_acimaMedia = 0;
-			$tarde_acimaMesmo = 0;
-			$tarde_naMedia = 0;
-			$tarde_abaixoMesmo = 0;
-			$tarde_nhouveatividade = 0;
-                        
-                        $manha_op=0;
-                        $tarde_op=0;
-                        $manha_fo=0;
-                        $tarde_fo=0;
-                        $manha_na=0;
-                        $tarde_na=0;
-			for($i = 1; $i <= $totaldias; $i++){
-				if(isset($arrayDias[$i])){
-					if($arrayDias[$i]['manha'] == NULL){
-						$color = '#DCDCDC';
-                                                //$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-						//$nivelManha .= "<td style='background-color: ".$color."'></td>";
-						//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-						$manha_semPreenchimento++;
-                                                
-					}else if($arrayDias[$i]['manha'] == 'Em Operação'){
-						$color = '#37bf48';
-						//$analiseManha .= "<td style='background-color: ".$color."'>OP</td>";
-						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						//$manha_acimaMedia++;
-                                                $manha_op++;
-					}else if($arrayDias[$i]['manha'] == 'Fora de Operação'){
-						$color = '#c13259';
-						//$analiseManha .= "<td style='background-color: ".$color."'>FO</td>";
-						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						//$manha_acimaMesmo++;
-                                                $manha_fo++;
-					}else if($arrayDias[$i]['manha'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						//$analiseManha .= "<td style='background-color: ".$color."'>N/A</td>";
-						//$nivelManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaNivel']."</td>";
-						//$jusanteManha .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['manhaJusante']."</td>";
-						//$manha_naMedia++;
-                                                $manha_na++;
-					}else{
-						$color = '#DCDCDC';
-						//$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-						//$nivelManha .= "<td style='background-color: ".$color."'></td>";
-						//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-						//$manha_semPreenchimento++;
-                                                $manha_semPreenchimento++;
-					}
-
-					if($arrayDias[$i]['tarde'] == NULL){
-						$color = '#DCDCDC';
-						//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-						//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-						//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-						$tarde_semPreenchimento++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Em Operação'){
-						$color = '#37bf48';
-						//$analiseTarde .= "<td style='background-color: ".$color."'>OP</td>";
-						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_op++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Fora de Operação'){
-						$color = '#c13259';
-						//$analiseTarde .= "<td style='background-color: ".$color."'>FO</td>";
-						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_fo++;
-
-					}else if($arrayDias[$i]['tarde'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						//$analiseTarde .= "<td style='background-color: ".$color."'>N/A</td>";
-						//$nivelTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeNivel']."</td>";
-						//$jusanteTarde .= "<td style='background-color: ".$color."'>".$arrayDias[$i]['tardeJusante']."</td>";
-						$tarde_na++;
-
-					}else{
-						//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-						//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-						//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-						$tarde_semPreenchimento++;
-					}
-				}else{
-					$color = '#DCDCDC';
-					//$analiseManha .= "<td style='background-color: ".$color."'>SP</td>";
-					//$nivelManha .= "<td style='background-color: ".$color."'></td>";
-					//$jusanteManha .= "<td style='background-color: ".$color."'></td>";
-					$manha_semPreenchimento++;
-                                       
-                                        
-
-					//$analiseTarde .= "<td style='background-color: ".$color."'>SP</td>";
-					//$nivelTarde .= "<td style='background-color: ".$color."'></td>";
-					//$jusanteTarde .= "<td style='background-color: ".$color."'></td>";
-					$tarde_semPreenchimento++;
-				}
-			}
-                        
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="7">' : '<td rowspan="5">';
-			$tabela .= $listaInfra->nome_eixo . "</td>";
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
-			$tabela .= "IP4</td>";
-			//$tabela .= "<td>Condição</td>";
-			$tabela .= $analiseManha . "</tr>";
-			$tabela .= "<tr>";
-                        $tabela .= "<td style='background-color: #DCDCDC'>$manha_semPreenchimento</td>";
-                        $tabela .= "<td style='background-color: #33fd33'>$manha_op</td>";
-                        $tabela .= "<td style='background-color: #fb3a3a'>$manha_fo</td>";
-                        $tabela .= "<td style='background-color: #9e9e9e'>$manha_na</td>";
-                        $tabela .= "<td>$status_ip4</td>";
-			/*if($jusante){
-				$tabela .= "<td>Montante(cm)</td>";
-				$tabela .= $nivelManha . "</tr>";
-				$tabela .= "<td>Jusante(cm)</td>";
-				$tabela .= $jusanteManha . "</tr>";
-			}else{
-				$tabela .= "<td>Nível(cm)</td>";
-				$tabela .= $nivelManha . "</tr>";
-			}*/
-			$tabela .= "<tr>";
-			$tabela .= ($jusante) ? '<td rowspan="3">' : '<td rowspan="2">';
-			$tabela .= "Fábrica de Gelo</td>";
-			//$tabela .= "<td>Condição</td>";
-			$tabela .= $analiseTarde . "</tr>";
-			$tabela .= "<tr>";
-                        $tabela .= "<td style='background-color: #DCDCDC'>$tarde_semPreenchimento</td>";
-                        $tabela .= "<td style='background-color: #33fd33'>$tarde_op</td>";
-                        $tabela .= "<td style='background-color: #fb3a3a'>$tarde_fo</td>";
-                        $tabela .= "<td style='background-color: #9e9e9e'>$tarde_na</td>";
-                        $tabela .= "<td>$status_fabricadegelo</td>";
-			/*if($jusante){
-				$tabela .= "<td>Montante(cm)</td>";
-				$tabela .= $nivelTarde . "</tr>";
-				$tabela .= "<td>Jusante(cm)</td>";
-				$tabela .= $jusanteTarde . "</tr>";
-			}else{
-				$tabela .= "<td>Nível(cm)</td>";
-				$tabela .= $nivelTarde . "</tr>";
-			}*/
-
-			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
-
-			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
-			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
-                $cont++; 
-                $manha_op=0;
-                $tarde_op=0;
-                $manha_fo=0;
-                $tarde_fo=0;
-                $manha_na=0;
-                $tarde_na=0;
-		}
-
-
-
-		$return['fluviometrico_resumo'] = $tabelas;
-
-
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
-		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-                
-                //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-
-		$dadosInfras = $this->Tb_licencas_ambientais->populaNomeInfra_relatorio($dados);
-		$data = explode('-',$dados["periodo"]);
-		$totaldias = cal_days_in_month(CAL_GREGORIAN, $data[1],$data[0]);
-		$tabelas = array();
-                $cont=1;
-		foreach ($dadosInfras as $linha => $listaInfra) {
-			$tabela = "";
-                        if($cont==1){
-			$tabela .= "<tr class='centerBold'>";
-			$tabela .= "<td colspan='2'>INFRAESTRUTURA\DIAS</td>";
-			/*for($i = 1; $i <= $totaldias; $i++){
-				$tabela .= "<td>". str_pad($i, 2, 0, STR_PAD_LEFT) . "</td>";
-			}*/
-                        $tabela .= "<td style='background-color: #DCDCDC'>SP</td>";
-                        $tabela .= "<td style='background-color: #33fd33'>OP</td>";
-                        $tabela .= "<td style='background-color: #fb3a3a'>FO</td>";
-                        $tabela .= "<td style='background-color: #9e9e9e'>N/A</td>";
-                        $tabela .= "<td>Último Status</td>";
-                        }
-			$tabela .= "</tr>";
-
-			$dados['infraestrutura'] = $listaInfra->nome_eixo;
-                        $status_eclusa = $listaInfra->status_eclusa;
-                        $status_fabricadegelo = $listaInfra->status_fabricadegelo;
-			$dadosControleFluv = $this->Tb_controle_fluviometrico->recuperaControleFluv($dados);
-                        
-			$jusante = false;
-			$arrayDias = array();
-			if(count($dadosControleFluv) > 0 ){
-				foreach($dadosControleFluv as $diasControle){
-					
-					$arrayDias[$diasControle->dia]['manhaJusante'] = $diasControle->jusante_manha;
-
-					
-
-					if($diasControle->jusante_manha != NULL ){
-						$jusante = true;
-					}
-				}
-			}
-
-			$analiseManha = "";
-			$nivelManha = "";
-			$jusanteManha = "";
-			$manha_semPreenchimento = 0;
-			$manha_acimaMedia = 0;
-			$manha_acimaMesmo = 0;
-			$manha_naMedia = 0;
-			$manha_abaixoMesmo = 0;
-			$manha_nhouveatividade = 0;
-
-			$analiseTarde = "";
-			$nivelTarde = "";
-			$jusanteTarde = "";
-			$tarde_semPreenchimento = 0;
-			$tarde_acimaMedia = 0;
-			$tarde_acimaMesmo = 0;
-			$tarde_naMedia = 0;
-			$tarde_abaixoMesmo = 0;
-			$tarde_nhouveatividade = 0;
-                        
-                        $manhajusante_semPreenchimento=0;
-                        $manhajusante_op=0;
-                        $manhajusante_fo=0;
-                        $manhajusante_na=0;
-                        
-                        $manha_op=0;
-                        $tarde_op=0;
-                        $manha_fo=0;
-                        $tarde_fo=0;
-                        $manha_na=0;
-                        $tarde_na=0;
-			for($i = 1; $i <= $totaldias; $i++){
-				if(isset($arrayDias[$i])){
-					if($arrayDias[$i]['manhaJusante'] == NULL){
-						$color = '#DCDCDC';
-                                                
-						$manhajusante_semPreenchimento++;
-                                                
-					}else if($arrayDias[$i]['manhaJusante'] == 'Em Operação'){
-						$color = '#37bf48';
-						
-                                                $manhajusante_op++;
-					}else if($arrayDias[$i]['manhaJusante'] == 'Fora de Operação'){
-						$color = '#c13259';
-						
-                                                $manhajusante_fo++;
-					}else if($arrayDias[$i]['manhaJusante'] == 'Não Aplicável'){
-						$color = '#7e757d';
-						
-                                                $manhajusante_na++;
-					}else{
-						$color = '#DCDCDC';
-						
-                                                $manhajusante_semPreenchimento++;
-					}
-
-					
-				}else{
-					$color = '#DCDCDC';
-					
-					$manhajusante_semPreenchimento++;
-                                       
-                                        
-
-					
-				}
-			}
-                        
-			
-                        
-                        $tabela .= "<tr>";
-                        $tabela .= "<td>";
-                        $tabela .= $listaInfra->nome_eixo . "</td>";
-                        $tabela .= "<td>";
-                        $tabela .= "ECLUSA</td>";
-                        
-                       
-                       $tabela .= "<td style='background-color: #DCDCDC'>$manhajusante_semPreenchimento</td>";
-                        $tabela .= "<td style='background-color: #33fd33'>$manhajusante_op</td>";
-                        $tabela .= "<td style='background-color: #fb3a3a'>$manhajusante_fo</td>";
-                        $tabela .= "<td style='background-color: #9e9e9e'>$manhajusante_na</td>";
-                        $tabela .= "<td>$status_eclusa</td>";
-                        
-                        
-                        
-                       
-                       
-                        
-			
-			
-
-			$tabelas[$listaInfra->nome_eixo]['tabela'] = $tabela;
-
-			$tabelas[$listaInfra->nome_eixo]['manha_semPreenchimento'] = $manha_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMedia'] = $manha_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_acimaMesmo'] = $manha_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_naMedia'] = $manha_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['manha_abaixoMesmo'] = $manha_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['manha_nhouveatividade'] = $manha_nhouveatividade;
-			$tabelas[$listaInfra->nome_eixo]['tarde_semPreenchimento'] = $tarde_semPreenchimento;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMedia'] = $tarde_acimaMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_acimaMesmo'] = $tarde_acimaMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_naMedia'] = $tarde_naMedia;
-			$tabelas[$listaInfra->nome_eixo]['tarde_abaixoMesmo'] = $tarde_abaixoMesmo;
-			$tabelas[$listaInfra->nome_eixo]['tarde_nhouveatividade'] = $tarde_nhouveatividade;
-                $cont++; 
-                $manhajusante_op=0;
-                $tardejusante_op=0;
-                $manhajusante_fo=0;
-                $tardejusante_fo=0;
-                $manhajusante_na=0;
-                $tardejusante_na=0;
-		}
-
-
-
-		$return['fluviometrico_resumo_eclusa'] = $tabelas;
-
-
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<//
 		//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 
-        
 		$return['DocumentacaoFotografica'] = $this->Tb_relatorio->DocumentacaoFotografica($dados);
 		$return['LicencasAmbientais'] = $this->Tb_licencas_ambientais->recuperaLicencasAmbientais($dados);
 
@@ -1901,28 +1211,20 @@ class Relatorioctr extends CI_Controller
 
 		$atascorrespondenciasanexo = $this->Tb_AtasCorrespondencia->recuperaAtasCorrespondencias($dados);
 		$return['atascorrespondenciasAnexo'] = $atascorrespondenciasanexo;
-                
-                $Dados = $this->Tb_controle_fluviometrico->recuperaStatusControleFluv($dados);
-                 foreach ($Dados as $lista) {
-			$return["statusoperacao"] = $lista->statusoperacao;
-		}
-                
 		$this->load->view('/supervisaodaq/relatorio/Relatorio', $return);
 	}
 
 //--------------------------------------------------------------------------------------------
-	public function anexoDownload()
-	{
-		$nome_arquivo = $this->input->post_get('nome_arquivo');
-		$retorno = $nome_arquivo;
-		echo(json_encode($retorno));
-	}
+	public function anexoDownload() {
+        $nome_arquivo = $this->input->post_get('nome_arquivo');
+        $retorno = $nome_arquivo;
+        echo(json_encode($retorno));
+    }
 
-	public function excluiranexorelatorio()
-	{
-		$retorno = true;
-		echo(json_encode($retorno));
-	}
+	public function excluiranexorelatorio() {
+        $retorno = true;
+        echo(json_encode($retorno));
+    }
 
 //--------------------------------------------------------------------------------------------
 }

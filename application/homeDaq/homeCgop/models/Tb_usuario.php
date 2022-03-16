@@ -9,7 +9,6 @@ class Tb_usuario extends CI_Model
 	{
 		parent::__construct();
 		$this->db = $this->load->database('DAQ', TRUE);
-		$this->session->id_usuario_daq_cgop = 7164;
 	}
 
 	public function populaPerfil()
@@ -996,7 +995,6 @@ class Tb_usuario extends CI_Model
 				INNER JOIN TB_USUARIO_CONTRATO_OBRA uco 
 				    ON uco.id_contrato_obra = co.id_contrato_obra
 				WHERE id_usuario = {$_REQUEST['id_usuario']}
-					AND ativo = 'S'
 				GROUP BY id_contrato_supervisora";
 		$query = $this->db->query($SQL);
 		return $query->result();
