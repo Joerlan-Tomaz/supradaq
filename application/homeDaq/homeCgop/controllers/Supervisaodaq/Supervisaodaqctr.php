@@ -330,6 +330,22 @@ class Supervisaodaqctr extends CI_Controller
 		$this->load->view('/supervisaodaq/gestaotratativa/GestaoTratativaView');
 	}
 
+	public function homeRelatorioMonitoramentoAmbientalDaq(){
+		$this->load->view('/supervisaodaq/relatoriomonitoramentoambiental/RelatorioMonitoramentoAmbientalView');
+	}
+
+	public function homeBoletimSemanalDragagemDaq(){
+		$this->load->view('/supervisaodaq/boletimsemanaldragagem/BoletimSemanalDragagemView');
+	}
+
+	public function homeRelatorioLevantamentoHidrograficoDaq(){
+		$this->load->view('/supervisaodaq/relatoriolevantamentohidrografico/RelatorioLevantamentoHidrograficoView');
+	}
+
+	public function homeRelatorioMensalDragagemDaq(){
+		$this->load->view('/supervisaodaq/relatoriomensaldragagem/RelatorioMensalDragagemView');
+	}
+
 	public function homeConclusaoGeralDaq()
 	{
 		$this->load->view('/supervisaodaq/conclusaogeral/ConclusaoGeralView');
