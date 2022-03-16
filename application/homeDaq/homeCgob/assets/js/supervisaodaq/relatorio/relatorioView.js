@@ -4,7 +4,8 @@
 //# @Jordana Alencar
 //# Data:07/07/2020
 //############################################################################ 
-$().ready(function () { 
+$().ready(function () {
+
     //-------------------------------------------------------
     $('#elaboracao').hide();
     $('#correcao').hide();  
@@ -78,12 +79,12 @@ var dt = $("#datepicker").datepicker('getDate');
     //--------------------------------------------------
     $.ajax({
         type: 'POST',
-        url: base_url + 'index_cgob.php/RelatorioResultadoDaq',s
+        url: base_url + 'index_cgob.php/RelatorioResultadoDaq',
         data: {periodo: termo},
         dataType: 'json',
         success: function (data) {
            
-             if (data.relaboracao >= 1 & data.relaboracao < 29) {
+             if (data.relaboracao >= 1 & data.relaboracao < 32) {
                 $('.elaboracao').removeClass('nao_preenchido').addClass('emelaboracao');
                 $('.elaboracao').removeClass('aprovado').addClass('emelaboracao');
                 $('.conclusao').removeClass('aprovado').addClass('nao_preenchido');
@@ -96,7 +97,7 @@ var dt = $("#datepicker").datepicker('getDate');
                 $('#correcao').hide();
                 
             }
-            if(data.relaboracao < 29){
+            if(data.relaboracao < 32){
                 $('.analisetecnica').removeClass('aprovado').addClass('nao_preenchido'); 
                 $('.analiseestrutural').removeClass('aprovado').addClass('nao_preenchido'); 
                 $('.impressora').removeClass('aprovado').addClass('nao_preenchido'); 
@@ -111,7 +112,7 @@ var dt = $("#datepicker").datepicker('getDate');
                 $('#elaboracao').show();
                 $('#correcao').hide();  
             }
-            if (data.relaboracao >= 29) {
+            if (data.relaboracao >= 32) {
                 $('.elaboracao').removeClass('nao_preenchido').addClass('aprovado');
                 $('.conclusao').removeClass('nao_preenchido').addClass('aprovado');
                 $('.elaboracao').removeClass('emelaboracao').addClass('aprovado');
@@ -471,7 +472,7 @@ function elaboracaorelatorio(){
         var termo = dt.getFullYear() + "-" + ((dt.getMonth() + 1)>9? (dt.getMonth() + 1) : "0" + (dt.getMonth() + 1)) + "-01";
         
     }
-  
+
     dadosContrato(termo);
     $.ajax({
         type: 'POST',

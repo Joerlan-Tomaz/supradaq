@@ -486,6 +486,21 @@
 				<a href="#relatorioMonitoramentoAmbiental">24. RELATÓRIO DE MONITORAMENTO AMBIENTAL</a>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="#boletimSemanalDragagem">25. BOLETIM SEMANAL DE DRAGAGEM</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="#relatorioMensalDragagem">26. RELATÓRIO MENSAL DE DRAGAGEM</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<a href="#relatorioLevantamentoHidrografico">27. RELATÓRIO DE LEVANTAMENTO HIDROGRÁFICO</a>
+			</div>
+		</div>
 	</section>
 	<!-- 1. JUSTIFICATIVA E APRESENTAÇÃO DO EMPREENDIMENTO -->
 	<section id="justificativa_empreendimento" class="sheet padding-10mm">
@@ -4335,6 +4350,55 @@
 			</div>
 		</div>
 	</section>
+
+	<section id="boletimSemanalDragagem" class="sheet padding-10mm">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
+				<h3>
+					<strong>25. BOLETIM SEMANAL DE DRAGAGEM</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify"
+				 style='font:11px/21px Arial,tahoma,sans-serif;color:black'>
+				<?= $texto_boletim_semanal_dragagem; ?>
+			</div>
+		</div>
+	</section>
+
+	<section id="relatorioMensalDragagem" class="sheet padding-10mm">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
+				<h3>
+					<strong>26. RELATÓRIO MENSAL DE DRAGAGEM</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify"
+				 style='font:11px/21px Arial,tahoma,sans-serif;color:black'>
+				<?= $texto_relatorio_mensal_dragagem; ?>
+			</div>
+		</div>
+	</section>
+
+	<section id="relatorioLevantamentoHidrografico" class="sheet padding-10mm">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 bold">
+				<h3>
+					<strong>27. RELATÓRIO DE LEVANTAMENTO HIDROGRÁFICO</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fullJustify"
+				 style='font:11px/21px Arial,tahoma,sans-serif;color:black'>
+				<?= $texto_relatorio_levantamento_hidrografico; ?>
+			</div>
+		</div>
+	</section>
+
 	<!-- 11. GESTÃO DA QUALIDADE -->
 	<!--             <section id="gestao_qualidade" class="sheet padding-10mm">
 <div class="row">

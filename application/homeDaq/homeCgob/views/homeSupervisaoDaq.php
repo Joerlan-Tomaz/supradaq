@@ -482,13 +482,12 @@
 									<p>Rel. de Monit. Ambiental</p>
 								</a>
 							</li>
-							<!--
 							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaBoletimSemanalDragagem()" class="nav-link">
 									<i class="fa fa-file-text nav-icon"></i>
 									<p>Bol. Semanal de Dragagem</p>
 								</a>
-							</li>-->
+							</li>
 							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaRelatorioMensalDragagem()" class="nav-link">
 									<i class="fa fa-file-text nav-icon"></i>
