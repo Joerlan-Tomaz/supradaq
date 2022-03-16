@@ -270,6 +270,8 @@ $route['ControlePluvEditar'] = '/Supervisaodaq/ControlePluviometrico/ControlePlu
 
 $route['ControleFluvInsereDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/insereControleFluv';
 $route['ControleFluvRecuperaDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/recuperaControleFluv';
+$route['ControleFluvRecuperaDaqEclusa'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/recuperaControleFluvEclusa';
+$route['ControleFluvRecuperaStatusDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/recuperaStatusControleFluv';
 $route['ControleFluvExcluirDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/excluirDia';
 $route['ControleFluvDiaDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/Recuperadiasmes';
 $route['ControleFluvNaoAtividadeDaq'] = '/Supervisaodaq/ControleFluviometrico/ControleFluviometrico/insereNaoAtividade';
@@ -657,6 +659,8 @@ $route['gerencialObraInterferencias'] = '/PainelGerencialdaq/PainelGerencialctr/
 $route['gerencialObraDadosFotos'] = '/PainelGerencialdaq/PainelGerencialctr/gerencialObraDadosFotos';
 $route['gerencialObraFotosPeriodo'] = '/PainelGerencialdaq/PainelGerencialctr/gerencialObraFotosPeriodo';
 $route['gerencialObraAditivos'] = '/PainelGerencialdaq/PainelGerencialctr/gerencialObraAditivos';
+$route['statusIp4'] = '/PainelGerencialdaq/PainelGerencialctr/statusIp4';
+$route['statusEclusa'] = '/PainelGerencialdaq/PainelGerencialctr/statusEclusa';
 
 $route['gerencialObraResumoFinanceiroGrafico'] = '/PainelGerencialdaq/PainelGerencialctr/gerencialObraResumoFinanceiroGrafico';
 $route['gerencialObraResumoCurvaSGrafico'] = '/PainelGerencialdaq/PainelGerencialctr/gerencialObraResumoCurvaSGrafico';

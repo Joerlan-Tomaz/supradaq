@@ -349,6 +349,13 @@
 										</a>
 									</li>
 									<li class="nav-item">
+										<a href="javascript:void(0);" onclick="rotaControleFluviometricoDaq()"
+										   class="nav-link">
+											<i class="fa fa-circle-o nav-icon"></i>
+											<p> Status de Operação </p>
+										</a>
+									</li>
+									<li class="nav-item">
 										<a href="javascript:void(0);" onclick="rotaAtividadesCriticasDaq()"
 										   class="nav-link">
 											<i class="fa fa-circle-o nav-icon"></i>
@@ -360,13 +367,6 @@
 										   class="nav-link">
 											<i class="fa fa-circle-o nav-icon"></i>
 											<p> Controle Pluviométrico </p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="javascript:void(0);" onclick="rotaControleFluviometricoDaq()"
-										   class="nav-link">
-											<i class="fa fa-circle-o nav-icon"></i>
-											<p> Controle Fluviométrico </p>
 										</a>
 									</li>
 									<li class="nav-item">
