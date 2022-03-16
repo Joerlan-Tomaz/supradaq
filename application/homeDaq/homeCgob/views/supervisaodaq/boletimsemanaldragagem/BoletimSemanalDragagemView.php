@@ -28,15 +28,15 @@
             <div class="card card-default">
                 <div class="card-header">
                     <form method="post" name="formulario">
-                        <h2>
+                        <!--<h2>
                             <font size="3">
-                            	bla bla bla
+                            	texto
 								<div class='ocultar'><u>[+/-] Leia mais...</u></div>
                             <div class='mostrar'>
-								bla bla bla 2
+								texto completo
                             </div>
                             </font>
-                        </h2>
+                        </h2>-->
                         <div class="row">
 							<div class="col-xs-12 col-md-1">
 								<div>
