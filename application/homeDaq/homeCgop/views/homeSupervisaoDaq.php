@@ -449,7 +449,7 @@
 									<p> Gestão de Tratativas</p>
 								</a>
 							</li>
-							<li class="nav-item">
+							<!--<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaRelatorioMonitoramentoAmbiental()" class="nav-link">
 									<i class="fa fa-file-text nav-icon"></i>
 									<p>Rel. de Monit. Ambiental</p>
@@ -472,7 +472,7 @@
 									<i class="fa fa-file-text nav-icon"></i>
 									<p>Rel. Levantamento Hidrográfico</p>
 								</a>
-							</li>
+							</li>-->
 							<li class="nav-item">
 								<a href="javascript:void(0);" onclick="rotaConclusaoGeralDaq()" class="nav-link">
 									<i class="fa fa-list-ul nav-icon"></i>
