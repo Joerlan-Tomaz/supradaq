@@ -72,15 +72,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
   | The $query_builder variables lets you determine whether or not to load
   | the query builder class.
  */
-$active_group = 'localpedro';
+$active_group = 'daq';
 $query_builder = true;
 
-$db['localpedro'] = array(
-	'hostname' => 'ECOP-1541',
+$db['daq'] = array(
+	'hostname' => 'ECOP-1522',
 	'port' => '',
-	'username' => 'sa',
-	'password' => 'ecoplan',
-	'database' => 'DEV_SUPRA_DAQ',
+	'username' => '',
+	'password' => '',
+	'database' => 'DEV_SUPRA_DAQ1',
 	'dbdriver' => 'pdo',
 	'subdriver' => 'sqlsrv',
 	'dbprefix' => '',

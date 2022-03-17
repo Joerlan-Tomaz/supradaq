@@ -122,11 +122,11 @@ $db['DAQ'] = array(
 
 
 $db['DAQ'] = array(
-	'hostname' => 'ECOP-1541',
+	'hostname' => 'ECOP-1522',
 	'port' => '',
-	'username' => 'sa',
-	'password' => 'ecoplan',
-	'database' => 'SUPRA_DAQ',
+	'username' => '',
+	'password' => '',
+	'database' => 'dDEV_SUPRA_DAQ1',
 	'dbdriver' => 'pdo',
 	'subdriver' => 'sqlsrv',
 	'dbprefix' => '',

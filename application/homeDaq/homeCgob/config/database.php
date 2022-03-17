@@ -77,11 +77,11 @@ $query_builder = true;
 
 
 $db['DAQ'] = array(
-	'hostname' => 'ECOP-1541',
+	'hostname' => 'ECOP-1522',
 	'port' => '',
-	'username' => 'sa',
-	'password' => 'ecoplan',
-	'database' => 'DEV_SUPRA_DAQ',
+	'username' => '',
+	'password' => '',
+	'database' => 'DEV_SUPRA_DAQ1',
 	'dbdriver' => 'pdo',
 	'subdriver' => 'sqlsrv',
 	'dbprefix' => '',
