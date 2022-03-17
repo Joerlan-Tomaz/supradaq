@@ -9,6 +9,7 @@ class Tb_usuario extends CI_Model
 	{
 		parent::__construct();
 		$this->db = $this->load->database('DAQ', TRUE);
+        $this->$_SESSION->id_usuario_daq_cgop = 7164;
 	}
 
 	public function populaPerfil()
