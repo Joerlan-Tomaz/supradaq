@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
  */
 //$config['base_url'] = 'http://10.100.11.147/';
-$config['base_url'] = 'http://localhost/supradaq/';
+$config['base_url'] = 'http://localhost/';
 /*
 |--------------------------------------------------------------------------
 | Index File

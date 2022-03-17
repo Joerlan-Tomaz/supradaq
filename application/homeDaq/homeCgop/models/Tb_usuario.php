@@ -9,6 +9,19 @@ class Tb_usuario extends CI_Model
 	{
 		parent::__construct();
 		$this->db = $this->load->database('DAQ', TRUE);
+
+		if((stripos(base_url() , 'localhost') !== false) && $this->session->email) {
+			$email = $this->session->email;
+			$SQL = "
+				SELECT id_usuario 
+				FROM tb_usuario 
+				WHERE email like '%$email%'
+            ";
+			$query = $this->db->query($SQL);
+			$r = $query->result();
+			$this->session->id_usuario_daq_cgop = $r[0]->id_usuario;
+		}
+
 	}
 
 	public function populaPerfil()
@@ -1076,6 +1089,6 @@ public function insereUsuarioAcessoSupra($dados) {
             return false;
         }
     }        
-#------------------------------------------------------------------------------#        
+#------------------------------------------------------------------------------#    .    
         
 }
